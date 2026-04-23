@@ -7880,6 +7880,1571 @@ body.rootweb ::-webkit-scrollbar-thumb {
 
 </style>
 
+  <style>
+    /* === CYBER-GLASS === */
+/* СТЕКЛЯННЫЕ ГРАДИЕНТЫ + СВЕТЯЩИЙСЯ ТЕКСТ === */
+
+body.cyber-glass {
+--teal-top: rgba(255, 255, 255, 0.8);
+--teal-mid: rgba(255, 255, 255, 0.6);
+--gray-mid: rgba(255, 255, 255, 0.4);
+--gray-bottom: rgba(255, 255, 255, 0.2);
+--glass-bg: rgba(255, 255, 255, 0.1);
+--shadow-color: rgba(0, 0, 0, 0.3);
+
+background-color: #1a1a2e;
+background-image: radial-gradient(rgba(0, 243, 255, 0.15) 1px, transparent 1px);
+background-size: 25px 25px;
+}
+
+/* ВСЕ СТЕКЛЯННЫЕ ГРАДИЕНТЫ ОСТАЮТСЯ */
+body.cyber-glass .header,
+body.cyber-glass .contacts-header,
+body.cyber-glass .contacts-sidebar,
+body.cyber-glass .profile-sidebar,
+body.cyber-glass .tabs,
+
+body.cyber-glass .chat-input-area,
+body.cyber-glass .contacts-controls {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0.6) 20%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+) !important;
+backdrop-filter: blur(10px);
+box-shadow: 
+    0 4px 20px var(--shadow-color),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+body.cyber-glass .app
+{
+background: transparent;
+}
+body.cyber-glass .content
+{
+background: transparent;
+}
+
+/* ПЛАШКИ — ТОЖЕ СТЕКЛЯННЫЕ */
+body.cyber-glass .contact-item,
+body.cyber-glass .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.35) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* СВОИ СООБЩЕНИЯ */
+body.cyber-glass .message-self .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(160, 200, 255, 0.5) 0%,
+        rgba(140, 180, 255, 0.35) 20%,
+        rgba(120, 160, 255, 0.15) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+/* ========== ТЕКСТ — СВЕТЯЩИЙСЯ ГОЛУБОЙ НЕОН ========== */
+/* body.cyber-glass, */
+body.cyber-glass .contact-name,
+body.cyber-glass .bubble,
+body.cyber-glass .message-self .bubble,
+/* body.cyber-glass .message-self .msg-name, */
+body.cyber-glass .tab-btn,
+body.cyber-glass .setting-item label {
+color: #ffffff !important;
+text-shadow: 
+    0 0 5px #00ccff,
+    0 0 10px #0088aa,
+    0 0 15px #0066aa;
+}
+
+/* ТЕКСТ В СВОИХ СООБЩЕНИЯХ — ТОЖЕ СВЕТИТСЯ */
+/* body.cyber-glass .message-self .bubble, */
+
+body.cyber-glass .message-self .msg-name
+{
+background-color: #00b6e3;
+text-shadow: 
+    0 0 6px #00b6e3;
+}
+body.cyber-glass .message-other .msg-name
+
+{
+background-color: white;
+text-shadow: 
+    0 0 8px white;
+}
+
+/* КНОПКИ СТЕКЛЯННЫЕ + СВЕЧЕНИЕ ПРИ НАВЕДЕНИИ */
+body.cyber-glass .send-btn,
+body.cyber-glass #saveProfileBtn,
+body.cyber-glass #logoutBtn,
+body.cyber-glass .close-contacts-btn {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.9) 0%,
+    rgba(255,255,255,0.7) 20%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+);
+border: 1px inset rgba(255, 255, 255, 0.5);
+box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+color: white;
+text-shadow: 0 0 4px #00ccff;
+}
+
+body.cyber-glass .send-btn:hover,
+body.cyber-glass .contact-item:hover {
+box-shadow: 
+    0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 5px 2px rgba(0, 243, 255, 0.75),
+    0 0 10px 2px rgba(0, 243, 255, 0.5) inset !important;
+}
+
+/* ПОЛЕ ВВОДА — СТЕКЛО */
+body.cyber-glass .message-input-wrapper {
+background: rgba(255, 255, 255, 0.15);
+border: 1px inset rgba(255, 255, 255, 0.3);
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.cyber-glass .message-input-wrapper input {
+color: white;
+text-shadow: 0 0 3px #00ccff;
+}
+
+/* Анимация растягивания плашки */
+@keyframes bubbleStretch {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(0, 243, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(0, 243, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Анимация текста */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Плашка */
+body.cyber-glass .bubble {
+    animation: bubbleStretch 1s ease-out forwards;
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
+    height: auto;
+}
+
+/* Текст внутри */
+body.cyber-glass .bubble p,
+body.cyber-glass .bubble a,
+body.cyber-glass .bubble span,
+body.cyber-glass .bubble code,
+body.cyber-glass .bubble pre,
+body.cyber-glass .bubble h1,
+body.cyber-glass .bubble h2,
+body.cyber-glass .bubble h3,
+body.cyber-glass .bubble h4,
+body.cyber-glass .bubble ul,
+body.cyber-glass .bubble ol,
+body.cyber-glass .bubble li,
+body.cyber-glass .bubble blockquote {
+    animation: textReveal 0.9s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+/* Для своих */
+body.cyber-glass .message-self .bubble {
+    animation: bubbleStretchSelf 1s ease-out forwards;
+    height: auto;
+}
+
+body.cyber-glass .message-self .bubble p,
+body.cyber-glass .message-self .bubble a,
+body.cyber-glass .message-self .bubble span,
+body.cyber-glass .message-self .bubble code,
+body.cyber-glass .message-self .bubble pre,
+body.cyber-glass .message-self .bubble h1,
+body.cyber-glass .message-self .bubble h2,
+body.cyber-glass .message-self .bubble h3,
+body.cyber-glass .message-self .bubble h4,
+body.cyber-glass .message-self .bubble ul,
+body.cyber-glass .message-self .bubble ol,
+body.cyber-glass .message-self .bubble li,
+body.cyber-glass .message-self .bubble blockquote {
+    animation: textReveal 0.4s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+@keyframes bubbleStretchSelf {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+}
+/* Контейнер табов — прозрачный фон */
+body.cyber-glass .tabs {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    gap: 4px;
+}
+
+/* Все кнопки табов — стеклянные как bubble */
+body.cyber-glass .tab-btn,
+body.cyber-glass .chat-tab {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+}
+
+/* Активный таб — чуть ярче */
+body.cyber-glass .tab-btn.active,
+body.cyber-glass .chat-tab.active {
+background: black;
+background-color: black;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 0 10px 2px rgba(0, 243, 255, 0.5),
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Ховер на табах */
+body.cyber-glass .tab-btn:hover,
+body.cyber-glass .chat-tab:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 5px 2px rgba(0, 243, 255, 0.75),
+        0 0 10px 2px rgba(0, 243, 255, 0.5) inset !important;
+}
+
+/* Имя в табе */
+body.cyber-glass .chat-tab-name {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa;
+    cursor: pointer;
+}
+
+/* Кнопка закрытия таба */
+body.cyber-glass .close-chat-tab {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+    margin-left: 8px;
+    opacity: 0.8;
+}
+
+body.cyber-glass .close-chat-tab:hover {
+    opacity: 1;
+    text-shadow: 
+        0 0 8px #00ccff,
+        0 0 12px #ff4444;
+}
+/* === ИНПУТ === */
+body.cyber-glass .chat-input-area {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+body.cyber-glass .message-input-wrapper {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 3px !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(0, 243, 255, 0.1) !important;
+    padding: 8px 12px !important;
+}
+
+body.cyber-glass #messageInput,
+body.cyber-glass .message-input-wrapper input,
+body.cyber-glass .message-input-wrapper textarea {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+}
+
+body.cyber-glass #messageInput::placeholder,
+body.cyber-glass .message-input-wrapper input::placeholder,
+body.cyber-glass .message-input-wrapper textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+body.cyber-glass .message-input-wrapper:focus-within {
+    border-color: rgba(0, 243, 255, 0.5) !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(0, 243, 255, 0.3),
+        0 0 0 1px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* === КНОПКИ — ТОЛЬКО ИКОНКИ, ФОН ПРОЗРАЧНЫЙ === */
+body.cyber-glass .emoji-btn,
+body.cyber-glass .attach-btn,
+body.cyber-glass .send-btn {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #00ccff,
+        0 0 12px #0088aa !important;
+    filter: grayscale(100%) brightness(1.5);
+    transition: all 0.2s ease;
+    border-radius: 3px !important;
+    padding: 0;
+}
+
+body.cyber-glass .send-btn {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+/* Ховер — свечение усиливается, цвет возвращается */
+body.cyber-glass .emoji-btn:hover,
+body.cyber-glass .attach-btn:hover,
+body.cyber-glass .send-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #00ccff,
+        0 0 20px #00aaff,
+        0 0 30px #0088cc !important;
+    transform: scale(1.1);
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* === ЭМОДЗИ ПИКЕР === */
+body.cyber-glass .emoji-picker {
+    background: rgba(20, 20, 40, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(0, 243, 255, 0.2) !important;
+    padding: 8px;
+}
+
+body.cyber-glass .emoji-item {
+    filter: grayscale(100%) brightness(1.5) contrast(1.2);
+    font-size: 20px;
+    padding: 6px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+body.cyber-glass .emoji-item:hover {
+    filter: grayscale(0%) brightness(1);
+    background: rgba(0, 243, 255, 0.15);
+    transform: scale(1.2);
+    text-shadow: 0 0 10px #00ccff;
+}
+
+/* === ПРЕВЬЮ ОТВЕТА === */
+body.cyber-glass .reply-preview {
+    background: rgba(20, 20, 40, 0.6) !important;
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    border-left: 3px solid #00ccff;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+body.cyber-glass .reply-preview-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+}
+
+body.cyber-glass .reply-preview-close {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+body.cyber-glass .reply-preview-close:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px #ff4444;
+}
+
+/* === КНОПКИ ПРЕВЬЮ ИЗОБРАЖЕНИЯ === */
+body.cyber-glass .send-image-btn,
+body.cyber-glass .cancel-image-btn {
+    background: transparent !important;
+    border: 1px solid rgba(0, 243, 255, 0.3) !important;
+    border-radius: 3px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none !important;
+}
+
+body.cyber-glass .send-image-btn:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.4) !important;
+    background: rgba(0, 243, 255, 0.1) !important;
+}
+
+body.cyber-glass .cancel-image-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 12px rgba(255, 68, 68, 0.4) !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+}
+
+/* === РЕАКЦИИ ПОД СООБЩЕНИЯМИ === */
+body.cyber-glass .react-btn {
+    filter: grayscale(100%) brightness(1.5);
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+    font-size: 16px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+body.cyber-glass .react-btn:hover,
+body.cyber-glass .react-btn.active {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 0 0 10px #00ccff;
+    transform: scale(1.1);
+}
+body.cyber-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #00ccff,
+        0 0 12px #0088aa !important;
+}
+
+/* === ПРОФИЛЬ САЙДБАР === */
+body.cyber-glass .profile-sidebar {
+    background: transparent !important;
+}
+
+/* Заголовок */
+body.cyber-glass .profile-sidebar h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #0088aa !important;
+}
+
+/* Кнопка закрытия — прозрачная с белой обводкой */
+body.cyber-glass #closeProfileBtn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass #closeProfileBtn:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.5) !important;
+    text-shadow: 0 0 12px #00ccff !important;
+}
+
+/* Аватар */
+body.cyber-glass #avatarPreview {
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Инпуты — прозрачные с белой обводкой */
+body.cyber-glass #editName,
+body.cyber-glass #editFlat,
+body.cyber-glass #avatarInput {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 10px !important;
+    outline: none !important;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass #editName::placeholder,
+body.cyber-glass #editFlat::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+body.cyber-glass #editName:focus,
+body.cyber-glass #editFlat:focus {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Кнопки Сохранить и Выйти — стеклянные плашки */
+body.cyber-glass #saveProfileBtn,
+body.cyber-glass #logoutBtn {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 6px !important;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+    padding: 12px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass #saveProfileBtn:hover,
+body.cyber-glass #logoutBtn:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 8px 3px rgba(0, 243, 255, 0.7),
+        0 0 15px 5px rgba(0, 243, 255, 0.4) inset !important;
+}
+
+/* Настройки — заголовок */
+body.cyber-glass .settings-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff !important;
+}
+
+body.cyber-glass .close-settings-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
+}
+
+/* Лейблы настроек */
+body.cyber-glass .setting-item label {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+}
+
+/* Селекты — прозрачные с белой обводкой */
+body.cyber-glass #incomingSound,
+body.cyber-glass #outgoingSound,
+body.cyber-glass #replySound,
+body.cyber-glass #themeSelect {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+    cursor: pointer;
+    flex: 1;
+}
+
+body.cyber-glass #incomingSound option,
+body.cyber-glass #outgoingSound option,
+body.cyber-glass #replySound option,
+body.cyber-glass #themeSelect option {
+    background: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+/* Кнопки теста звука — прозрачные с обводкой */
+body.cyber-glass .test-sound-mini {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .test-sound-mini:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.4) !important;
+}
+
+/* Строки с селектами */
+body.cyber-glass .sound-select-row,
+body.cyber-glass .theme-select-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* === КОНТАКТЫ САЙДБАР === */
+body.cyber-glass .contacts-sidebar {
+    background: transparent !important;
+}
+
+/* Заголовок */
+body.cyber-glass .contacts-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #0088aa !important;
+}
+
+body.cyber-glass .close-contacts-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
+    width: 36px;
+    height: 36px;
+}
+
+/* Поиск */
+body.cyber-glass #contactsSearch {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 10px !important;
+}
+
+body.cyber-glass #contactsSearch::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Заголовок списка */
+body.cyber-glass .contacts-list-header {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+}
+
+/* Элементы контактов */
+body.cyber-glass .contact-item {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+body.cyber-glass .contact-name {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+}
+
+body.cyber-glass .contact-flat {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+/* Кнопка удаления */
+body.cyber-glass .remove-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    width: 28px;
+    height: 28px;
+}
+
+body.cyber-glass .remove-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.4) !important;
+}
+
+/* === ФУТЕР С КНОПКАМИ (РАДИО) === */
+body.cyber-glass .contacts-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: center;
+}
+
+body.cyber-glass .footer-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: grayscale(100%) brightness(1.3);
+}
+
+body.cyber-glass .footer-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 12px rgba(0, 243, 255, 0.5),
+        inset 0 0 8px rgba(0, 243, 255, 0.2) !important;
+    transform: scale(1.05);
+}
+
+/* Активная кнопка (если нужен активный стейт) */
+body.cyber-glass .footer-btn.active {
+    filter: grayscale(0%) brightness(1);
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 15px rgba(0, 243, 255, 0.6),
+        inset 0 0 8px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Панель управления */
+body.cyber-glass .control-panel {
+    background: rgba(20, 20, 40, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+/* Контролы внизу */
+body.cyber-glass .contacts-controls {
+    background: transparent !important;
+}
+/* === ФУТЕР С КНОПКАМИ === */
+body.cyber-glass .contacts-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: center;
+    background: transparent !important;
+}
+
+body.cyber-glass .footer-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #0088aa !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: grayscale(100%) brightness(1.5);
+    padding: 0;
+}
+
+body.cyber-glass .footer-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #00ccff,
+        0 0 20px #00aaff,
+        0 0 30px #0088cc !important;
+    transform: scale(1.1);
+}
+
+/* Кнопка Сохранить в панели статуса */
+body.cyber-glass .control-panel button {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .control-panel button:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.4) !important;
+    text-shadow: 0 0 10px #00ccff !important;
+}
+
+/* Селекты в панели */
+body.cyber-glass .control-panel select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+}
+
+body.cyber-glass .control-panel select option {
+    background: #1a1a2e !important;
+}
+/* === БАННЕР ЗАГРУЗКИ СООБЩЕНИЙ === */
+body.cyber-glass .load-more-banner {
+    background: transparent !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    border: none !important;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .load-more-banner:hover {
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 16px #00aaff !important;
+}
+
+body.cyber-glass .load-more-arrow {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    margin-left: 8px;
+}
+
+
+body.cyber-glass .msg-name {
+font-weight: 600;
+letter-spacing: 0.3px;
+}
+/* === ЦИТАТА ОТВЕТА === */
+body.cyber-glass .reply-quote {
+    background: transparent !important;
+    border: 1px dashed #00b6e3 !important;
+    border-left: 3px solid #00b6e3 !important;
+    border-radius: 5px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 8px !important;
+    color: #00b6e3 !important;
+    text-shadow: 0 0 6px #00b6e3 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+body.cyber-glass .reply-quote:hover {
+    border-color: #00d4ff !important;
+    border-left-color: #00d4ff !important;
+    box-shadow: 
+        0 0 10px rgba(0, 182, 227, 0.4),
+        inset 0 0 5px rgba(0, 182, 227, 0.2) !important;
+    text-shadow: 0 0 10px #00b6e3 !important;
+}
+
+/* === ПАНЕЛЬ РЕДАКТИРОВАНИЯ === */
+body.cyber-glass #editPanel {
+    background: transparent !important;
+    border-top: 2px solid rgba(0, 182, 227, 0.3) !important;
+    padding: 12px !important;
+}
+
+/* Заголовок */
+body.cyber-glass #editPanel > div:first-child {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+}
+
+/* Обёртка инпута */
+body.cyber-glass #editPanel > div > div:first-child {
+    background: transparent !important;
+    border: 2px solid rgba(0, 182, 227, 0.5) !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Поле ввода */
+body.cyber-glass #editMessageInput {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    font-size: 15px !important;
+    width: 100% !important;
+}
+
+body.cyber-glass #editMessageInput::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+/* Кнопки — только иконки */
+body.cyber-glass #saveEditBtn,
+body.cyber-glass #deleteMsgBtn,
+body.cyber-glass #cancelEditBtn {
+    background: transparent !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    filter: grayscale(100%) brightness(1.5) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+}
+
+/* Цвета при наведении */
+body.cyber-glass #saveEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 15px #00ff88 !important;
+    transform: scale(1.1) !important;
+}
+
+body.cyber-glass #deleteMsgBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ff4444,
+        0 0 15px #ff6666 !important;
+    transform: scale(1.1) !important;
+}
+
+body.cyber-glass #cancelEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ffffff,
+        0 0 15px #cccccc !important;
+    transform: scale(1.1) !important;
+}
+body.cyber-glass .chat-tab.active::before {
+    content: '';
+    position: absolute;
+
+    background: none;
+
+}
+
+/* Дополнительный эффект "стекла" для активной вкладки */
+body.cyber-glass .chat-tab.active::after {
+    content: '';
+    position: absolute;
+    background: none;
+}
+body.cyber-glass .chat-tab.active
+{
+    border: 2px solid white; 
+}
+
+/* === HEADER ЭЛЕМЕНТЫ === */
+
+/* Стрелка контактов */
+body.cyber-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .contacts-arrow:hover {
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 15px #00aaff !important;
+}
+
+/* Кнопка Назад */
+body.cyber-glass .back-btn {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .back-btn:hover {
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 10px rgba(0, 243, 255, 0.4),
+        inset 0 0 5px rgba(0, 243, 255, 0.2) !important;
+    text-shadow: 0 0 12px #00ccff !important;
+}
+
+/* Заголовок чата */
+body.cyber-glass .logo,
+body.cyber-glass #chatTitle {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    font-weight: 500;
+}
+
+/* Аватар в хедере */
+body.cyber-glass .chat-avatar {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 
+        0 0 8px rgba(0, 243, 255, 0.3),
+        inset 0 0 5px rgba(0, 243, 255, 0.1) !important;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .chat-avatar:hover {
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 12px rgba(0, 243, 255, 0.5),
+        inset 0 0 8px rgba(0, 243, 255, 0.2) !important;
+}
+
+/* Global Pending */
+body.cyber-glass .global-pending {
+    background: transparent !important;
+}
+
+body.cyber-glass #globalPendingAvatar {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Заголовок чата секция */
+body.cyber-glass .chat-title-section {
+    color: #ffffff !important;
+}
+/* === ИКОНКА ПРОФИЛЯ === */
+body.cyber-glass .profile-icon {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50% !important;
+    box-shadow: 
+        0 0 8px rgba(0, 243, 255, 0.3),
+        inset 0 0 5px rgba(0, 243, 255, 0.1) !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+body.cyber-glass .profile-icon:hover {
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 12px rgba(0, 243, 255, 0.5),
+        inset 0 0 8px rgba(0, 243, 255, 0.2) !important;
+}
+
+body.cyber-glass .profile-icon img {
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+/* === ИКОНКИ В ХЕДЕРЕ СООБЩЕНИЯ (ЗАКРЕПИТЬ/ОТВЕТИТЬ) === */
+body.cyber-glass .pin-icon-msg,
+body.cyber-glass .reply-icon {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    filter: grayscale(100%) brightness(1.5);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+    opacity: 0.7;
+}
+
+body.cyber-glass .pin-icon-msg:hover,
+body.cyber-glass .reply-icon:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 15px #00aaff !important;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* === ЗАГРУЗЧИК ЧАТА === */
+body.cyber-glass .chat-loader {
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 12px;
+}
+
+body.cyber-glass .chat-loader span {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    font-size: 14px;
+}
+
+body.cyber-glass .loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 2px solid #00ccff;
+    border-right: 2px solid #00ccff;
+    border-radius: 50%;
+    animation: cyberSpin 1s linear infinite;
+    box-shadow: 
+        0 0 10px rgba(0, 243, 255, 0.3),
+        inset 0 0 5px rgba(0, 243, 255, 0.1);
+}
+
+@keyframes cyberSpin {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 
+            0 0 10px rgba(0, 243, 255, 0.3),
+            inset 0 0 5px rgba(0, 243, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(0, 243, 255, 0.6),
+            inset 0 0 8px rgba(0, 243, 255, 0.2);
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 
+            0 0 10px rgba(0, 243, 255, 0.3),
+            inset 0 0 5px rgba(0, 243, 255, 0.1);
+    }
+}
+
+/* === ЭФФЕКТ ПИКСЕЛЬНОЙ МАТРИЦЫ ПРИ НАВЕДЕНИИ === */
+body.cyber-glass .bubble {
+    position: relative;
+    overflow: hidden;
+    
+}
+
+body.cyber-glass .bubble::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    background-image: 
+        /* Ряд 1 */
+        radial-gradient(circle at 2px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 2px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 2 */
+        radial-gradient(circle at 2px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 5px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 3 */
+        radial-gradient(circle at 2px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 8px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 4 */
+        radial-gradient(circle at 2px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 11px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 5 */
+        radial-gradient(circle at 2px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 14px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 6 */
+        radial-gradient(circle at 2px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 17px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 7 */
+        radial-gradient(circle at 2px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 20px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 8 */
+        radial-gradient(circle at 2px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 23px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 9 */
+        radial-gradient(circle at 2px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 26px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 10 */
+        radial-gradient(circle at 2px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 29px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 11 */
+        radial-gradient(circle at 2px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 32px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 12 */
+        radial-gradient(circle at 2px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 35px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 13 */
+        radial-gradient(circle at 2px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 38px, #00f3ff 0.8px, transparent 1px);
+        
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0;
+}
+
+body.cyber-glass .bubble:hover::after {
+    opacity: 1;
+    animation: matrixRun 1.5s steps(4, end) infinite;
+}
+
+@keyframes matrixRun {
+    0% {
+        background-position: 
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0;
+    }
+    /* 12.5% {
+        background-position: 
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0;
+    } */
+    25% {
+        background-position: 
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0;
+    }
+    /* 37.5% {
+        background-position: 
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0;
+    } */
+    50% {
+        background-position: 
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0;
+    }
+    /* 62.5% {
+        background-position: 
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0;
+    } */
+    75% {
+        background-position: 
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0;
+    }
+    /* 87.5% {
+        background-position: 
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0;
+    } */
+    100% {
+        background-position: 
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0;
+    }
+}
+
+
+</style>
+
 </head>
 
 <body>
@@ -8214,6 +9779,7 @@ body.rootweb ::-webkit-scrollbar-thumb {
                         <option value="dark">🌙 Тёмная</option>
                         <option value="dark2">🌑 Тёмная 2</option>
                         <option value="forest">🌲 Лесная</option>
+                        <option value="cyber-glass">👽 Protoss</option>
                         <!-- <option value="royal-glossy">💎 Royal Teal</option> -->
                         <option value="royal-glass">💎 Royal Glass</option>
                         <option value="total-glass">🍸 Total Glass</option>
