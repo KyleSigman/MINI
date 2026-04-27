@@ -5868,7 +5868,8 @@ body.rootweb ::-webkit-scrollbar-thumb {
 
 </style>
 
-<style>
+
+  <style>
     /* === CYBER-GLASS === */
 /* СТЕКЛЯННЫЕ ГРАДИЕНТЫ + СВЕТЯЩИЙСЯ ТЕКСТ === */
 
@@ -5950,7 +5951,62 @@ body.cyber-glass .message-self .bubble {
     border: 1px inset rgba(255, 255, 255, 0.5);
 }
 
+/* === CHAIN THREAD (ЦЕПОЧКА СООБЩЕНИЙ) ДЛЯ CYBER-GLASS === */
+body.cyber-glass .chain-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 1px;
+}
 
+body.cyber-glass .chain-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    padding: 6px 8px;
+    transition: all 0.2s ease;
+}
+
+/* === ТЕКУЩЕЕ СООБЩЕНИЕ (CURRENT) — БЕЛЫЙ ТЕКСТ + ГОЛУБОЕ СВЕЧЕНИЕ === */
+body.cyber-glass .chain-current {
+    font-weight: 500;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #0088aa, 0 0 15px #0066aa !important;
+    border-bottom: 1px solid rgba(0, 204, 255, 0.5);
+    padding: 4px 8px;
+}
+
+/* === ПРИВЯЗАННЫЕ СООБЩЕНИЯ (CHAIN) — ГОЛУБЫЕ, ПОЛУПРОЗРАЧНЫЕ === */
+body.cyber-glass .chain-dimmed {
+    opacity: 0.7;
+    color: rgba(0, 204, 255, 0.8) !important;
+    text-shadow: 0 0 3px rgba(0, 204, 255, 0.5) !important;
+}
+
+/* === БУЛЛЕТ (ТОЧКА) — ГОЛУБАЯ === */
+body.cyber-glass .chain-bullet {
+    font-size: 10px;
+    flex-shrink: 0;
+    color: #00ccff !important;
+    text-shadow: 0 0 3px #00ccff;
+}
+
+/* === ХОВЕР ДЛЯ ЭЛЕМЕНТОВ === */
+body.cyber-glass .chain-item:hover {
+    background: rgba(0, 204, 255, 0.08);
+    outline: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+}
+
+/* === ID ЦЕПОЧКИ === */
+body.cyber-glass .chain-id {
+    font-size: 10px;
+    color: #88aaff !important;
+    text-shadow: 0 0 3px #0088aa;
+    margin-top: 6px;
+    text-align: right;
+}
 
 
 /* ========== ТЕКСТ — СВЕТЯЩИЙСЯ ГОЛУБОЙ НЕОН ========== */
@@ -6075,6 +6131,7 @@ text-shadow: 0 0 3px #00ccff;
 /* Плашка */
 body.cyber-glass .bubble {
     animation: bubbleStretch 1s ease-out forwards;
+
     overflow: hidden;
     white-space: normal;
     word-break: break-word;
@@ -6102,7 +6159,7 @@ body.cyber-glass .bubble blockquote {
 
 /* Для своих */
 body.cyber-glass .message-self .bubble {
-    animation: bubbleStretchSelf 1s ease-out forwards;
+    
     height: auto;
 }
 
@@ -6124,7 +6181,39 @@ body.cyber-glass .message-self .bubble blockquote {
     filter: blur(3px);
 }
 
-@keyframes bubbleStretchSelf {
+@keyframes bubbleStretchAlien {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* @keyframes bubbleStretchSelf {
     0% {
         max-width: 0;
         padding-left: 0;
@@ -6154,7 +6243,7 @@ body.cyber-glass .message-self .bubble blockquote {
             0 2px 6px rgba(0, 0, 0, 0.5),
             inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
-}
+} */
 /* Контейнер табов — прозрачный фон */
 body.cyber-glass .tabs {
     background: transparent !important;
@@ -7582,6 +7671,1897 @@ body.cyber-glass .message.msg-extend .bubble::after {
 
 </style>
 
+<style>
+    /* === ALIEN-GLASS === */
+/* СТЕКЛЯННЫЕ ГРАДИЕНТЫ + ИННОПЛАНЕТНОЕ ЖЁЛТО-ЗЕЛЁНОЕ СВЕЧЕНИЕ === */
+
+body.alien-glass {
+--teal-top: rgba(255, 255, 255, 0.8);
+--teal-mid: rgba(255, 255, 255, 0.6);
+--gray-mid: rgba(255, 255, 255, 0.4);
+--gray-bottom: rgba(255, 255, 255, 0.2);
+--glass-bg: rgba(255, 255, 255, 0.1);
+--shadow-color: rgba(0, 0, 0, 0.3);
+
+background-color: #211f1f;
+/* background-color: #212121; */
+background-image: radial-gradient(#2e5c00 1px, transparent 1px);
+background-size: 25px 25px;
+}
+
+body.alien-glass ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body.alien-glass ::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body.alien-glass ::-webkit-scrollbar-thumb {
+    background: rgba(152, 252, 3, 0.3);
+    border-radius: 5px;
+    border: 1px solid rgba(152, 252, 3, 0.8);
+}
+
+body.alien-glass ::-webkit-scrollbar-thumb:hover {
+    background: rgba(152, 252, 3, 0.5);
+    border: 1px solid #98fc03;
+}
+
+/* ВСЕ СТЕКЛЯННЫЕ ГРАДИЕНТЫ ОСТАЮТСЯ */
+body.alien-glass .header,
+body.alien-glass .contacts-header,
+body.alien-glass .contacts-sidebar,
+body.alien-glass .profile-sidebar,
+body.alien-glass .tabs,
+body.alien-glass .contacts-controls {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+) !important;
+backdrop-filter: blur(1px);
+/* outline: 1px solid greenyellow; */
+
+}
+
+body.alien-glass .contacts-sidebar
+{
+    border-right: 2px solid rgba(150, 250, 0, 0.7);
+}
+
+body.alien-glass .header
+{
+    border-radius: 100px;
+    margin-bottom: 0px;
+    outline: 2px solid rgba(170, 255, 79, 0.5);
+    background-color: rgba(170, 255, 79, 0.3);
+}
+
+body.alien-glass .app
+{
+    background: transparent;
+/* background: red; */
+padding: 3px;
+
+border-radius: 0 !important;
+width: 550px;
+}
+body.alien-glass .content
+{
+background: transparent;
+}
+body.alien-glass .chat
+{
+background: transparent;
+outline: none;
+border: none;
+}
+
+/* КОНТЕЙНЕР ВСЕХ СООБЩЕНИЙ */
+body.alien-glass #chatMessages {
+    background: linear-gradient(
+        170deg,
+        rgba(152, 252, 0, 0.11) 0%,
+        rgba(152, 252, 0, 0.05) 20%,
+        rgba(152, 252, 0, 0.01) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 70%,
+        rgba(232, 114, 151, 0.1) 100%
+    ) !important;
+    border-top: 2px solid rgba(170, 255, 79, 0.5); 
+    border-radius: 20px 20px 0 0;
+    outline: none;
+    /* outline: 1px solid yellow; */
+    /* box-shadow: inset 0 0 10px rgba(255, 255, 0, 0.2), 0 0 5px yellow !important; */
+}
+/* ЗАКРЕПЛЁННОЕ СООБЩЕНИЕ */
+body.alien-glass #pinnedMessage {
+    background: transparent;
+    backdrop-filter: blur(2px);
+    background-color: transparent;
+    /* background: rgba(152, 252, 3, 0.15) !important; */
+    outline: 1px solid greenyellow;
+    /* border-radius: 2px; */
+    border: none;
+    padding: 8px 12px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* Иконка булавки */
+body.alien-glass #pinnedMessage .pin-icon {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    font-size: 16px;
+}
+/* Текст закреплённого сообщения */
+body.alien-glass #pinnedMessage #pinnedText {
+    color: #91ff00 !important;
+    text-shadow: 0 0 8px #6aaf00 !important;
+    flex: 1;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Кнопка открепления */
+body.alien-glass #pinnedMessage .unpin-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    cursor: pointer;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #pinnedMessage .unpin-btn:hover {
+    color: #ff4444 !important;
+    text-shadow: 0 0 8px #ff4444 !important;
+    transform: scale(1.1);
+}
+
+        /* rgba(157, 252, 3, 0.4) 0%,
+        rgba(157, 252, 3, 0.2) 20%,
+        rgba(157, 252, 3, 0.1) 50%, 
+        rgba(252, 3, 128, 0.0) 50%,
+        rgba(252, 3, 128, 0.1) 80%,
+        rgba(252, 3, 128, 0.15) 100%
+        */
+
+        /* СВОИ СООБЩЕНИЯ */
+
+body.alien-glass .message-self .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.2) 49%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(122, 252, 3, 0.03) 50%,
+        rgba(122, 252, 3, 0.1) 70%,
+        rgba(122, 252, 3, 0.2) 100%
+    ) !important;
+    text-shadow: 
+    0 0 6px rgba(253, 255, 255, 0.5);
+    outline: 2px solid rgba(170, 255, 79, 0.6);
+    border-radius: 20px;
+    box-shadow: 6px 6px 5px rgba(150, 255, 0, 0.15) !important;
+    /* box-shadow: 0 0 5px rgba(152, 252, 3, 0.3) !important; */
+}
+body.alien-glass .message-self .bubble:hover {
+    outline: 2px solid #aaff4f;
+    transition: 0.5s;
+}
+/* ЧУЖИЕ СООБЩЕНИЯ */
+body.alien-glass .message-other .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    outline-offset: none;
+    border: none; border-radius: 20px;
+    color: #98ff4f !important;
+    outline: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ========== ТЕКСТ — СВЕТЯЩИЙСЯ ЖЁЛТО-ЗЕЛЁНЫЙ НЕОН ========== */
+body.alien-glass .contact-name,
+body.alien-glass .bubble,
+body.alien-glass .tab-btn,
+body.alien-glass .setting-item label {
+color: #ffffff !important;
+text-shadow: 
+    0 0 4px rgba(153, 255, 0, 0.5),
+    0 0 8px rgba(153, 255, 0, 0.3);
+
+
+}
+
+/* ИМЯ В СООБЩЕНИЯХ — ТОЖЕ АЛЬIEN-СВЕЧЕНИЕ */
+body.alien-glass .message-self .msg-name
+{
+    background-color: #98ff4f !important;
+/* background-color: #bbff00; */
+text-shadow: 
+0 0 6px rgba(174, 255, 0, 0.5);
+    /* 0 0 6px #66ff00; */
+}
+body.alien-glass .message-other .msg-name
+{
+background-color: white;
+text-shadow: 
+    0 0 8px rgba(102, 255, 0, 0.1);
+}
+
+/* КНОПКИ СТЕКЛЯННЫЕ + СВЕЧЕНИЕ ПРИ НАВЕДЕНИИ */
+body.alien-glass .send-btn,
+body.alien-glass #saveProfileBtn,
+body.alien-glass #logoutBtn,
+body.alien-glass .close-contacts-btn {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+);
+border: none;
+outline: 2px solid rgba(170, 255, 79, 0.6);
+color: white;
+border-radius: 20px !important;
+text-shadow: 0 0 4px #66ff00;
+}
+
+body.alien-glass .send-btn
+{
+    outline: none;
+    
+}
+
+body.alien-glass .contact-item:hover {
+box-shadow: 
+    0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 5px 2px rgba(152, 252, 3, 0.75),
+    0 0 10px 2px rgba(152, 252, 3, 0.5) inset !important;
+}
+
+/* ПОЛЕ ВВОДА — СТЕКЛО */
+body.alien-glass .message-input-wrapper {
+background: rgba(255, 255, 255, 0.15);
+border: none;
+box-shadow: none;
+
+}
+
+body.alien-glass .message-input-wrapper input {
+color: white;
+text-shadow: 0 0 3px #66ff00;
+}
+
+/* Анимация растягивания плашки */
+/* @keyframes bubbleStretch {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+} */
+
+/* Анимация текста */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Плашка */
+body.alien-glass .bubble {
+    animation: bubbleStretchAlien 1s ease-out forwards;
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
+    height: auto;
+}
+
+/* === CHAIN THREAD (ЦЕПОЧКА СООБЩЕНИЙ) === */
+body.alien-glass .chain-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 1px;
+    /* background: rgba(152, 252, 3, 0.05); */
+    /* border-radius: 12px; */
+    /* margin: 4px 0; */
+}
+
+body.alien-glass .chain-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    padding: 6px 8px;
+    /* border-radius: 8px; */
+    transition: all 0.2s ease;
+}
+
+/* === ТЕКУЩЕЕ СООБЩЕНИЕ (CURRENT) === */
+body.alien-glass .chain-current {
+    font-weight: 500;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    border-bottom: 1px solid rgba(152, 252, 3, 0.5);
+    /* border-radius: 8px; */
+    /* background: rgba(152, 252, 3, 0.05); */
+    padding: 4px 8px;
+}
+
+/* === ПРИВЯЗАННЫЕ СООБЩЕНИЯ (CHAIN) === */
+body.alien-glass .chain-dimmed {
+    opacity: 0.7;
+    color: rgba(152, 252, 3, 0.7) !important;
+    text-shadow: 0 0 3px rgba(152, 252, 3, 0.5);
+}
+
+/* === БУЛЛЕТ (ТОЧКА) === */
+body.alien-glass .chain-bullet {
+    font-size: 10px;
+    flex-shrink: 0;
+    color: #98fc03 !important;
+    text-shadow: 0 0 3px #98fc03;
+}
+
+/* === ХОВЕР ДЛЯ ЭЛЕМЕНТОВ === */
+body.alien-glass .chain-item:hover {
+    background: rgba(152, 252, 3, 0.08);
+    outline: 1px solid rgba(152, 252, 3, 0.3);
+    border-radius: 8px;
+}
+
+body.alien-glass .chain-id {
+    font-size: 10px;
+    color: #aab;
+    margin-top: 6px;
+    text-align: right;
+}
+
+/* Текст внутри */
+body.alien-glass .bubble p,
+body.alien-glass .bubble a,
+body.alien-glass .bubble span,
+body.alien-glass .bubble code,
+body.alien-glass .bubble pre,
+body.alien-glass .bubble h1,
+body.alien-glass .bubble h2,
+body.alien-glass .bubble h3,
+body.alien-glass .bubble h4,
+body.alien-glass .bubble ul,
+body.alien-glass .bubble ol,
+body.alien-glass .bubble li,
+body.alien-glass .bubble blockquote {
+    animation: textReveal 0.9s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+/* Для своих */
+body.alien-glass .message-self .bubble {
+    
+    height: auto;
+}
+
+body.alien-glass .message-self .bubble p,
+body.alien-glass .message-self .bubble a,
+body.alien-glass .message-self .bubble span,
+body.alien-glass .message-self .bubble code,
+body.alien-glass .message-self .bubble pre,
+body.alien-glass .message-self .bubble h1,
+body.alien-glass .message-self .bubble h2,
+body.alien-glass .message-self .bubble h3,
+body.alien-glass .message-self .bubble h4,
+body.alien-glass .message-self .bubble ul,
+body.alien-glass .message-self .bubble ol,
+body.alien-glass .message-self .bubble li,
+body.alien-glass .message-self .bubble blockquote {
+    animation: textReveal 0.4s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+@keyframes bubbleStretchSelf {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+}
+/* @keyframes bubbleStretchSelf {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+} */
+
+/* Контейнер табов — прозрачный фон */
+body.alien-glass .tabs {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    gap: 4px;
+    padding-bottom: 8px;
+    outline: none;
+}
+
+/* Все кнопки табов — стеклянные как bubble */
+body.alien-glass .tab-btn,
+body.alien-glass .chat-tab {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.2) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    outline: 1px solid rgba(170, 255, 79, 0.6);
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    border: none;
+}
+
+/* Активный таб — чуть ярче */
+body.alien-glass .tab-btn.active,
+body.alien-glass .chat-tab.active {
+background: black;
+background-color: black;
+    border: none !important;
+    outline: 2px solid #aaff4f;
+
+}
+
+/* Ховер на табах */
+body.alien-glass .tab-btn:hover,
+body.alien-glass .chat-tab:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 5px 2px rgba(152, 252, 3, 0.75),
+        0 0 10px 2px rgba(152, 252, 3, 0.5) inset !important;
+    background-color: rgba(100, 255, 0, 0.5);
+}
+
+/* Имя в табе */
+body.alien-glass .chat-tab-name {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #66ff00,
+        0 0 8px #66ff00;
+    cursor: pointer;
+}
+
+/* Кнопка закрытия таба */
+body.alien-glass .close-chat-tab {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #66ff00;
+    margin-left: 8px;
+    opacity: 0.8;
+}
+
+body.alien-glass .close-chat-tab:hover {
+    opacity: 1;
+    text-shadow: 
+        0 0 8px #66ff00,
+        0 0 12px #66ff00;
+}
+/* === ИНПУТ === */
+body.alien-glass .chat-input-area {
+    background: rgba(152, 252, 3, 0.1) !important;
+    border: 1px solid rgba(152, 252, 3, 0.6) !important;
+    box-shadow: 0 0 5px rgba(152, 252, 3, 0.2) !important;
+    border-radius: 25px !important;
+}
+
+body.alien-glass .message-input-wrapper {
+    background-color: transparent;
+    background: transparent;
+    backdrop-filter: blur(1px);
+    border: 1px solid greenyellow !important;
+    border-radius: 25px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 0 5px rgba(152, 252, 3, 0.2) !important;
+}
+
+body.alien-glass #messageInput,
+body.alien-glass .message-input-wrapper input,
+body.alien-glass .message-input-wrapper textarea {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #66ff00 !important;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+    
+}
+
+body.alien-glass #messageInput::placeholder,
+body.alien-glass .message-input-wrapper input::placeholder,
+body.alien-glass .message-input-wrapper textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+body.alien-glass .message-input-wrapper:focus-within {
+    border-color: rgba(152, 252, 3, 0.5) !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(152, 252, 3, 0.3),
+        0 0 0 1px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* === КНОПКИ — ТОЛЬКО ИКОНКИ, ФОН ПРОЗРАЧНЫЙ === */
+body.alien-glass .emoji-btn,
+body.alien-glass .attach-btn,
+body.alien-glass .send-btn {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #66ff00,
+        0 0 12px #3d9900 !important;
+    filter: grayscale(100%) brightness(1.5);
+    transition: all 0.2s ease;
+    border-radius: 2px !important;
+    padding: 0;
+}
+
+body.alien-glass .send-btn {
+    font-size: 28px;
+    font-weight: 300;
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #66ff00,
+        0 0 20px #66ff00,
+        0 0 30px #66ff00 !important;
+}
+
+/* Ховер — свечение усиливается, цвет возвращается */
+body.alien-glass .emoji-btn:hover,
+body.alien-glass .attach-btn:hover,
+body.alien-glass .send-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #66ff00,
+        0 0 20px #66ff00,
+        0 0 30px #66ff00 !important;
+    transform: scale(1.1);
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* === ЭМОДЗИ ПИКЕР === */
+body.alien-glass .emoji-picker {
+    background: rgba(20, 20, 40, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+    border: 1px solid rgba(152, 252, 3, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(152, 252, 3, 0.2) !important;
+    padding: 8px;
+}
+
+body.alien-glass .emoji-item {
+    filter: grayscale(100%) brightness(1.5) contrast(1.2);
+    font-size: 20px;
+    padding: 6px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 2px;
+    color: #ffffff;
+}
+
+body.alien-glass .emoji-item:hover {
+    filter: grayscale(0%) brightness(1);
+    background: rgba(152, 252, 3, 0.15);
+    transform: scale(1.2);
+    text-shadow: 0 0 10px #66ff00;
+}
+
+/* === ПРЕВЬЮ ОТВЕТА === */
+body.alien-glass .reply-preview {
+    background: rgba(20, 20, 40, 0.6) !important;
+    backdrop-filter: blur(8px);
+    border-radius: 2px;
+    border-left: 3px solid #66ff00;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+body.alien-glass .reply-preview-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #66ff00;
+}
+
+body.alien-glass .reply-preview-close {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #66ff00;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+body.alien-glass .reply-preview-close:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px #ff4444;
+}
+
+/* === КНОПКИ ПРЕВЬЮ ИЗОБРАЖЕНИЯ === */
+body.alien-glass .send-image-btn,
+body.alien-glass .cancel-image-btn {
+    background: transparent !important;
+    border: 1px solid rgba(152, 252, 3, 0.3) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none !important;
+}
+
+body.alien-glass .send-image-btn:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 12px rgba(152, 252, 3, 0.4) !important;
+    background: rgba(152, 252, 3, 0.1) !important;
+}
+
+body.alien-glass .cancel-image-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 12px rgba(255, 68, 68, 0.4) !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+}
+
+/* === РЕАКЦИИ ПОД СООБЩЕНИЯМИ === */
+body.alien-glass .react-btn {
+    filter: grayscale(100%) brightness(1.5);
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03;
+    font-size: 16px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+body.alien-glass .react-btn:hover,
+body.alien-glass .react-btn.active {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 0 0 10px #98fc03;
+    transform: scale(1.1);
+}
+body.alien-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #98fc03,
+        0 0 12px #6aaf00 !important;
+}
+
+/* === ПРОФИЛЬ САЙДБАР === */
+body.alien-glass .profile-sidebar {
+    background: transparent !important;
+    border-left: 2px solid rgba(150, 255, 0, 0.8) ;
+}
+
+/* Заголовок */
+body.alien-glass .profile-sidebar h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #98fc03, 0 0 12px #6aaf00 !important;
+}
+
+/* Кнопка закрытия — прозрачная с белой обводкой */
+body.alien-glass #closeProfileBtn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: none;
+    border-radius: 25px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #closeProfileBtn:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 12px rgba(152, 252, 3, 0.5) !important;
+    text-shadow: 0 0 12px #98fc03 !important;
+}
+
+/* Аватар */
+body.alien-glass #avatarPreview {
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 15px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Инпуты — прозрачные с белой обводкой */
+body.alien-glass #editName,
+body.alien-glass #editFlat,
+body.alien-glass #avatarInput {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 10px !important;
+    outline: none !important;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #editName::placeholder,
+body.alien-glass #editFlat::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+body.alien-glass #editName:focus,
+body.alien-glass #editFlat:focus {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 10px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Кнопки Сохранить и Выйти — стеклянные плашки */
+body.alien-glass #saveProfileBtn,
+body.alien-glass #logoutBtn {
+    backdrop-filter: blur(1px);
+    border-radius: 25px !important;
+    outline: 2px solid rgba(150, 250, 0, 0.6);
+    border: none;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    padding: 12px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #saveProfileBtn:hover,
+body.alien-glass #logoutBtn:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 8px 3px rgba(152, 252, 3, 0.7),
+        0 0 15px 5px rgba(152, 252, 3, 0.4) inset !important;
+}
+
+/* Настройки — заголовок */
+body.alien-glass .settings-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #98fc03 !important;
+}
+
+body.alien-glass .close-settings-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 2px !important;
+}
+
+/* Лейблы настроек */
+body.alien-glass .setting-item label {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+}
+
+/* Селекты — прозрачные с белой обводкой */
+body.alien-glass #incomingSound,
+body.alien-glass #outgoingSound,
+body.alien-glass #replySound,
+body.alien-glass #themeSelect {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+    cursor: pointer;
+    flex: 1;
+}
+
+body.alien-glass #incomingSound option,
+body.alien-glass #outgoingSound option,
+body.alien-glass #replySound option,
+body.alien-glass #themeSelect option {
+    background: #0a0a1a !important;
+    color: #ffffff !important;
+}
+
+/* Кнопки теста звука — прозрачные с обводкой */
+body.alien-glass .test-sound-mini {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .test-sound-mini:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 10px rgba(152, 252, 3, 0.4) !important;
+}
+
+/* Строки с селектами */
+body.alien-glass .sound-select-row,
+body.alien-glass .theme-select-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* === КОНТАКТЫ САЙДБАР === */
+body.alien-glass .contacts-sidebar {
+    background: transparent !important;
+}
+
+/* Заголовок */
+body.alien-glass .contacts-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #98fc03, 0 0 12px #6aaf00 !important;
+}
+
+body.alien-glass .close-contacts-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: none !important; outline: none;
+    border-radius: 2px !important;
+    width: 36px;
+    height: 36px;
+}
+
+/* Поиск */
+body.alien-glass #contactsSearch {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(100, 255, 0, 0.6) !important;
+    border-radius: 25px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 10px !important;
+}
+
+body.alien-glass .contacts-search
+{
+    border: none;
+}
+
+body.alien-glass .search-results 
+{
+    border-bottom: none;
+}
+
+body.alien-glass #contactsSearch::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Заголовок списка */
+body.alien-glass .contacts-list-header {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    border: none;
+}
+
+/* Элементы контактов */
+body.alien-glass .contact-item {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.2) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(1px);
+    border-radius: 35px; margin: 5px;
+    border: none;
+    outline: 2px solid rgba(150, 250, 0, 0.6);
+}
+
+body.alien-glass .contact-item img {
+
+    outline: 2px solid rgba(150, 250, 0, 0.9);
+}
+
+body.alien-glass .contact-name {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+}
+
+body.alien-glass .contact-flat {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+/* Кнопка удаления */
+body.alien-glass .remove-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: none;
+    border-radius: 100% !important;
+    width: 28px;
+    height: 28px;
+}
+
+body.alien-glass .remove-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.9) !important;
+}
+
+/* Активная кнопка (если нужен активный стейт) */
+body.alien-glass .footer-btn.active {
+    filter: grayscale(0%) brightness(1);
+    border-color: #98fc03 !important;
+    box-shadow: 
+        0 0 15px rgba(152, 252, 3, 0.6),
+        inset 0 0 8px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Панель управления */
+body.alien-glass .control-panel {
+
+    border-radius: 2px;
+    border: 1px solid rgba(152, 252, 3, 0.3);
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+/* Контролы внизу */
+body.alien-glass .contacts-controls {
+    background: transparent !important;
+}
+/* === ФУТЕР С КНОПКАМИ === */
+body.alien-glass .contacts-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: center;
+    background: transparent !important;
+    border: none; outline: 2px solid rgba(150, 250, 0, 0.7);
+    border-radius: 100px;
+    margin: 10px;
+}
+
+body.alien-glass .footer-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: grayscale(100%) brightness(1.5);
+    padding: 0;
+}
+
+body.alien-glass .footer-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.1);
+    text-shadow: none;
+}
+body.alien-glass .control-panel 
+{
+    color: white !important;
+    background: transparent;
+    background-color: transparent;
+}
+body.alien-glass .status-option
+{
+    cursor: pointer; padding: 10px; width: auto; border-radius: 25px; 
+}
+body.alien-glass .status-option:hover 
+{
+    outline: 2px solid rgba(150, 255, 0, 0.8);
+    background-color: rgba(150, 255, 0, 0.1);
+}
+
+body.alien-glass .privacy-item 
+{
+    border-bottom: 1px solid rgba(150, 255, 0, 0.5);
+    margin-bottom: 5px;
+}
+body.alien-glass .control-panel label 
+{
+    padding: 5px;
+}
+
+/* Кнопка Сохранить в панели статуса */
+body.alien-glass .control-panel button {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .control-panel button:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 12px rgba(152, 252, 3, 0.4) !important;
+    text-shadow: 0 0 10px #98fc03 !important;
+}
+
+/* Селекты в панели */
+body.alien-glass .control-panel select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+}
+
+body.alien-glass .control-panel select option {
+    background: #0a0a1a !important;
+}
+body.alien-glass .radio-group input[type="radio"] {
+    accent-color: #98fc03;
+}
+
+/* Альтернативный вариант через filter (если accent-color не работает) */
+body.alien-glass .radio-group input[type="radio"] {
+    color: greenyellow;
+    /* filter: hue-rotate(180deg) brightness(1.2); */
+}
+body.alien-glass .control-panel .save-privacy-btn 
+{
+    border-radius: 25px !important; outline: 2px solid greenyellow;
+}
+
+/* === БАННЕР ЗАГРУЗКИ СООБЩЕНИЙ === */
+body.alien-glass .load-more-banner {
+    background: transparent !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    border: none !important;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .load-more-banner:hover {
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 16px #b3ff33 !important;
+}
+
+body.alien-glass .load-more-arrow {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    margin-left: 8px;
+}
+
+
+body.alien-glass .msg-name {
+font-weight: 600;
+letter-spacing: 0.3px;
+}
+/* === ЦИТАТА ОТВЕТА === */
+body.alien-glass .reply-quote {
+    background: transparent !important;
+    border: 1px dashed #98fc03 !important;
+    border-left: 3px solid #98fc03 !important;
+    border-radius: 2px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 8px !important;
+    color: #98fc03 !important;
+    text-shadow: 0 0 6px #98fc03 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+body.alien-glass .reply-quote:hover {
+    border-color: #b3ff33 !important;
+    border-left-color: #b3ff33 !important;
+    box-shadow: 
+        0 0 10px rgba(152, 252, 3, 0.4),
+        inset 0 0 5px rgba(152, 252, 3, 0.2) !important;
+    text-shadow: 0 0 10px #98fc03 !important;
+}
+
+/* === ПАНЕЛЬ РЕДАКТИРОВАНИЯ === */
+body.alien-glass #editPanel {
+    background: transparent !important;
+    border-top: 2px solid rgba(152, 252, 3, 0.3) !important;
+    padding: 12px !important;
+}
+
+/* Заголовок */
+body.alien-glass #editPanel > div:first-child {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+}
+
+/* Обёртка инпута */
+body.alien-glass #editPanel > div > div:first-child {
+    background: transparent !important;
+    border: 2px solid rgba(152, 252, 3, 0.5) !important;
+    border-radius: 2px !important;
+    padding: 8px 16px !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Поле ввода */
+body.alien-glass #editMessageInput {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    font-size: 15px !important;
+    width: 100% !important;
+}
+
+body.alien-glass #editMessageInput::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+/* Кнопки — только иконки */
+body.alien-glass #saveEditBtn,
+body.alien-glass #deleteMsgBtn,
+body.alien-glass #cancelEditBtn {
+    background: transparent !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 2px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    filter: grayscale(100%) brightness(1.5) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+}
+
+/* Цвета при наведении */
+body.alien-glass #saveEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 15px #b3ff33 !important;
+    transform: scale(1.1) !important;
+}
+
+body.alien-glass #deleteMsgBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ff4444,
+        0 0 15px #ff6666 !important;
+    transform: scale(1.1) !important;
+}
+
+body.alien-glass #cancelEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ffffff,
+        0 0 15px #cccccc !important;
+    transform: scale(1.1) !important;
+}
+body.alien-glass .chat-tab.active::before {
+    content: '';
+    position: absolute;
+
+    background: none;
+
+}
+
+/* Дополнительный эффект "стекла" для активной вкладки */
+body.alien-glass .chat-tab.active::after {
+    content: '';
+    position: absolute;
+    background: none;
+}
+body.alien-glass .chat-tab.active
+{
+    border: 2px solid white; 
+}
+
+/* === HEADER ЭЛЕМЕНТЫ === */
+
+/* Стрелка контактов */
+body.alien-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .contacts-arrow:hover {
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 15px #b3ff33 !important;
+}
+
+/* Кнопка Назад */
+body.alien-glass .back-btn {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 2px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .back-btn:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 
+        0 0 10px rgba(152, 252, 3, 0.4),
+        inset 0 0 5px rgba(152, 252, 3, 0.2) !important;
+    text-shadow: 0 0 12px #98fc03 !important;
+}
+
+/* Заголовок чата */
+body.alien-glass .logo,
+body.alien-glass #chatTitle {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    font-weight: 500;
+}
+
+/* Аватар в хедере */
+body.alien-glass .chat-avatar {
+    outline: 2px solid rgba(155, 255, 0, 0.7) !important;
+    border: none;
+    box-shadow: 0 0 10px rgba(155, 255, 0, 0.7) !important;
+    border-radius: 50% !important;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .chat-avatar:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 
+        0 0 12px rgba(152, 252, 3, 0.5),
+        inset 0 0 8px rgba(152, 252, 3, 0.2) !important;
+}
+
+/* Global Pending */
+body.alien-glass .global-pending {
+    background: transparent !important;
+}
+
+body.alien-glass #globalPendingAvatar {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 8px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Заголовок чата секция */
+body.alien-glass .chat-title-section {
+    color: #ffffff !important;
+}
+/* === ИКОНКА ПРОФИЛЯ === */
+body.alien-glass .profile-icon {
+    border: 2px solid rgba(150, 255, 0, 0.8) !important;
+    border-radius: 50% !important;
+    box-shadow: 
+        0 0 8px rgba(152, 252, 3, 0.3),
+        inset 0 0 5px rgba(152, 252, 3, 0.1) !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+body.alien-glass .profile-icon:hover {
+    box-shadow: 
+        0 0 12px rgba(152, 252, 3, 0.5),
+        inset 0 0 8px rgba(152, 252, 3, 0.2) !important;
+}
+
+body.alien-glass .profile-icon img {
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+/* === ИКОНКИ В ХЕДЕРЕ СООБЩЕНИЯ (ЗАКРЕПИТЬ/ОТВЕТИТЬ) === */
+body.alien-glass .pin-icon-msg,
+body.alien-glass .reply-icon {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    filter: grayscale(100%) brightness(1.5);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+    opacity: 0.7;
+}
+
+body.alien-glass .pin-icon-msg:hover,
+body.alien-glass .reply-icon:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 15px #b3ff33 !important;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+body.alien-glass #imagePreview 
+{
+    background: transparent;
+    background-color: transparent;
+    backdrop-filter: blur(1px);
+}
+
+/* === ЗАГРУЗЧИК ЧАТА === */
+body.alien-glass .chat-loader {
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 12px;
+}
+
+body.alien-glass .chat-loader span {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    font-size: 14px;
+}
+
+body.alien-glass .loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 2px solid #98fc03;
+    border-right: 2px solid #98fc03;
+    border-radius: 50%;
+    animation: cyberSpin 1s linear infinite;
+    box-shadow: 
+        0 0 10px rgba(152, 252, 3, 0.3),
+        inset 0 0 5px rgba(152, 252, 3, 0.1);
+}
+
+@keyframes cyberSpin {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 
+            0 0 10px rgba(152, 252, 3, 0.3),
+            inset 0 0 5px rgba(152, 252, 3, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(152, 252, 3, 0.6),
+            inset 0 0 8px rgba(152, 252, 3, 0.2);
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 
+            0 0 10px rgba(152, 252, 3, 0.3),
+            inset 0 0 5px rgba(152, 252, 3, 0.1);
+    }
+}
+
+/* === ЭФФЕКТ ПИКСЕЛЬНОЙ МАТРИЦЫ ПРИ НАВЕДЕНИИ === */
+body.alien-glass .bubble {
+    position: relative;
+    overflow: hidden;
+    
+}
+
+body.alien-glass .bubble::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    background-image: 
+        /* Ряд 1 */
+        radial-gradient(circle at 2px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 2px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 2 */
+        radial-gradient(circle at 2px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 5px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 3 */
+        radial-gradient(circle at 2px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 8px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 4 */
+        radial-gradient(circle at 2px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 11px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 5 */
+        radial-gradient(circle at 2px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 14px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 6 */
+        radial-gradient(circle at 2px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 17px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 7 */
+        radial-gradient(circle at 2px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 20px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 8 */
+        radial-gradient(circle at 2px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 23px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 9 */
+        radial-gradient(circle at 2px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 26px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 10 */
+        radial-gradient(circle at 2px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 29px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 11 */
+        radial-gradient(circle at 2px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 32px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 12 */
+        radial-gradient(circle at 2px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 35px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 13 */
+        radial-gradient(circle at 2px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 38px, #98fc03 0.8px, transparent 1px);
+        
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0;
+}
+
+body.alien-glass .bubble:hover::after {
+    opacity: 1;
+    animation: matrixRun 1.5s steps(4, end) infinite;
+}
+
+@keyframes matrixRun {
+    0% {
+        background-position: 
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0;
+    }
+    25% {
+        background-position: 
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0;
+    }
+    50% {
+        background-position: 
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0;
+    }
+    75% {
+        background-position: 
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0;
+    }
+    100% {
+        background-position: 
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0;
+    }
+}
+
+/* ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ RUNLINE В ТЕМЕ ALIEN-GLASS */
+/* ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ RUNLINE В ТЕМЕ ALIEN-GLASS - С СОХРАНЕНИЕМ СТЕКЛА */
+body.alien-glass .message.msg-runline .bubble {
+    /* Отключаем только анимацию растягивания, но оставляем стекло */
+    animation: none !important;
+    max-width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    line-height: 1.6;
+    
+    /* СОХРАНЯЕМ СТЕКЛЯННЫЙ ЭФФЕКТ */
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.35) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border-radius: 2px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Для СВОИХ сообщений с runline */
+body.alien-glass .message-self.msg-runline .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(152, 252, 3, 0.15) 0%,
+        rgba(152, 252, 3, 0.1) 20%,
+        rgba(152, 252, 3, 0.05) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+}
+
+/* Отключаем матричный эффект при ховере для runline */
+body.alien-glass .message.msg-runline .bubble::after {
+    display: none !important;
+}
+
+/* Текст внутри runline - сохраняем анимацию движения */
+body.alien-glass .message.msg-runline .bubble p {
+    /* Отключаем анимацию появления текста из темы */
+    animation: runline-scroll 8s linear infinite !important;
+    display: inline-block !important;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px #98fc03;
+    font-family: monospace;
+    margin: 0;
+    padding-right: 20px;
+    /* Убираем эффекты появления из темы */
+    opacity: 1 !important;
+    filter: blur(0) !important;
+}
+
+/* Для СВОИХ сообщений - текст тоже светится */
+body.alien-glass .message-self.msg-runline .bubble p {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px #98fc03;
+}
+
+/* Сама анимация бегущей строки (если ещё не добавлена) */
+@keyframes runline-scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===== ИНДИКАТОР EXTEND (ТОЛЬКО ТОЧКИ, БЕЗ ПОТЕРИ СТИЛЕЙ) ===== */
+/* ===== ИНДИКАТОР EXTEND - ПУЛЬСИРУЮЩИЕ ТОЧКИ ===== */
+/* 1. Отключаем матричный эффект для extend-сообщений */
+body.alien-glass .message.msg-extend .bubble:hover::after {
+    /* Полный сброс матрицы */
+    display: block !important;
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-image: 
+        radial-gradient(circle at 0px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #98fc03 1px, transparent 1px) !important;
+    background-size: 10px 10px !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    background-position: 0 0 !important;
+    opacity: 1 !important;
+    animation: pulseExtend 1.5s ease-in-out infinite !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 2. Обычное состояние — тоже анимация */
+body.alien-glass .message.msg-extend .bubble::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-image: 
+        radial-gradient(circle at 0px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #98fc03 1px, transparent 1px) !important;
+    background-size: 10px 10px !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    background-position: 0 0 !important;
+    /* opacity: 1 !important; */
+    animation: pulseExtend 1.5s ease-in-out infinite !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 3. Ключевые кадры пульсации */
+@keyframes pulseExtend {
+    0% { opacity: 0.1; filter: drop-shadow(0 0 1px #98fc03); }
+    50% { opacity: 1; filter: drop-shadow(0 0 4px #98fc03); }
+    100% { opacity: 0.1; filter: drop-shadow(0 0 1px #98fc03); }
+}
+
+
+
+</style>
+  
+
 </head>
 
 <body>
@@ -7920,6 +9900,7 @@ body.cyber-glass .message.msg-extend .bubble::after {
                         <option value="total-glass">🍸 Total Glass</option>
                         <option value="rootweb">🍀 rootweb (Glass ICQ)</option>
                         <option value="cyber-glass">👽 Protoss</option>
+                        <option value="alien-glass">👽 Alien</option>
                     </select>
                 </div>
             </div>
@@ -8814,6 +10795,34 @@ reactionsHtml += '</div>';
         }
     }
 
+// В renderMessage и renderMessageWithData, после определения markerClass:
+if (msg.chainId) {
+    const chainPrefix = msg.chainId + '_xxx';
+    const chainDocs = await db.collection(collectionName)
+        .where(firebase.firestore.FieldPath.documentId(), '>=', chainPrefix)
+        .where(firebase.firestore.FieldPath.documentId(), '<=', chainPrefix + '\uf8ff')
+        .orderBy(firebase.firestore.FieldPath.documentId())
+        .get();
+    
+    if (!chainDocs.empty) {
+        let chainHtml = '<div class="chain-thread">';
+        chainDocs.forEach(doc => {
+            const chainMsg = doc.data();
+            const isCurrent = doc.id === msgId;
+            chainHtml += `
+                <div class="chain-item ${isCurrent ? 'chain-current' : 'chain-dimmed'}">
+                    <span class="chain-bullet">${isCurrent ? '●' : '○'}</span>
+                    <span>${escapeHtml(chainMsg.text)}</span>
+                </div>
+            `;
+        });
+        chainHtml += `<div class="chain-id">🔗 ${msg.chainId}</div>`; 
+        chainHtml += '</div>';
+        content = `<div class="bubble">${chainHtml}</div>`;
+        // content = chainHtml;
+    }
+}
+
     messageDiv.innerHTML = `
     <div class="message-container">
         <div class="message-header">
@@ -8859,157 +10868,8 @@ if (markerClass) messageDiv.classList.add(markerClass);
     document.getElementById('chatMessages').appendChild(messageDiv);
 }
 
-
-// async function renderMessage(msg, msgId, chatType) {
-//     const userDoc = await db.collection("neighbours").doc(msg.userId).get();
-//     const userData = userDoc.exists ? userDoc.data() : { name: "Неизвестный" };
-//     const isSelf = msg.userId === currentUserId;
-
-//     if (!isSelf && chatFullyLoaded) {
-//     playSound('incoming');
-//     if (msg.text && currentUserData && msg.text.includes(`@${currentUserData.name}`)) {
-//         playSound('reply');
-//     }
-// }
-
-    
-//     const messageDiv = document.createElement('div');
-//     messageDiv.id = `msg-${msgId}`;
-//     messageDiv.className = `message ${isSelf ? 'message-self' : 'message-other'}`;
-    
-//     const collectionName = chatType === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-    
-//     let content = '';
-//     if (msg.type === 'image') {
-//         content = `<img src="${msg.text}" class="chat-image" onclick="openImageModal('${msg.text}')" border-radius:12px;cursor:pointer;">`;
-//     } else {
-//         const rawText = msg.text || '';
-// // let renderedMarkdown = marked.parse(rawText);
-// let renderedMarkdown = marked.parse(rawText, { breaks: true });
-// if (renderedMarkdown.startsWith('<p>') && renderedMarkdown.endsWith('</p>') && renderedMarkdown.indexOf('<p>', 1) === -1) {
-//     renderedMarkdown = renderedMarkdown.slice(3, -4);
-// }
-    
-//     // Для onclick экранируем сырой текст (не HTML)
-//     const safeText = rawText
-//         .replace(/\\/g, '\\\\')
-//         .replace(/'/g, "\\'")
-//         .replace(/"/g, '&quot;')
-//         .replace(/\n/g, '\\n');
-
-//     const plainText = rawText.replace(/<[^>]*>/g, '').trim();
-//     const isLong = plainText.length > 300 || rawText.split('\n').length > 5;
-
-//     const bubbleContent = isLong 
-//         ? `<div class="bubble collapsed" id="bubble-${msgId}">${renderedMarkdown}</div>
-//         <span class="expand-btn" onclick="expandMessage('${msgId}')">Читать далее...</span>`
-//         : `<div class="bubble">${renderedMarkdown}</div>`;
-
-//         if (isSelf) {
-//         if (isLong) {
-//             content = `<div class="bubble collapsed" id="bubble-${msgId}" onclick="openEditPanel('${msgId}', '${safeText}')" style="cursor:pointer;">${renderedMarkdown}</div>
-//                        <span class="expand-btn" onclick="expandMessage('${msgId}')">Читать далее...</span>`;
-//         } else {
-//             content = `<div class="bubble" onclick="openEditPanel('${msgId}', '${safeText}')" style="cursor:pointer;">${renderedMarkdown}</div>`;
-//         }
-//     } else {
-//         content = bubbleContent;
-//     }
-
-// }
-
-    
-//     const avatarHtml = userData.avatar 
-//     ? `<img src="${userData.avatar}" style="width: 20px;height: 20px;border-radius:50%;object-fit:cover;">`
-//     : `<div style="width:14px;height:14px;border-radius:50%;background:#075e54;color:white;display:flex;align-items:center;justify-content:center;font-size:10px;">${userData.name.charAt(0)}</div>`;
-    
-//     const reactions = msg.reactions || {};
-//     const userReactions = msg.userReactions || {};
-//     const reactionEmojis = ['👍', '❤️', '😂'];
-//     // const reactionEmojis = ['👍', '❤️', '😊', '😂', '😮', '😢'];
-
-//     const hasReactions = Object.keys(reactions).length > 0;
-// let reactionsHtml = `<div class="reactions-container ${hasReactions ? 'has-reactions' : ''}" style="gap: 0px; margin-top: 4px; flex-wrap: wrap;">`;
-// reactionEmojis.forEach(emoji => {
-//     const count = reactions[emoji] || 0;
-//     const isActive = userReactions[currentUserId] === emoji;
-//     reactionsHtml += `<button class="react-btn ${isActive ? 'active' : ''}" onclick="window.addReaction('${msgId}', '${emoji}', '${collectionName}')">${emoji} ${count || ''}</button>`;
-// });
-// reactionsHtml += '</div>';
-
-//         // let reactionsHtml = '<div class="reactions-container" style="gap: 0px; margin-top: 4px; flex-wrap: wrap;">';
-//         // reactionEmojis.forEach(emoji => {
-//         //     const count = reactions[emoji] || 0;
-//         //     const isActive = userReactions[currentUserId] === emoji;
-//         //     reactionsHtml += `<button class="react-btn ${isActive ? 'active' : ''}" onclick="window.addReaction('${msgId}', '${emoji}', '${collectionName}')">${emoji} ${count || ''}</button>`;
-//         // });
-//         // reactionsHtml += '</div>';
-    
-//     const editedMark = msg.edited ? ' <span style="font-size: 10px; color: #667781;">(ред.)</span>' : '';
-    
-//     let replyHtml = '';
-//     if (msg.replyTo) {
-//         const replyDoc = await db.collection(collectionName).doc(msg.replyTo).get();
-//         if (replyDoc.exists) {
-//             const replyData = replyDoc.data();
-//             const replyUserDoc = await db.collection("neighbours").doc(replyData.userId).get();
-//             const replyUserName = replyUserDoc.exists ? replyUserDoc.data().name : "Неизвестный";
-//             const replyText = replyData.text ? (replyData.text.substring(0, 50) + (replyData.text.length > 50 ? '...' : '')) : 'изображение';
-//             replyHtml = `
-//                 <div class="reply-quote" onclick="scrollToMessage('${msg.replyTo}')">
-//                     ↪️ ${escapeHtml(replyUserName)}: ${escapeHtml(replyText)}
-//                 </div>
-//             `;
-//         }
-//     }
-
-//     messageDiv.innerHTML = `
-//     <div class="message-container">
-//         <div class="message-header">
-//             ${avatarHtml}
-//             <span class="msg-name">${escapeHtml(userData.name)}</span>
-//             <span class="msg-time">${msg.timestamp ? msg.timestamp.toDate().toLocaleTimeString().slice(0,5) : ''}${editedMark}</span>
-//             <div class="header-controls">
-
-//                 <span class="pin-icon-msg" onclick="pinMessage('${msgId}', '${chatType}')" title="Закрепить">📌</span>
-//                 <span class="reply-icon" onclick="replyToMessage('${msgId}')" title="Ответить">↩️</span>
-//             </div>
-//         </div>
-//         <div class="message-body">
-//             ${replyHtml}${content}
-//         </div>
-//         ${reactionsHtml}
-//     </div>
-// `;
-
-// // // Проверка на сжигание
-// // if (msg.burning?.active) {
-// //     const bubble = messageDiv.querySelector('.bubble');
-// //     if (bubble) {
-// //         bubble.classList.add('burning');
-// //     }
-    
-// //     // Таймер на удаление из DOM
-// //     const startedAt = msg.burning.startedAt?.toDate() || new Date();
-// //     const elapsed = Date.now() - startedAt.getTime();
-// //     const remaining = Math.max(30000 - elapsed, 0);
-    
-// //     setTimeout(() => {
-// //         messageDiv.remove();
-// //     }, remaining);
-    
-// //     // Если сообщение не моё — показать плавающий огонь
-// //     if (!isSelf) {
-// //         showFloatingReaction('🔥', msgId);
-
-// //     }
-// // }
-    
-//     document.getElementById('chatMessages').appendChild(messageDiv);
-// }
-
-// <span class="burn-icon" onclick="burnMessage('${msgId}', '${chatType}')" title="Сжечь (1 заряд в сутки)">🔥</span>
-
+  
+  
 function updateMessageSeen(msgId, msg, chatType) {
     const msgDiv = document.getElementById(`msg-${msgId}`);
     if (!msgDiv) return;
@@ -9965,6 +11825,7 @@ function loadContactsList() {
         });
     };
 
+
     async function renderMessageWithData(msg, msgId, chatType, userData) {
     if (!userData) {
         const userDoc = await db.collection("neighbours").doc(msg.userId).get();
@@ -10093,6 +11954,44 @@ function loadContactsList() {
         }
     }
     
+    // В renderMessage и renderMessageWithData, после определения markerClass:
+    if (msg.chainId) {
+    const chainPrefix = msg.chainId + '_xxx';
+    const chainDocs = await db.collection(collectionName)
+        .where(firebase.firestore.FieldPath.documentId(), '>=', chainPrefix)
+        .where(firebase.firestore.FieldPath.documentId(), '<=', chainPrefix + '\uf8ff')
+        .orderBy(firebase.firestore.FieldPath.documentId())
+        .get();
+    
+        if (!chainDocs.empty) {
+    const currentDoc = chainDocs.docs.find(doc => doc.id === msgId);
+    const otherDocs = chainDocs.docs.filter(doc => doc.id !== msgId);
+    
+    let chainHtml = '<div class="chain-thread">';
+    
+    // Текущее сообщение — первым
+    chainHtml += `
+        <div class="chain-item chain-current">
+            <span class="chain-bullet">●</span>
+            <span>${escapeHtml(currentDoc.data().text)}</span>
+        </div>
+    `;
+    
+    // Остальные — под ним
+    otherDocs.forEach(doc => {
+        chainHtml += `
+            <div class="chain-item chain-dimmed">
+                <span class="chain-bullet">○</span>
+                <span>${escapeHtml(doc.data().text)}</span>
+            </div>
+        `;
+    });
+    chainHtml += `<div class="chain-id">🔗 ${msg.chainId.replace('id', '')}</div>`;
+    chainHtml += '</div>';
+    content = `<div class="bubble">${chainHtml}</div>`;
+    // content = chainHtml;
+}
+}
     messageDiv.innerHTML = `
     <div class="message-container">
         <div class="message-header">
@@ -10116,124 +12015,6 @@ function loadContactsList() {
     return messageDiv;
 }
 
-
-//     async function renderMessageWithData(msg, msgId, chatType, userData) {
-
-//         if (!userData) {
-//         const userDoc = await db.collection("neighbours").doc(msg.userId).get();
-//         userData = userDoc.exists ? userDoc.data() : { name: "Неизвестный" };
-//     }
-    
-//     const isSelf = msg.userId === currentUserId;
-    
-//     if (!isSelf && chatFullyLoaded) {
-//         playSound('incoming');
-//         if (msg.text && currentUserData && msg.text.includes(`@${currentUserData.name}`)) {
-//             playSound('reply');
-//         }
-//     }
-    
-//     const messageDiv = document.createElement('div');
-//     messageDiv.id = `msg-${msgId}`;
-//     messageDiv.className = `message ${isSelf ? 'message-self' : 'message-other'}`;
-    
-//     const collectionName = chatType === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-    
-//     let content = '';
-//     if (msg.type === 'image') {
-//         content = `<img src="${msg.text}" class="chat-image" onclick="openImageModal('${msg.text}')" style="border-radius:12px;cursor:pointer;">`;
-//     } else {
-//         const rawText = msg.text || '';
-//         let renderedMarkdown = marked.parse(rawText, { breaks: true });
-//         // let renderedMarkdown = marked.parse(rawText);
-//         if (renderedMarkdown.startsWith('<p>') && renderedMarkdown.endsWith('</p>') && renderedMarkdown.indexOf('<p>', 1) === -1) {
-//             renderedMarkdown = renderedMarkdown.slice(3, -4);
-//         }
-        
-//         const safeText = rawText.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, '\\n');
-//         const plainText = rawText.replace(/<[^>]*>/g, '').trim();
-//         const isLong = plainText.length > 300 || rawText.split('\n').length > 5;
-        
-//         if (isSelf) {
-//             if (isLong) {
-//                 content = `<div class="bubble collapsed" id="bubble-${msgId}" onclick="openEditPanel('${msgId}', '${safeText}')" style="cursor:pointer;">${renderedMarkdown}</div><span class="expand-btn" onclick="expandMessage('${msgId}')">Читать далее...</span>`;
-//             } else {
-//                 content = `<div class="bubble" onclick="openEditPanel('${msgId}', '${safeText}')" style="cursor:pointer;">${renderedMarkdown}</div>`;
-//             }
-//         } else {
-//             if (isLong) {
-//                 content = `<div class="bubble collapsed" id="bubble-${msgId}">${renderedMarkdown}</div><span class="expand-btn" onclick="expandMessage('${msgId}')">Читать далее...</span>`;
-//             } else {
-//                 content = `<div class="bubble">${renderedMarkdown}</div>`;
-//             }
-//         }
-//     }
-    
-//     const avatarHtml = userData.avatar 
-//         ? `<img src="${userData.avatar}" style="width:20px;height:20px;border-radius:50%;object-fit:cover;">`
-//         : `<div style="width:14px;height:14px;border-radius:50%;background:#075e54;color:white;display:flex;align-items:center;justify-content:center;font-size:10px;">${userData.name.charAt(0)}</div>`;
-    
-//     const reactions = msg.reactions || {};
-//     const userReactions = msg.userReactions || {};
-//     const reactionEmojis = ['👍', '❤️', '😂'];
-//     // const reactionEmojis = ['👍', '❤️', '😊', '😂', '😮', '😢'];
-
-//     const hasReactions = Object.keys(reactions).length > 0;
-// let reactionsHtml = `<div class="reactions-container ${hasReactions ? 'has-reactions' : ''}" style="gap: 0px; margin-top: 4px; flex-wrap: wrap;">`;
-// reactionEmojis.forEach(emoji => {
-//     const count = reactions[emoji] || 0;
-//     const isActive = userReactions[currentUserId] === emoji;
-//     reactionsHtml += `<button class="react-btn ${isActive ? 'active' : ''}" onclick="window.addReaction('${msgId}', '${emoji}', '${collectionName}')">${emoji} ${count || ''}</button>`;
-// });
-// reactionsHtml += '</div>';
-
-//     // let reactionsHtml = '<div class="reactions-container" style="display: flex; gap: 0px; margin-top: 4px; flex-wrap: wrap;">';
-//     // reactionEmojis.forEach(emoji => {
-//     //     const count = reactions[emoji] || 0;
-//     //     const isActive = userReactions[currentUserId] === emoji;
-//     //     reactionsHtml += `<button class="react-btn ${isActive ? 'active' : ''}" onclick="window.addReaction('${msgId}', '${emoji}', '${collectionName}')">${emoji} ${count || ''}</button>`;
-//     // });
-//     // reactionsHtml += '</div>';
-    
-//     const editedMark = msg.edited ? ' <span style="font-size: 10px; color: #667781;">(ред.)</span>' : '';
-    
-//     let replyHtml = '';
-//     if (msg.replyTo) {
-//         const replyDoc = await db.collection(collectionName).doc(msg.replyTo).get();
-//         if (replyDoc.exists) {
-//             const replyData = replyDoc.data();
-//             const replyUserDoc = await db.collection("neighbours").doc(replyData.userId).get();
-//             const replyUserName = replyUserDoc.exists ? replyUserDoc.data().name : "Неизвестный";
-//             const replyText = replyData.text ? (replyData.text.substring(0, 50) + (replyData.text.length > 50 ? '...' : '')) : 'изображение';
-//             replyHtml = `
-//                 <div class="reply-quote" onclick="scrollToMessage('${msg.replyTo}')">
-//                     ↪️ ${escapeHtml(replyUserName)}: ${escapeHtml(replyText)}
-//                 </div>
-//             `;
-//         }
-//     }
-    
-//     messageDiv.innerHTML = `
-//     <div class="message-container">
-//         <div class="message-header">
-//             ${avatarHtml}
-//             <span class="msg-name">${escapeHtml(userData.name)}</span>
-//             <span class="msg-time">${msg.timestamp ? msg.timestamp.toDate().toLocaleTimeString().slice(0,5) : ''}${editedMark}</span>
-//             <div class="header-controls">
-
-//                 <span class="pin-icon-msg" onclick="pinMessage('${msgId}', '${chatType}')" title="Закрепить">📌</span>
-//                 <span class="reply-icon" onclick="replyToMessage('${msgId}')" title="Ответить">↩️</span>
-//             </div>
-//         </div>
-//         <div class="message-body">
-//             ${replyHtml}${content}
-//         </div>
-//         ${reactionsHtml}
-//     </div>
-//     `;
-    
-//     return messageDiv;
-// }
 
 
 // Открытие личного чата
