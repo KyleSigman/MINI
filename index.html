@@ -11050,7 +11050,7 @@ async function checkMention(namePart) {
     delete messageInput.dataset.mentionName;
 }
 
-// Модифицированная sendMessage
+
 async function sendMessage() {
     if (!currentUserId) return showRegisterModal();
     
@@ -11112,6 +11112,43 @@ async function sendMessage() {
         return;
     }
     
+    // Команда >>join (цепочка сообщений)
+if (text.startsWith('>>join')) {
+    const chainName = text.substring(6).trim().split(' ')[0]; // всё после >>join до пробела
+    const cleanText = text.substring(7 + chainName.length).trim(); // текст без команды
+    const chainPrefix = `id${chainName}_xxx`;
+    
+    // Ищем последний документ с таким префиксом
+    const snapshot = await db.collection(collection)
+        .where(firebase.firestore.FieldPath.documentId(), '>=', chainPrefix)
+        .where(firebase.firestore.FieldPath.documentId(), '<=', chainPrefix + '\uf8ff')
+        .orderBy(firebase.firestore.FieldPath.documentId(), 'desc')
+        .limit(1)
+        .get();
+    
+    let nextNumber = 1;
+    if (!snapshot.empty) {
+        const lastId = snapshot.docs[0].id;
+        const lastNum = parseInt(lastId.split('_xxx')[1]) || 0;
+        nextNumber = lastNum + 1;
+    }
+    
+    const newId = `${chainPrefix}${String(nextNumber).padStart(3, '0')}`;
+    
+    await db.collection(collection).doc(newId).set({
+        userId: currentUserId,
+        text: cleanText,
+        chainId: `id${chainName}`,
+        type: 'text',
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    
+    document.getElementById('messageInput').value = '';
+    document.getElementById('messageInput').style.height = 'auto';
+    return;
+}
+
+
     playSound('outgoing');
 
     await db.collection(collection).add({
@@ -11134,99 +11171,6 @@ async function sendMessage() {
     cancelReply();
 }
 
-// async function sendMessage() {
-//     if (!currentUserId) return showRegisterModal();
-    
-//     const text = document.getElementById('messageInput').value.trim();
-//     if (!text) return;
-    
-//     const collection = chatState.mode === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-    
-//     // Админская команда удаления
-//     if (text.startsWith('>>del ') && currentUserId === ADMIN_ID) {
-//         const msgId = text.replace('>>del ', '').trim();
-//         if (msgId) {
-//             await db.collection(collection).doc(msgId).delete();
-//             console.log(`✅ Сообщение ${msgId} удалено`);
-//         }
-//         document.getElementById('messageInput').value = '';
-//         messageInput.style.height = 'auto';
-//         return;
-//     }
-    
-//     playSound('outgoing');
-
-//     await db.collection(collection).add({
-//         userId: currentUserId,
-//         text: text,
-//         type: 'text',
-//         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-//         replyTo: replyToMsgId || null
-//     });
-
-//     if (chatState.mode === 'private') {
-//         await markChatAsUnread(chatState.chatId, chatState.chatWith);
-//     }
-
-//     document.getElementById('messageInput').value = '';
-// document.getElementById('messageInput').style.height = 'auto';
-// cancelReply();
-
-//     // const messageInput = document.getElementById('messageInput');
-//     // messageInput.value = '';
-//     // messageInput.style.height = 'auto';
-//     // cancelReply();
-// }
-
-//     async function sendMessage() {
-//     if (!currentUserId) return showRegisterModal();
-    
-//     const text = document.getElementById('messageInput').value.trim();
-//     if (!text) return;
-    
-//     const collection = chatState.mode === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-    
-//     playSound('outgoing');
-
-//     await db.collection(collection).add({
-//         userId: currentUserId,
-//         text: text,
-//         type: 'text',
-//         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-//         replyTo: replyToMsgId || null
-//     });
-
-//     if (chatState.mode === 'private') {
-//     await markChatAsUnread(chatState.chatId, chatState.chatWith);
-// }
-    
-//     const messageInput = document.getElementById('messageInput');
-//     messageInput.value = '';
-//     messageInput.style.height = 'auto';
-//     cancelReply();
-// }
-
-//     async function sendMessage() {
-//     if (!currentUserId) return showRegisterModal();
-    
-//     const text = document.getElementById('messageInput').value.trim();
-//     if (!text) return;
-    
-//     const collection = chatState.mode === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-    
-//     playSound('outgoing');
-
-//     await db.collection(collection).add({
-//         userId: currentUserId,
-//         text: text,
-//         type: 'text',
-//         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-//         replyTo: replyToMsgId || null
-//     });
-    
-//     document.getElementById('messageInput').value = '';
-//     cancelReply();
-// }
 
     // Отправка изображения
 
