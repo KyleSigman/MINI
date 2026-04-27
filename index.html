@@ -10423,113 +10423,6 @@ document.getElementById('downloadPngBtn').onclick = () => {
     }
 }
 
-//     async function subscribeGlobalPending() {
-//     globalPendingUnsubscribes.forEach(unsub => unsub());
-//     globalPendingUnsubscribes = [];
-    
-//     const userDoc = await db.collection("neighbours").doc(currentUserId).get();
-//     const contacts = userDoc.data().contacts || [];
-    
-//     const badgesContainer = document.getElementById('globalPendingBadges');
-//     const globalPending = document.getElementById('globalPending');
-//     const avatarImg = document.getElementById('globalPendingAvatar');
-    
-//     for (const contactId of contacts) {
-//         const contactDoc = await db.collection("neighbours").doc(contactId).get();
-//         const contactData = contactDoc.data();
-//         const contactAvatar = contactData.avatar || 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23075e54\'%3E%3Cpath d=\'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\'/%3E%3C/svg%3E';
-        
-//         const chatId = [currentUserId, contactId].sort().join('_');
-//         const unsub = db.collection(`privateMessages/${chatId}/messages`)
-//             .doc('pending_reactions')
-//             .onSnapshot(doc => {
-//                 if (!doc.exists) return;
-                
-//                 const pending = doc.data().pending || [];
-//                 const badges = new Set();
-//                 let hasUnreadForThisContact = false;
-                
-//                 pending.forEach(item => {
-//                     if (item.targetUserId === currentUserId) {
-//                         hasUnreadForThisContact = true;
-//                         if (item.type === 'unread') badges.add('📬');
-//                         else if (item.type === 'burn') badges.add('🔥');
-//                         else if (item.emoji) badges.add(item.emoji);
-//                     }
-//                 });
-                
-//                 badgesContainer.innerHTML = '';
-//                 badges.forEach(emoji => {
-//                     const badge = document.createElement('span');
-//                     badge.className = 'global-pending-badge';
-//                     badge.textContent = emoji;
-//                     badgesContainer.appendChild(badge);
-//                 });
-                
-//                 if (badges.size > 0) {
-//                     avatarImg.src = contactAvatar;
-//                     globalPending.style.display = 'inline-flex';
-//                 } else {
-//                     // Проверяем, есть ли ещё уведомления от других контактов
-//                     let anyBadges = false;
-//                     document.querySelectorAll('.global-pending-badge').forEach(b => { if (b.textContent) anyBadges = true; });
-//                     if (!anyBadges) {
-//                         globalPending.style.display = 'none';
-//                     }
-//                 }
-//             });
-        
-//         globalPendingUnsubscribes.push(unsub);
-//     }
-// }
-
-
-// async function subscribeGlobalPending() {
-//     // Отписываемся от старых
-//     globalPendingUnsubscribes.forEach(unsub => unsub());
-//     globalPendingUnsubscribes = [];
-    
-//     const userDoc = await db.collection("neighbours").doc(currentUserId).get();
-//     const contacts = userDoc.data().contacts || [];
-    
-//     const badgesContainer = document.getElementById('globalPendingBadges');
-//     const globalPending = document.getElementById('globalPending');
-    
-//     // Для каждого контакта подписываемся на его pending_reactions
-//     for (const contactId of contacts) {
-//         const chatId = [currentUserId, contactId].sort().join('_');
-//         const unsub = db.collection(`privateMessages/${chatId}/messages`)
-//             .doc('pending_reactions')
-//             .onSnapshot(doc => {
-//                 if (!doc.exists) return;
-                
-//                 // Собираем все эмодзи для текущего пользователя
-//                 const pending = doc.data().pending || [];
-//                 const badges = new Set();
-                
-//                 pending.forEach(item => {
-//                     if (item.targetUserId === currentUserId) {
-//                         if (item.type === 'unread') badges.add('📬');
-//                         else if (item.type === 'burn') badges.add('🔥');
-//                         else if (item.emoji) badges.add(item.emoji);
-//                     }
-//                 });
-                
-//                 // Обновляем отображение
-//                 badgesContainer.innerHTML = '';
-//                 badges.forEach(emoji => {
-//                     const badge = document.createElement('span');
-//                     badge.className = 'global-pending-badge';
-//                     badge.textContent = emoji;
-//                     badgesContainer.appendChild(badge);
-//                 });
-                
-//                 globalPending.style.display = badges.size > 0 ? 'inline-flex' : 'none';
-//             });
-        
-//         globalPendingUnsubscribes.push(unsub);
-//     }
-// }
     
 // Загрузка профиля
     async function loadUserProfile() {
@@ -10578,33 +10471,6 @@ document.getElementById('downloadPngBtn').onclick = () => {
     }
 }
 
-//     async function loadUserProfile() {
-//     if (!currentUserId) return showRegisterModal();
-    
-//     const userRef = db.collection("neighbours").doc(currentUserId);
-//     const doc = await userRef.get();
-    
-//     if (doc.exists) {
-//         currentUserData = doc.data();
-        
-//         // Инициализация specialActions, если нет
-//         if (!currentUserData.specialActions) {
-//             currentUserData.specialActions = { burn: 100, lastRefill: null };
-//             await userRef.update({ specialActions: currentUserData.specialActions });
-//         }
-        
-//         document.getElementById('editName').value = currentUserData.name || '';
-//         document.getElementById('editFlat').value = currentUserData.flat || '';
-        
-//         if (currentUserData.avatar) {
-//             document.getElementById('avatarPreview').src = currentUserData.avatar;
-//             document.getElementById('profileIcon').innerHTML = `<img src="${currentUserData.avatar}" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">`;
-//         }
-        
-//         startGeneralChat();
-//         loadContactsList();
-//     }
-// }
 
 
     function startGeneralChat() {
@@ -10795,8 +10661,7 @@ reactionsHtml += '</div>';
         }
     }
 
-// В renderMessage и renderMessageWithData, после определения markerClass:
-if (msg.chainId) {
+    if (msg.chainId) {
     const chainPrefix = msg.chainId + '_xxx';
     const chainDocs = await db.collection(collectionName)
         .where(firebase.firestore.FieldPath.documentId(), '>=', chainPrefix)
@@ -10805,21 +10670,34 @@ if (msg.chainId) {
         .get();
     
     if (!chainDocs.empty) {
+        const currentId = msgId;
+        const filteredDocs = chainDocs.docs.filter(doc => doc.id <= currentId);
+        const currentDoc = filteredDocs.find(doc => doc.id === currentId);
+        const otherDocs = filteredDocs.filter(doc => doc.id !== currentId);
+        
         let chainHtml = '<div class="chain-thread">';
-        chainDocs.forEach(doc => {
-            const chainMsg = doc.data();
-            const isCurrent = doc.id === msgId;
+        
+        // Текущее сообщение — первым
+        chainHtml += `
+            <div class="chain-item chain-current">
+                <span class="chain-bullet">●</span>
+                <span>${escapeHtml(currentDoc.data().text)}</span>
+            </div>
+        `;
+        
+        // Остальные — под ним
+        otherDocs.forEach(doc => {
             chainHtml += `
-                <div class="chain-item ${isCurrent ? 'chain-current' : 'chain-dimmed'}">
-                    <span class="chain-bullet">${isCurrent ? '●' : '○'}</span>
-                    <span>${escapeHtml(chainMsg.text)}</span>
+                <div class="chain-item chain-dimmed">
+                    <span class="chain-bullet">○</span>
+                    <span>${escapeHtml(doc.data().text)}</span>
                 </div>
             `;
         });
-        chainHtml += `<div class="chain-id">🔗 ${msg.chainId}</div>`; 
+        
+        chainHtml += `<div class="chain-id">🔗 ${msg.chainId.replace('id', '')}</div>`;
         chainHtml += '</div>';
         content = `<div class="bubble">${chainHtml}</div>`;
-        // content = chainHtml;
     }
 }
 
@@ -10867,6 +10745,7 @@ if (msg.chainId) {
 if (markerClass) messageDiv.classList.add(markerClass);
     document.getElementById('chatMessages').appendChild(messageDiv);
 }
+
 
   
   
@@ -11255,58 +11134,7 @@ if (text.startsWith('>>join')) {
     }
 };
 
-//     window.addReaction = async function(msgId, emoji, collectionName) {
-//     if (!currentUserId) return;
-    
-//     const msgRef = db.collection(collectionName).doc(msgId);
-    
-//     try {
-//         await db.runTransaction(async (transaction) => {
-//             const msgDoc = await transaction.get(msgRef);
-//             if (!msgDoc.exists) return;
-            
-//             const data = msgDoc.data();
-//             const reactions = data.reactions || {};
-//             const userReactions = data.userReactions || {};
-            
-//             if (userReactions[currentUserId] === emoji) {
-//                 reactions[emoji] = (reactions[emoji] || 1) - 1;
-//                 if (reactions[emoji] <= 0) delete reactions[emoji];
-//                 delete userReactions[currentUserId];
-//             } else {
-//                 const oldEmoji = userReactions[currentUserId];
-//                 if (oldEmoji) {
-//                     reactions[oldEmoji] = (reactions[oldEmoji] || 1) - 1;
-//                     if (reactions[oldEmoji] <= 0) delete reactions[oldEmoji];
-//                 }
-//                 reactions[emoji] = (reactions[emoji] || 0) + 1;
-//                 userReactions[currentUserId] = emoji;
-//             }
-            
-//             transaction.update(msgRef, { reactions, userReactions });
-//         });
-        
-//         // После успешной транзакции проверяем, добавили реакцию или убрали
-//         const msgDoc = await msgRef.get();
-//         const userReactions = msgDoc.data().userReactions || {};
-//         if (userReactions[currentUserId] === emoji) {
-//             // showFloatingReaction(emoji, msgId);
-            
-//             const msgData = msgDoc.data();
-//             if (chatState.mode === 'private' && msgData.userId !== currentUserId) {
-//                 await addPendingReaction(chatState.chatId, msgId, emoji, msgData.userId);
-//             }
-//         }
-//         // if (userReactions[currentUserId] === emoji) {
-//         //     showFloatingReaction(emoji, msgId);
-//         // }
-//     } catch (error) {
-//         console.error('Ошибка реакции:', error);
-//     }
-// };
 
-// ========== ПОДПИСКА НА УВЕДОМЛЕНИЯ О РЕАКЦИЯХ ==========
-// ========== ПОДПИСКА НА УВЕДОМЛЕНИЯ О РЕАКЦИЯХ ==========
 // ========== ПОДПИСКА НА УВЕДОМЛЕНИЯ О РЕАКЦИЯХ ==========
 
 function subscribeToPendingReactions(chatId) {
@@ -11335,72 +11163,6 @@ function subscribeToPendingReactions(chatId) {
     });
 }
 
-// function subscribeToPendingReactions(chatId) {
-//     const docRef = db.collection(`privateMessages/${chatId}/messages`).doc('pending_reactions');
-    
-//     return docRef.onSnapshot(doc => {
-//         if (!doc.exists) return;
-//         const data = doc.data();
-//         const pending = data.pending || [];
-        
-//         // Показываем только те, что для текущего пользователя
-//         pending.forEach(item => {
-//             if (item.targetUserId === currentUserId) {
-//                 showFloatingReaction(item.emoji, item.msgId, item.id);
-//             }
-//         });
-        
-//         // Очищаем через 24 часа
-//         setTimeout(() => {
-//             docRef.set({ pending: [] }, { merge: true });
-//         }, 24 * 60 * 60 * 1000);
-//     });
-// }
-
-
-// function subscribeToPendingReactions(chatId) {
-//     const docRef = db.collection(`privateMessages/${chatId}/messages`).doc('pending_reactions');
-    
-//     return docRef.onSnapshot(doc => {
-//         if (!doc.exists) return;
-//         const data = doc.data();
-//         const pending = data.pending || [];
-        
-//         // Показываем только те, что для текущего пользователя
-//         pending.forEach(item => {
-//             if (item.targetUserId === currentUserId) {
-//                 showFloatingReaction(item.emoji, item.msgId);
-//             }
-//         });
-        
-//         // Очищаем через 24 часа
-//         setTimeout(() => {
-//             docRef.set({ pending: [] }, { merge: true });
-//         }, 24 * 60 * 60 * 1000);
-//     });
-// }
-
-// function subscribeToPendingReactions(chatId) {
-//     const docRef = db.collection(`privateMessages/${chatId}/messages`).doc('pending_reactions');
-    
-//     return docRef.onSnapshot(doc => {
-//         if (!doc.exists) return;
-//         const data = doc.data();
-//         const pending = data.pending || [];
-        
-//         // Показываем только те, что для текущего пользователя
-//         pending.forEach(item => {
-//             if (item.targetUserId === currentUserId) {
-//                 showFloatingReaction(item.emoji, item.msgId);
-//             }
-//         });
-        
-//         // Очищаем после показа
-//         docRef.set({ pending: [] }, { merge: true });
-//     });
-// }
-
-// ========== ДОБАВЛЕНИЕ УВЕДОМЛЕНИЯ ==========
 // ========== ДОБАВЛЕНИЕ УВЕДОМЛЕНИЯ ==========
 
 async function addPendingReaction(chatId, msgId, emoji, targetUserId) {
@@ -11472,38 +11234,6 @@ async function clearUnreadForChat(chatId, userId) {
     });
 }
 
-// async function addPendingReaction(chatId, msgId, emoji, targetUserId) {
-//     console.log('addPendingReaction вызвана:', { chatId, msgId, emoji, targetUserId });
-//     try {
-//         const docRef = db.collection(`privateMessages/${chatId}/messages`).doc('pending_reactions');
-        
-//         await db.runTransaction(async (transaction) => {
-//             const doc = await transaction.get(docRef);
-//             const pending = doc.exists ? (doc.data().pending || []) : [];
-            
-//             pending.push({
-//                 emoji,
-//                 msgId,
-//                 targetUserId,
-//                 timestamp: new Date().toISOString() // ← Замени на строку
-//             });
-            
-//             transaction.set(docRef, { pending }, { merge: true });
-//         });
-//     } catch (e) {
-//         console.error('❌ Ошибка в addPendingReaction:', e);
-//     }
-// }
-
-// ========== В addReaction ДОБАВИТЬ ==========
-
-// После успешной транзакции:
-// if (userReactions[currentUserId] === emoji) {
-//     const msgData = (await msgRef.get()).data();
-//     if (msgData.userId !== currentUserId) {
-//         await addPendingReaction(chatState.chatId, msgId, emoji, msgData.userId);
-//     }
-// }
 
 // ========== ЗАПУСК ПРИ ОТКРЫТИИ ПРИВАТНОГО ЧАТА ==========
 let reactionsUnsubscribe = null;
@@ -11545,35 +11275,6 @@ function showFloatingReaction(emoji, msgId, pendingId) {
     }, 60000);
 }
 
-// function showFloatingReaction(emoji, msgId, pendingId) {
-//     const container = document.getElementById('floatingReactions') || createFloatingContainer();
-//     const floatEl = document.createElement('div');
-//     floatEl.className = 'floating-reaction';
-//     floatEl.textContent = emoji;
-//     floatEl.onclick = () => {
-//     if (msgId) {
-//         scrollToMessage(msgId);
-//     }
-//     floatEl.remove();
-//     if (pendingId) {
-//         removePendingReactionById(chatState.chatId, pendingId);
-//     }
-// };
-//     // floatEl.onclick = () => {
-//     //     scrollToMessage(msgId);
-//     //     floatEl.remove();
-//     //     if (pendingId) {
-//     //         removePendingReactionById(chatState.chatId, pendingId);
-//     //     }
-//     // };
-//     container.appendChild(floatEl);
-//     setTimeout(() => {
-//         floatEl.remove();
-//         if (pendingId) {
-//             removePendingReactionById(chatState.chatId, pendingId);
-//         }
-//     }, 60000);
-// }
 
 async function removePendingReactionById(chatId, pendingId) {
     const docRef = db.collection(`privateMessages/${chatId}/messages`).doc('pending_reactions');
@@ -11646,8 +11347,7 @@ window.scrollToMessage = function(msgId) {
     }
 };
 
-// Загрузка списка контактов
-// Загрузка списка контактов
+
 // Загрузка списка контактов
 function loadContactsList() {
     if (contactsUnsubscribe) contactsUnsubscribe();
@@ -11907,35 +11607,38 @@ function loadContactsList() {
         .orderBy(firebase.firestore.FieldPath.documentId())
         .get();
     
-        if (!chainDocs.empty) {
-    const currentDoc = chainDocs.docs.find(doc => doc.id === msgId);
-    const otherDocs = chainDocs.docs.filter(doc => doc.id !== msgId);
-    
-    let chainHtml = '<div class="chain-thread">';
-    
-    // Текущее сообщение — первым
-    chainHtml += `
-        <div class="chain-item chain-current">
-            <span class="chain-bullet">●</span>
-            <span>${escapeHtml(currentDoc.data().text)}</span>
-        </div>
-    `;
-    
-    // Остальные — под ним
-    otherDocs.forEach(doc => {
+    if (!chainDocs.empty) {
+        const currentId = msgId;
+        const filteredDocs = chainDocs.docs.filter(doc => doc.id <= currentId);
+        const currentDoc = filteredDocs.find(doc => doc.id === currentId);
+        const otherDocs = filteredDocs.filter(doc => doc.id !== currentId);
+        
+        let chainHtml = '<div class="chain-thread">';
+        
+        // Текущее сообщение — первым
         chainHtml += `
-            <div class="chain-item chain-dimmed">
-                <span class="chain-bullet">○</span>
-                <span>${escapeHtml(doc.data().text)}</span>
+            <div class="chain-item chain-current">
+                <span class="chain-bullet">●</span>
+                <span>${escapeHtml(currentDoc.data().text)}</span>
             </div>
         `;
-    });
-    chainHtml += `<div class="chain-id">🔗 ${msg.chainId.replace('id', '')}</div>`;
-    chainHtml += '</div>';
-    content = `<div class="bubble">${chainHtml}</div>`;
-    // content = chainHtml;
+        
+        // Остальные — под ним
+        otherDocs.forEach(doc => {
+            chainHtml += `
+                <div class="chain-item chain-dimmed">
+                    <span class="chain-bullet">○</span>
+                    <span>${escapeHtml(doc.data().text)}</span>
+                </div>
+            `;
+        });
+        
+        chainHtml += `<div class="chain-id">🔗 ${msg.chainId.replace('id', '')}</div>`;
+        chainHtml += '</div>';
+        content = `<div class="bubble">${chainHtml}</div>`;
+    }
 }
-}
+
     messageDiv.innerHTML = `
     <div class="message-container">
         <div class="message-header">
@@ -11958,6 +11661,7 @@ function loadContactsList() {
     
     return messageDiv;
 }
+
 
 
 
@@ -12144,42 +11848,7 @@ window.closeChatTab = function(chatId) {
 };
 
 // CSS для вкладок чатов
-// CSS для вкладок чатов
-// const style = document.createElement('style');
-// style.textContent = `
-//     .chat-tab {
-//         display: flex;
-//         align-items: center;
-//         padding: 8px 12px;
-//         background: transparent;
-//         border-right: 1px solid #e0e0e0;
-//         font-size: 13px;
-//         cursor: pointer;
-//     }
-//     .chat-tab.active {
-//         background: white;
-//         border-bottom: 3px solid #075e54;
-//     }
-//     .chat-tab-name {
-//         margin-right: 8px;
-//         white-space: nowrap;
-//         max-width: 120px;
-//         overflow: hidden;
-//         text-overflow: ellipsis;
-//     }
-//     .close-chat-tab {
-//         background: none;
-//         border: none;
-//         font-size: 14px;
-//         cursor: pointer;
-//         color: #667781;
-//         padding: 0 4px;
-//     }
-//     .close-chat-tab:hover {
-//         color: #d32f2f;
-//     }
-// `;
-// document.head.appendChild(style);
+
 
     // Возврат в общий чат
     document.getElementById('backToGeneralBtn').addEventListener('click', () => {
@@ -12239,16 +11908,6 @@ document.getElementById('closeContactsBtn').addEventListener('click', () => {
     }
 });
 
-//     document.getElementById('contactsArrow').addEventListener('click', () => {
-//     document.getElementById('contactsSidebar').classList.add('open');
-//     document.getElementById('overlay').classList.add('show');
-//     document.getElementById('contactsArrow').classList.add('open');
-// });
-
-//     document.getElementById('closeContactsBtn').addEventListener('click', () => {
-//         document.getElementById('contactsSidebar').classList.remove('open');
-//         document.getElementById('overlay').classList.remove('show');
-//     });
 
     document.getElementById('profileIcon').addEventListener('click', () => {
         document.getElementById('profileSidebar').classList.add('open');
@@ -12429,55 +12088,6 @@ function showPinnedMessage(text, userName, msgId) {
     };
 }
 
-// function showPinnedMessage(text, userName) {
-//     const pinnedDiv = document.getElementById('pinnedMessage');
-//     const pinnedText = document.getElementById('pinnedText');
-//     pinnedText.textContent = `${userName}: ${text.substring(0, 50)}${text.length > 50 ? '...' : ''}`;
-//     pinnedDiv.style.display = 'flex';
-// }
-   
-// window.burnMessage = async function(msgId, chatType) {
-//     if (!currentUserId) return;
-    
-//     const userRef = db.collection("neighbours").doc(currentUserId);
-//     const userDoc = await userRef.get();
-//     const userData = userDoc.data();
-//     const specialActions = userData.specialActions || { burn: 1, lastRefill: null };
-    
-//     // Проверяем и восстанавливаем заряд
-//     const now = new Date();
-//     const lastRefill = specialActions.lastRefill?.toDate() || new Date(0);
-//     if (now - lastRefill > 24 * 60 * 60 * 1000) {
-//         specialActions.burn = 1;
-//         specialActions.lastRefill = firebase.firestore.FieldValue.serverTimestamp();
-//     }
-    
-//     if (specialActions.burn <= 0) {
-//         alert('Заряд "Сжечь" закончился. Восстановится через 24 часа.');
-//         return;
-//     }
-    
-//     // Уменьшаем заряд
-//     specialActions.burn--;
-//     await userRef.update({ specialActions });
-    
-//     // Отмечаем сообщение как сжигаемое в базе
-//     const collectionName = chatType === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-//     const msgRef = db.collection(collectionName).doc(msgId);
-    
-//     const burningData = {
-//         active: true,
-//         startedBy: currentUserId,
-//         startedAt: firebase.firestore.FieldValue.serverTimestamp()
-//     };
-    
-//     await msgRef.update({ burning: burningData });
-    
-//     // Таймер на удаление (на случай, если onSnapshot не сработает)
-//     setTimeout(async () => {
-//         await msgRef.delete();
-//     }, 30000);
-// };
 
 // ========== ФУНКЦИЯ СЖИГАНИЯ ЧЕРЕЗ PENDING ==========
 
@@ -12586,7 +12196,6 @@ function subscribeToPendingReactions(chatId) {
 }
 
 // ========== АНИМАЦИЯ СЖИГАНИЯ ==========
-// ========== АНИМАЦИЯ СЖИГАНИЯ ==========
 function startBurnAnimation(msgId, burnId) {
     const msgDiv = document.getElementById(`msg-${msgId}`);
     if (!msgDiv) return;
@@ -12625,36 +12234,6 @@ function startBurnAnimation(msgId, burnId) {
     }, 30000);
 }
 
-// function startBurnAnimation(msgId, burnId) {
-//     const msgDiv = document.getElementById(`msg-${msgId}`);
-//     if (!msgDiv) return;
-    
-//     const bubble = msgDiv.querySelector('.bubble');
-//     if (bubble) {
-//         bubble.classList.add('burning');
-//     }
-    
-//     // Показываем плавающий огонь
-//     const container = document.getElementById('floatingReactions') || createFloatingContainer();
-//     const floatEl = document.createElement('div');
-//     floatEl.className = 'floating-reaction';
-//     floatEl.textContent = '🔥';
-//     floatEl.onclick = () => {
-//         scrollToMessage(msgId);
-//         floatEl.remove();
-//         removePendingReactionById(chatState.chatId, burnId);
-//     };
-//     container.appendChild(floatEl);
-    
-//     // Удаление через 30 секунд
-//     setTimeout(async () => {
-//         const collectionName = `privateMessages/${chatState.chatId}/messages`;
-//         await db.collection(collectionName).doc(msgId).delete();
-//         msgDiv.remove();
-//         floatEl.remove();
-//         removePendingReactionById(chatState.chatId, burnId);
-//     }, 30000);
-// }
 
 // ========== УДАЛЕНИЕ ЗАПИСИ ПО ID ==========
 async function removePendingReactionById(chatId, pendingId) {
@@ -12715,59 +12294,6 @@ window.loadOlderMessages = async function() {
 };
 
 
-// window.loadOlderMessages = async function() {
-//     console.log('Загрузка старых сообщений...');
-    
-//     // Определяем дату самого старого сообщения в текущем чате
-//     const messagesContainer = document.getElementById('chatMessages');
-//     const firstMessage = messagesContainer.querySelector('.message');
-//     let oldestTimestamp = new Date();
-    
-//     if (firstMessage) {
-//         const msgId = firstMessage.id.replace('msg-', '');
-//         const collection = chatState.mode === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-//         const doc = await db.collection(collection).doc(msgId).get();
-//         if (doc.exists) {
-//             oldestTimestamp = doc.data().timestamp?.toDate() || new Date();
-//         }
-//     }
-    
-//     // Загружаем сообщения за предыдущий день
-//     const dayBefore = new Date(oldestTimestamp);
-//     dayBefore.setDate(dayBefore.getDate() - 1);
-    
-//     const collection = chatState.mode === 'general' ? 'chatcontent' : `privateMessages/${chatState.chatId}/messages`;
-//     const snapshot = await db.collection(collection)
-//         .where("timestamp", ">=", dayBefore)
-//         .where("timestamp", "<", oldestTimestamp)
-//         .orderBy("timestamp")
-//         .get();
-    
-//     // Рендерим сообщения в начало чата
-//     const fragment = document.createDocumentFragment();
-//     for (const doc of snapshot.docs) {
-//         // const msgDiv = await renderMessageWithData(doc.data(), doc.id, chatState.mode, null);
-//         const msgDiv = await renderMessageWithData(doc.data(), doc.id, chatState.mode);
-//         fragment.appendChild(msgDiv);
-//     }
-//     messagesContainer.insertBefore(fragment, messagesContainer.firstChild);
-    
-//     // Убираем плашку, если больше нет старых сообщений
-//     if (snapshot.empty) {
-//         document.querySelector('.load-more-banner').style.display = 'none';
-//     }
-// };
-
-// window.loadOlderMessages = function() {
-//     console.log('Загрузка старых сообщений...');
-//     // TODO: реализовать подгрузку предыдущего дня
-// };
-
-// Запуск
-// // CSS для вкладок чатов
-// const style = document.createElement('style');
-// style.textContent = `...`; // весь CSS из ответа выше
-// document.head.appendChild(style);
 
 // Инициализация
 renderChatTabs();
