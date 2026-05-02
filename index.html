@@ -12126,7 +12126,7 @@ if (text === '++нг') {
             <div class="message-body">
                 <div class="bubble">
                     <div class="line">${itemsHtml}</div>
-                    <div style="margin-top:8px; font-size:11px; color:#667781;"++нг -ф (final) | ++нг -к (cancel)</div>
+                    <div style="margin-top:8px; font-size:11px; color:#667781;">++нг -ф (final) | ++нг -к (cancel)</div>
                 </div>
             </div>
         </div>
@@ -12765,9 +12765,9 @@ if (selectedGroup) {
     //     replyTo: replyToMsgId || null
     // });
 
-    if (chatState.mode === 'private') {
-        await markChatAsUnread(chatState.chatId, chatState.chatWith);
-    }
+    // if (chatState.mode === 'private') {
+    //     await markChatAsUnread(chatState.chatId, chatState.chatWith);
+    // }
 
     document.getElementById('messageInput').value = '';
     document.getElementById('messageInput').style.height = 'auto';
