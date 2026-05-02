@@ -15711,7 +15711,18 @@ function debugChats() {
 
 </script>
 
+<script>
+    const annBtn = document.querySelector('.tab-btn[data-tab="announcements"]');
 
+if (!localStorage.getItem('annVisited')) {
+    annBtn.innerHTML = '📢<span style="position:absolute; top:-5px; right:-5px; background:red; color:#fff; border-radius:50%; width:18px; height:18px; font-size:11px; display:flex; align-items:center; justify-content:center; z-index:10;">!</span>';
+}
+
+annBtn.addEventListener('click', () => {
+    localStorage.setItem('annVisited', '1');
+    annBtn.innerHTML = '📢';
+});
+</script>
 
 </body>
 
