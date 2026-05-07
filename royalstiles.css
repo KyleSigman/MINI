@@ -1,0 +1,7380 @@
+       
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+body {
+    background: #dadbd3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 6px;
+}
+
+.app {
+    width: 500px;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* height: 800px; */
+    height: 95vh;
+    position: relative;
+}
+
+/* Шапка */
+.header {
+    /* background: #075e54; */
+    background: #05786d;
+    color: white;
+    padding: 12px 16px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.back-btn.show {
+    display: flex;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 10px;
+    background-color: transparent;
+    background: transparent;
+}
+
+.header-right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.contacts-icon {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+}
+
+.unread-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ff4444;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 18px;
+    text-align: center;
+    display: none;
+}
+
+.unread-badge.show {
+    display: block;
+}
+
+.profile-icon {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    background: #f0f2f5;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 8px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #54656f;
+    cursor: pointer;
+    max-width: 50px;
+}
+
+.tab-btn.active {
+    color: #075e54;
+    border-bottom: 3px solid #075e54;
+    background: white;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    background: #f0f2f5;
+
+
+}
+
+
+
+.tab-pane {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+}
+
+.tab-pane.active {
+    display: flex;
+}
+
+/* Чат */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 50px;
+    /* min-height: 100%; */
+}
+
+.message {
+    display: table;
+    max-width: 100%;
+    padding: 0px;
+    margin-bottom: 0px;
+    /* background-color: #dadbd3; */
+    /* display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 100%; */
+}
+
+.message-self {
+align-self: flex-end;
+margin-left: 30px;
+}
+
+.message-other {
+align-self: flex-start;
+margin-right: 30px;
+}
+
+.message-container {
+/* display: flex;
+flex-direction: column;
+width: 50%; */
+margin: 0;
+padding: 0;
+/* background-color: #00ba9b; */
+}
+
+.message-header {
+display: flex;
+align-items: center;
+gap: 6px;
+margin-bottom: 4px;
+/* background-color: #1f2f36; */
+}
+.header-controls {
+margin-left: auto;
+display: flex;
+gap: 10px;
+/* margin-left: 10px; */
+/* background-color: #25d366; */
+}
+.message-header .msg-name {
+font-size: 13px;
+font-weight: 600;
+/* background: #00aa96; */
+/* background: linear-gradient(90deg, #008b74, #00ab8f); */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.message-self .msg-name {
+background: #6c6c6c;
+/* background: #00aa96; */
+
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.message-other .msg-name {
+background: #777777;
+/* background: #98989d; */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.message-header .msg-time {
+font-size: 11px;
+color: #667781;
+}
+
+.message-header .pin-icon-msg {
+/* right: 0; */
+margin-left: auto;
+}
+
+.header-controls .burn-icon {
+/* margin-right: 8px; */
+margin-left: auto;
+cursor: pointer;
+opacity: 0.6;
+font-size: 14px;
+}
+.header-controls .burn-icon:hover {
+opacity: 1;
+}
+
+/* .message-header .reply-icon {
+margin-left: 8px;
+} */
+
+.message-body {
+/* display: inline; */
+width: auto;
+/* background-color: #ffb300; */
+max-width: 100%;
+padding: 0px;
+}
+
+/* .message-footer {
+display: flex;
+justify-content: flex-end;
+margin-top: 2px;
+} */
+
+
+.bubble {
+/* padding: 5px; */
+padding: 8px 12px 8px 17px;
+border-radius: 18px;
+background: white;
+box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+word-break: break-word;
+overflow-wrap: break-word;
+/* max-width: 100%; */
+/* min-width: 0; */
+/* width: 50%; */
+display: block;
+width: auto;
+/* display: inline; */
+}
+
+.message-self .bubble {
+/* margin-left: auto; */
+background: #dcf8c6;
+border-bottom-right-radius: 4px;
+word-break: break-word;
+}
+
+.message-other .bubble {
+/* margin-right: auto; */
+background: white;
+border-bottom-left-radius: 4px;
+word-break: break-word;
+}
+
+.bubble p 
+{
+    /* display: inline; */
+    /* margin: 0 0 4px 0; */
+    /* padding: 10px; */
+    display: block;
+    width: auto;
+    /* outline: 2px solid red; */
+    /* background-color: #b8040484; */
+}
+
+.bubble p:last-child {
+    margin-bottom: 0;
+}
+
+/* .message-self .bubble {
+margin-left: auto;
+background: #dcf8c6;
+border-bottom-right-radius: 4px;
+}
+
+.message-other .bubble {
+margin-right: auto;
+background: white;
+border-bottom-left-radius: 4px;
+} */
+
+.bubble ul, 
+.bubble ol {
+    padding-left: 20px;
+    margin: 4px 0;
+}
+
+.bubble li {
+    word-break: break-word;
+}
+
+.bubble pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.bubble code {
+    word-break: break-word;
+}
+
+.bubble.collapsed {
+    max-height: 128px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bubble.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.049));
+}
+
+.message-self .bubble.collapsed::after {
+    background: linear-gradient(to bottom, transparent, #dcf8c60a);
+}
+
+.expand-btn {
+    display: block;
+    margin-top: 4px;
+    color: #075e54;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.msg-info {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 11px;
+    color: #667781;
+    margin-top: 4px;
+    padding: 0 8px;
+}
+
+body.cyber-glass .bubble:hover::after {
+opacity: 1;
+animation: matrixRun 1.5s steps(4, end) infinite;
+}
+
+@keyframes matrixRun {
+0% {
+background-position: 
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+    -30px 0, -30px 0, -30px 0, -30px 0, -30px 0;
+}
+/* 12.5% {
+background-position: 
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+    -10px 0, -10px 0, -10px 0, -10px 0, -10px 0;
+} */
+25% {
+background-position: 
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+    10px 0, 10px 0, 10px 0, 10px 0, 10px 0;
+}
+/* 37.5% {
+background-position: 
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+    30px 0, 30px 0, 30px 0, 30px 0, 30px 0;
+} */
+50% {
+background-position: 
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+    50px 0, 50px 0, 50px 0, 50px 0, 50px 0;
+}
+/* 62.5% {
+background-position: 
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+    70px 0, 70px 0, 70px 0, 70px 0, 70px 0;
+} */
+75% {
+background-position: 
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+    90px 0, 90px 0, 90px 0, 90px 0, 90px 0;
+}
+/* 87.5% {
+background-position: 
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+    110px 0, 110px 0, 110px 0, 110px 0, 110px 0;
+} */
+100% {
+background-position: 
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+    130px 0, 130px 0, 130px 0, 130px 0, 130px 0;
+}
+}
+
+/* ===== BANNER ===== */
+.message.msg-banner .bubble {
+min-height: 100px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+position: relative;
+border: none;
+outline: 2px dotted white;
+outline-offset: -10px;
+background: transparent;
+animation: matrixRun 1.5s steps(4, end) infinite;
+
+}
+.message.msg-banner .bubble:hover::after
+{
+animation: matrixRun 1.5s steps(4, end) infinite;
+}
+
+/* ===== RUNLINE ===== */
+/* ===== RUNLINE ===== */
+
+.message.msg-runline .bubble {
+max-width: 60%;
+/* height: 40px; */
+overflow: hidden;
+white-space: nowrap;
+display: block;
+line-height: 1.6;
+}
+
+.message.msg-runline .bubble p {
+display: inline-block; /* Важно: должен быть inline-block для движения */
+animation: runline-scroll 8s linear infinite;
+font-size: 20px;
+color: rgb(255, 255, 255);
+text-shadow: 0 0 10px rgb(253, 208, 150);
+font-family: monospace;
+margin: 0;
+padding-right: 20px; /* Отступ после текста */
+}
+
+@keyframes runline-scroll {
+0% {
+transform: translateX(100%); /* Начинаем справа (за пределами блока) */
+}
+100% {
+transform: translateX(-100%); /* Уходим влево */
+}
+}
+
+/* .message.msg-runline .bubble {
+max-width: 80%;
+height: 1.6em;
+overflow: hidden;
+white-space: nowrap;
+display: block;
+line-height: 1.6;
+}
+
+.message.msg-runline .bubble p {
+animation: runline-scroll 8s linear infinite;
+font-size: 20px; color: rgb(255, 255, 255);
+text-shadow: 0 0 10px rgb(253, 208, 150);
+font-family: monospace;
+
+}
+
+@keyframes runline-scroll {
+0% { 
+color: rgb(255, 255, 255);
+}
+100% { 
+color: rgb(60, 255, 0);
+}
+} */
+
+
+/* ===== EXTEND ===== */
+/* ===== EXTEND - РАСШИРЯЕМЫЙ ТЕКСТ ===== */
+.message.msg-extend .bubble {
+position: relative;
+max-width: 280px;
+max-height: 45px; /* Показываем только первую строку */
+overflow: hidden;
+line-height: 1.6;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+/* Первая строка (видимая часть) */
+.message.msg-extend .bubble .main-text {
+display: inline;
+white-space: normal;
+word-break: break-word;
+}
+
+/* Скрытая часть текста */
+.message.msg-extend .bubble .hidden-text {
+display: block;
+/* display: inline; */
+white-space: normal;
+word-break: break-word;
+color: #00aaff !important;
+text-shadow: 0 0 3px rgba(0, 170, 255, 0.5);
+border: 1px dotted #00aaff;
+border-radius: 3px;
+padding: 2px 6px;
+margin-top: 10px;
+/* margin-left: 4px; */
+}
+
+/* Дополнительный пунктир-разделитель между основной и скрытой частью (виден только в свёрнутом состоянии) */
+.message.msg-extend .bubble .hidden-text::before {
+content: '... ';
+color: #00aaff;
+font-weight: bold;
+display: inline;
+}
+
+/* При наведении показываем весь текст */
+.message.msg-extend .bubble:hover {
+max-height: none;
+overflow: visible;
+}
+
+/* При наведении убираем разделитель-троеточие */
+.message.msg-extend .bubble:hover .hidden-text::before {
+content: '';
+}
+
+/* При наведении меняем стиль рамки */
+.message.msg-extend .bubble:hover::before {
+border: 1px dashed #00ccff;
+box-shadow: 0 0 8px rgba(0, 170, 255, 0.3);
+opacity: 1;
+}
+
+
+.message.msg-extend .bubble {
+position: relative;
+}
+
+
+
+
+.chat-input-area {
+    background: white;
+    padding: 10px 12px;
+    border-top: 1px solid #e9edef;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.attach-btn, .emoji-btn {
+    background: #f0f2f5;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.message-input-wrapper {
+    flex: 1;
+    background: #f0f2f5;
+    border-radius: 24px;
+    padding: 8px 16px;
+}
+
+#messageInput {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+    resize: none;
+    font-family: inherit;
+    line-height: 1.4;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+/* #messageInput {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+} */
+
+.send-btn {
+    background: #075e54;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Сайдбар контактов */
+.contacts-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    /* max-width: 90%; */
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts-sidebar.open {
+    left: 0;
+}
+
+.contacts-header {
+    background: #05786d;
+    /* background: #075e54; */
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contacts-header h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.close-contacts-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.contacts-search {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e9edef;
+}
+
+.contacts-search input {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    background: #f0f2f5;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid #e9edef;
+}
+
+.contacts-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.contacts-list-header {
+    padding: 12px 16px 8px;
+    font-size: 13px;
+    color: #667781;
+    font-weight: 500;
+}
+
+.contact-item, .search-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.contact-item {
+display: flex;
+align-items: center;
+padding: 10px 16px;
+cursor: pointer;
+}
+
+.contact-emoji {
+font-size: 18px;
+margin-right: 12px;
+}
+
+.contact-info {
+flex: 1;
+}
+
+.contact-avatar {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+object-fit: cover;
+margin-left: 8px;
+margin-right: 8px;
+}
+
+/* .contact-item {
+    cursor: pointer;
+}
+
+.contact-item:hover {
+    background: #f5f5f5;
+}
+
+.contact-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 0;
+} */
+
+.contact-name {
+    font-weight: 500;
+    font-size: 15px;
+    color: #1f2f36;
+    margin-bottom: 2px;
+}
+
+.contact-flat {
+    font-size: 12px;
+    color: #667781;
+}
+
+.contact-badge {
+    background: #25d366;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 24px;
+    text-align: center;
+    margin-left: 8px;
+}
+
+.add-btn {
+    background: #25d366;
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 8px;
+}
+
+.remove-btn {
+    /* background: #ff4444; */
+    border: none;
+    color: rgba(0, 0, 0, 0.625);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* Профиль сайдбар */
+.profile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    max-width: 90%;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.profile-sidebar.open {
+    right: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.866);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+/* Модалка изображения */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal.show {
+    display: flex;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-image {
+    width: 90%;
+    max-width: 300px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+
+
+
+
+
+
+
+
+/* ========== ROOTWEB — ИСПРАВЛЕННАЯ ВЕРСИЯ ========== */
+
+body.rootweb {
+    background: #9a9a9a;
+    font-family: Arial, sans-serif;
+}
+
+body.rootweb .app {
+    position: relative;
+    background: #E9E6DD;
+    border-radius: 6px 6px 4px 4px;
+    border: 3px solid rgba(0,0,0,0.7);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+    overflow: hidden;
+    width: 500px;
+}
+
+/* ===== ХЭДЕРЫ ===== */
+body.rootweb .header,
+body.rootweb .contacts-header,
+body.rootweb .settings-header {
+    background: linear-gradient(to bottom, #7fe643 0%, #42b101 30%, #E9E6DD 100%);
+    position: relative;
+    padding: 20px 24px;
+    border-bottom: 1px solid #888;
+}
+body.rootweb .contacts-header
+{
+    height: 85px;
+}
+
+body.rootweb .header::after,
+body.rootweb .contacts-header::after,
+body.rootweb .settings-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 93%, rgba(255,255,255,0.01) 100%);
+    pointer-events: none;
+    /* border-radius: 0 0 10% 50px; */
+    /* border-radius: 0px 0px 10px 10px; */
+    /* padding: 10px 0px 10px 0px; */
+}
+
+body.rootweb .logo {
+    color: #2e5c14;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Кнопки в хэдере */
+/* body.rootweb .header-right .contacts-icon,
+body.rootweb .header-right .profile-icon,
+body.rootweb .header-right .settings-icon {
+    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+    border: 1px solid #a0a098;
+    border-radius: 4px;
+    padding: 10px;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #4a4a3a;
+    font-size: 18px;
+}
+
+body.rootweb .header-right .contacts-icon:hover,
+body.rootweb .header-right .profile-icon:hover,
+body.rootweb .header-right .settings-icon:hover {
+    background: linear-gradient(to bottom, #e0e0e0 0%, #ffffff 100%);
+} */
+
+/* ===== САЙДБАР КОНТАКТОВ (нормальная ширина) ===== */
+body.rootweb .contacts-sidebar {
+    background: #ffffff;
+
+    /* border-right: 1px solid #b0b0a8; */
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    height: 99%;
+    border-radius: 6px;
+    border: 3px solid rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+
+body.rootweb .contacts-list {
+    background: white;
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+body.rootweb .contacts-list-header 
+{
+    background: #E9E6DD;
+    /* border-bottom: 2px solid #d0d0c8; */
+}
+
+body.rootweb .contacts-search {
+    background: white;
+    /* background: #E9E6DD; */
+    padding: 8px;
+}
+
+body.rootweb .contacts-search input {
+    background: #ffffff;
+    border: 3px solid #b0b0a8;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Строка контакта: зелёный кружок слева, имя, аватарка справа */
+body.rootweb .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: transparent;
+    cursor: pointer;
+}
+
+body.rootweb .contact-item:hover {
+    /* background: linear-gradient(to bottom, #7fe643 0%, #42b101 40%, #d3dbce 100%); */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* При ховере имя и статус делаем белыми для контраста */
+body.rootweb .contact-item:hover .contact-name {
+    color: #7fe643;
+    /* text-shadow: 0 1px 2px rgba(0,0,0,0.2); */
+}
+
+body.rootweb .contact-item:hover .status-green {
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+}
+
+body.rootweb .contact-item.active {
+    background: #d4eac4;
+    border-left: 3px solid #53B931;
+}
+
+body.rootweb .status-green {
+    width: 10px;
+    height: 10px;
+    background: #53B931;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+body.rootweb .contact-name {
+    font-size: 15px;
+    font-weight: bold;
+
+    /* font-family:'Courier New', Courier, monospace; */
+    color: #4a4a3a;
+    flex: 1;
+}
+
+body.rootweb .contact-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    border: 1px solid #c0c0b8;
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_12z21QY0K-Nd-HOus-efz2IVqHbgyHeLHg&s'); */
+    background-size: cover;
+    background-position: center;
+}
+
+body.rootweb .contact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+
+body.rootweb .remove-btn,
+body.rootweb .add-btn {
+    display: none;
+}
+
+/* ===== БЛОК УПРАВЛЕНИЯ КОНТАКТАМИ В СТИЛЕ ROOTWEB ===== */
+
+body.rootweb .contacts-controls {
+    border-top: 2px solid #c0c0b8;
+    background: #E9E6DD;
+    margin-top: auto;
+}
+
+body.rootweb .control-panel {
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #d0d0c8;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 0 0 5px 5px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+body.rootweb .privacy-item {
+    margin-bottom: 20px;
+}
+
+body.rootweb .privacy-item span {
+    display: block;
+    font-size: 13px;
+    color: #4a4a3a;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+body.rootweb .radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+body.rootweb .radio-group label {
+    font-size: 13px;
+    cursor: pointer;
+    color: #2a2a1e;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+body.rootweb .radio-group input[type="radio"] {
+    margin-right: 6px;
+    accent-color: #53B931;
+}
+
+/* ГЛЯНЦЕВАЯ КНОПКА СОХРАНИТЬ (как хэдер) */
+body.rootweb .save-privacy-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to bottom, #9cff4c 0%, #4ece04 35%, #d9eac7 100%);
+    border: 1px solid #3a9c0a;
+    border-radius: 5px;
+    color: #0a3a00;
+    font-weight: bold;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    cursor: pointer;
+    margin-top: 12px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.15);
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+body.rootweb .save-privacy-btn::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    right: 3px;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.1) 100%);
+    border-radius: 5px 5px 0 0;
+    pointer-events: none;
+}
+
+body.rootweb .save-privacy-btn:hover {
+    background: linear-gradient(to bottom, #aaff55 0%, #5ad41c 35%, #e0f5d0 100%);
+    transform: translateY(-1px);
+}
+
+body.rootweb .status-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+body.rootweb .status-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+    background: #f5f4ee;
+    border: 1px solid #d0d0c8;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+body.rootweb .status-option:hover {
+    background: #e8e7df;
+}
+
+/* ВЫБРАННЫЙ СТАТУС — ГЛЯНЦЕВЫЙ ЗЕЛЕНЫЙ (как хэдер) */
+body.rootweb .status-option.active {
+    background: linear-gradient(to bottom, #9cff4c 0%, #4ece04 35%, #d9eac7 100%);
+    border: 1px solid #3a9c0a;
+    border-left: 3px solid #2a7a00;
+    font-weight: bold;
+    color: #0a3a00;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+body.rootweb .status-option.active::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    right: 3px;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.05) 100%);
+    border-radius: 5px 5px 0 0;
+    pointer-events: none;
+}
+
+body.rootweb .info-content {
+    font-size: 13px;
+    color: #2a2a1e;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+body.rootweb .info-content h4 {
+    margin-bottom: 12px;
+    color: #2e5c14;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+body.rootweb .info-content p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+body.rootweb .info-content small {
+    color: #6a6a5a;
+}
+
+/* Футер с кнопками (🔒 🔴 ℹ️) — бордер радиус 5px, убрал круглость */
+body.rootweb .contacts-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px;
+    background: #E9E6DD;
+    border-top: 1px solid #c0c0b8;
+}
+
+body.rootweb .footer-btn {
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    border: 1px solid #a0a098;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: #4a4a3a;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+body.rootweb .footer-btn:hover {
+    background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+    transform: translateY(-2px);
+    border-color: #53B931;
+    color: #2e5c14;
+}
+
+/* Блок управления контактами внизу */
+/* body.rootweb .contacts-controls {
+    background: #E7E7DF;
+    padding: 12px;
+    border-top: 4px solid #c0c0b8;
+    margin-top: auto;
+    text-align: center;
+    height: 115px;
+    -===================================================================-====--=-=-=-
+} */
+
+
+/* ===== ОБЛАСТЬ ЧАТА ===== */
+body.rootweb .content {
+    background: #E9E6DD;
+
+}
+
+body.rootweb .chat-messages {
+    background: #E9E6DD;
+    padding: 12px;
+}
+
+/* ===== СООБЩЕНИЯ ===== */
+body.rootweb .message {
+    background: #ffffff;
+    border: 2px solid #d0d0c8;
+    border-bottom-color: #b0b0a8;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    
+    
+}
+
+body.rootweb .message-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+}
+
+body.rootweb .message .contact-avatar {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_12z21QY0K-Nd-HOus-efz2IVqHbgyHeLHg&s');
+    background-size: cover;
+    flex-shrink: 0;
+}
+
+body.rootweb .message 
+{
+    padding: 0; margin: 0;
+    width: 85%; padding: 8px;
+    /* padding-bottom: 12px;  */
+    padding-left: 12px;
+
+
+}
+
+body.rootweb .message .message-header img
+{
+border-radius: 0;
+margin-left: 0;
+display: none;
+}
+
+body.rootweb .message-body .bubble
+{
+    background-color: transparent;
+    outline: none; border: none; box-shadow: none;
+    width: auto; height: auto; padding: 0;
+    /* padding-left: 10px; */
+}
+
+body.rootweb .message-body .bubble p
+{
+    background-color: transparent;
+    outline: none; border: none; box-shadow: none;
+    width: auto; height: auto; padding: 0;
+    font-size: 15px;
+    /* padding-left: 10px; */
+}
+
+body.rootweb .msg-name {
+    font-weight: bold;
+    font-size: 16px;
+    flex: 1;
+    /* font-family: Arial, Helvetica, sans-serif; */
+
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+    /* margin-left: 10px; */
+}
+
+
+body.rootweb .message-self .msg-name {
+    color: #42b101;
+    background-color:  #42b101;
+}
+
+body.rootweb .message-other .msg-name {
+    color: #000000;
+    background-color: black;
+}
+
+body.rootweb .msg-time {
+    color: #999;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+body.rootweb .message-self .msg-time {
+    color: #999;
+    font-size: 11px;
+    flex-shrink: 0;
+    color: #53B931;
+}
+
+
+body.rootweb .message-body {
+    color: #444;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 0px;
+}
+
+/* ===== ПОЛЕ ВВОДА (нормальная высота) ===== */
+/* ===== ПОЛЕ ВВОДА ===== */
+body.rootweb .chat-input-area {
+    background: linear-gradient(to bottom, #E9E6DD 0%, #E6E6DC 100%);
+    border-top: 4px solid #b0b0a8;
+    padding: 5px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Верхний ряд: кнопки + эмодзи */
+body.rootweb .top-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 4px 8px;
+    background: transparent;
+}
+
+body.rootweb .top-row .attach-btn {
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    border: 1px solid #a0a098;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #4a4a3a;
+    padding: 0px;
+    width: 40px;
+    height: 32px;
+    cursor: pointer;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+body.rootweb #chitcodeBtn {
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    border: 1px solid #a0a098;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #4a4a3a;
+    width: 40px;
+    height: 32px;
+    cursor: pointer;
+    text-align: center;
+    flex-shrink: 0;
+    font-family: monospace;
+}
+
+body.rootweb #emojiRow {
+    flex: 1;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    scrollbar-width: none;
+    height: 32px;
+
+    background: rgba(255,255,255,0.5);
+    border-radius: 6px;
+    padding: 0 6px;
+    border: 1px solid #b0b0a8;
+}
+
+body.rootweb #emojiRow::-webkit-scrollbar {
+    display: none;
+}
+
+body.rootweb .emoji-item {
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    padding: 1px;
+}
+
+/* Нижний ряд */
+body.rootweb .input-row {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+    padding: 4px 8px;
+    background: transparent;
+}
+
+body.rootweb .message-input-wrapper {
+    flex: 1;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+body.rootweb #messageInput {
+    background: #ffffff;
+    border: 2px solid #b0b0a8;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    min-height: 44px;
+}
+
+body.rootweb #messageInput:focus {
+    outline: none;
+    border-color: #53B931;
+}
+body.rootweb #messageInput::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+body.rootweb .send-btn {
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    border: 1px solid #a0a098;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #4a4a3a;
+    padding: 0px;
+    width: 80px;
+    height: 44px;
+    cursor: pointer;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+body.rootweb .send-btn:hover {
+    background: linear-gradient(to bottom, #E7E7DF 0%, #E9E6DD 100%);
+}
+
+/* ===== ВКЛАДКИ TABS (кнопки, без зелёного при выборе) ===== */
+body.rootweb .tabs {
+    background: #ffffff;
+    border-bottom: 1px solid #b0b0a8;
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+body.rootweb .chat-tab.active {
+    background: linear-gradient(to bottom, 
+        #9cff4c 0%,
+        #4ece04 35%,
+        #d9eac7 100%
+    );
+    border: 1px solid #3a9c0a;
+    color: #0a3a00;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+body.rootweb .tab-btn {
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    border: 1px solid #a0a098;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #4a4a3a;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+body.rootweb .tab-btn.active {
+    background: #d0d0c8;
+    border-color: #909088;
+    color: #2a2a1a;
+}
+
+/* ===== ПРОФИЛЬ САЙДБАР (полноценное оформление) ===== */
+body.rootweb .profile-sidebar {
+    background: #E9E6DD;
+    border-left: 1px solid #c0c0b8;
+    padding: 24px;
+    position: fixed;
+    right: -100%;
+    width: 320px;
+    height: 100%;
+    top: 0;
+    transition: 0.3s;
+    z-index: 1001;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+}
+
+body.rootweb .profile-sidebar.open {
+    right: 0;
+}
+
+/* Кнопка закрытия */
+body.rootweb #closeProfileBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #4a4a3a;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+body.rootweb #closeProfileBtn:hover {
+    background: rgba(0,0,0,0.1);
+    color: #d32f2f;
+}
+
+/* Заголовок */
+body.rootweb .profile-sidebar h3 {
+    color: #2e5c14;
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    font-family: 'Courier Prime', 'Courier New', 'MS Serif', 'Times New Roman', serif;
+    display: none;
+}
+
+/* Аватар */
+body.rootweb #avatarPreview {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin: 0;
+    margin-bottom: 0; padding: 0;
+    display: block;
+    border: 3px solid #b0b0a8;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Поля ввода (матовые, объемные но плоские) */
+body.rootweb .profile-sidebar input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border: 1px solid #b8b5a8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #f5f4ee 0%, #e8e7df 100%);
+    font-family: 'Courier Prime', 'Courier New', 'MS Serif', 'Times New Roman', serif;
+    font-size: 13px;
+    color: #2a2a1e;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 1px 0 rgba(255,255,255,0.6);
+    transition: all 0.15s ease;
+}
+
+body.rootweb .profile-sidebar input[type="text"]:focus {
+    outline: none;
+    border-color: #4ece04;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 0 0 2px rgba(78,206,4,0.2);
+}
+
+/* File input */
+body.rootweb .profile-sidebar input[type="file"] {
+    width: 100%;
+    margin: 8px 0;
+    padding: 6px;
+    font-size: 12px;
+    color: #4a4a3a;
+}
+
+/* ГЛЯНЦЕВАЯ ЗЕЛЕНАЯ КНОПКА СОХРАНИТЬ */
+body.rootweb #saveProfileBtn {
+    background: linear-gradient(to bottom, 
+        #9cff4c 0%,
+        #4ece04 35%,
+        #d9eac7 100%
+    );
+    border: 1px solid #3a9c0a;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    margin-top: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0a3a00;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    font-family: 'Courier Prime', 'Courier New', 'MS Serif', 'Times New Roman', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Глянцевый блик для кнопки Сохранить */
+body.rootweb #saveProfileBtn::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    right: 3px;
+    height: 40%;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    border-radius: 8px 8px 0 0;
+    pointer-events: none;
+}
+
+body.rootweb #saveProfileBtn:hover {
+    background: linear-gradient(to bottom, 
+        #aaff55 0%,
+        #5ad41c 35%,
+        #e0f5d0 100%
+    );
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.2);
+}
+
+body.rootweb #saveProfileBtn:active {
+    transform: translateY(0);
+    background: linear-gradient(to bottom, 
+        #7fe643 0%,
+        #3a9c0a 35%,
+        #c8e0b0 100%
+    );
+}
+
+/* Кнопка Выйти (матовая, но с легким объемом) */
+body.rootweb #logoutBtn {
+    background: linear-gradient(to bottom, #e0dfd5 0%, #d2d0c4 100%);
+    border: 1px solid #b8b5a8;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    margin-top: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #4a4a3a;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5);
+    transition: all 0.2s ease;
+    font-family: 'Courier Prime', 'Courier New', 'MS Serif', 'Times New Roman', serif;
+}
+
+body.rootweb #logoutBtn:hover {
+    background: linear-gradient(to bottom, #ecebe3 0%, #dfdee0 100%);
+    border-color: #d32f2f;
+    color: #d32f2f;
+    transform: translateY(-1px);
+}
+
+body.rootweb #logoutBtn:active {
+    transform: translateY(0);
+}
+
+/* Разделитель */
+body.rootweb .profile-sidebar hr {
+    margin: 20px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c0c0b8, transparent);
+}
+
+/* Блок настроек (внутри профиля) */
+body.rootweb .settings-sidebar {
+    background: #E9E6DD;
+    border-radius: 12px;
+    border: 1px solid #c0c0b8;
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* Контент настроек */
+body.rootweb .settings-content {
+    padding: 16px;
+}
+
+/* Пункт настройки */
+body.rootweb .setting-item {
+    margin-bottom: 16px;
+}
+
+body.rootweb .setting-item label {
+    display: block;
+    color: #4a4a3a;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-family: 'Courier Prime', 'Courier New', 'MS Serif', 'Times New Roman', serif;
+}
+
+/* Select (выпадающий список) - матовый */
+body.rootweb .setting-item select {
+    background: linear-gradient(to bottom, #f5f4ee 0%, #e8e7df 100%);
+    border: 1px solid #b8b5a8;
+    border-radius: 8px;
+    padding: 8px 10px;
+    width: 100%;
+    font-family: 'Courier Prime', 'Courier New', 'MS Serif', 'Times New Roman', serif;
+    font-size: 12px;
+    color: #2a2a1e;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 1px 0 rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+body.rootweb .setting-item select:focus {
+    outline: none;
+    border-color: #4ece04;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05), 0 0 0 2px rgba(78,206,4,0.2);
+}
+
+/* Ряд с выбором звука */
+body.rootweb .sound-select-row,
+body.rootweb .theme-select-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+body.rootweb .sound-select-row select,
+body.rootweb .theme-select-row select {
+    flex: 1;
+}
+
+/* Мини-кнопка теста звука (глянцевая зеленая маленькая) */
+body.rootweb .test-sound-mini {
+    background: linear-gradient(to bottom, 
+        #9cff4c 0%,
+        #4ece04 35%,
+        #b8e898 100%
+    );
+    border: 1px solid #3a9c0a;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a3a00;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);
+    transition: all 0.15s ease;
+}
+
+body.rootweb .test-sound-mini:hover {
+    background: linear-gradient(to bottom, 
+        #aaff55 0%,
+        #5ad41c 35%,
+        #c8e8a8 100%
+    );
+    transform: scale(1.02);
+}
+
+body.rootweb .test-sound-mini:active {
+    transform: scale(0.98);
+}
+
+/* Заголовок настроек (если понадобится) */
+body.rootweb .settings-header {
+    padding: 12px 16px;
+    background: linear-gradient(to bottom, #d8d6cc 0%, #cac8bc 100%);
+    border-bottom: 1px solid #b0b0a8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.rootweb .settings-header h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #2a2a1e;
+}
+
+/* Кнопка закрытия настроек (если нужна) */
+body.rootweb .close-settings-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #4a4a3a;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+body.rootweb .close-settings-btn:hover {
+    background: rgba(0,0,0,0.1);
+    color: #d32f2f;
+}
+
+
+
+/* ===== ДРУГИЕ ЭЛЕМЕНТЫ ===== */
+
+body.rootweb .test-sound-btn,
+body.rootweb .test-sound-mini {
+    background: linear-gradient(to bottom, #E9E6DD 0%, #E7E7DF 100%);
+    border: 1px solid #a0a098;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+body.rootweb .pinned-message {
+    /* background-color:skyblue; */
+    /* border: 2px solid rgba(0,0,0,0.05); */
+    background: #E9E6DD;
+    border-bottom: 2px solid #d0d0c8;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #666;
+}
+
+body.rootweb .reply-preview,
+body.rootweb .reply-quote {
+    background: #f5f5f0;
+    border-left: 3px solid #53B931;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+/* ===== СКРОЛЛБАР ===== */
+body.rootweb ::-webkit-scrollbar {
+    width: 15px;
+}
+
+body.rootweb ::-webkit-scrollbar-track {
+    background: #E9E6DD;
+    /* border-left: 1px solid #c0c0b8; */
+}
+
+body.rootweb ::-webkit-scrollbar-thumb {
+    /* background: linear-gradient(to bottom, #BBDC95 0%, #53B931 100%); */
+    border: 1px solid gray;
+    border-radius: 3px;
+    width: 25px;
+    background: linear-gradient(to left, #ffffff, #e0e0e0, #ffffff);
+    max-height: 20px;
+}
+.contacts-arrow {
+    cursor: pointer;
+    color: black;
+    color: white;
+    font-size: 25px;
+}
+.chat-avatar {
+    display: none;
+}
+.contacts-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px;
+    border-top: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.footer-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.footer-btn:hover {
+    background: #e9ecef;
+}
+
+
+    /* === CYBER-GLASS === */
+/* СТЕКЛЯННЫЕ ГРАДИЕНТЫ + СВЕТЯЩИЙСЯ ТЕКСТ === */
+
+body.cyber-glass {
+--teal-top: rgba(255, 255, 255, 0.8);
+--teal-mid: rgba(255, 255, 255, 0.6);
+--gray-mid: rgba(255, 255, 255, 0.4);
+--gray-bottom: rgba(255, 255, 255, 0.2);
+--glass-bg: rgba(255, 255, 255, 0.1);
+--shadow-color: rgba(0, 0, 0, 0.3);
+
+background-color: #1a1a2e;
+background-image: radial-gradient(rgba(0, 243, 255, 0.15) 1px, transparent 1px);
+background-size: 25px 25px;
+}
+
+/* ВСЕ СТЕКЛЯННЫЕ ГРАДИЕНТЫ ОСТАЮТСЯ */
+body.cyber-glass .header,
+body.cyber-glass .contacts-header,
+body.cyber-glass .contacts-sidebar,
+body.cyber-glass .profile-sidebar,
+body.cyber-glass .tabs,
+
+body.cyber-glass .chat-input-area,
+body.cyber-glass .contacts-controls {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0.6) 20%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+) !important;
+backdrop-filter: blur(10px);
+box-shadow: 
+    0 4px 20px var(--shadow-color),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+body.cyber-glass .app
+{
+background: transparent;
+}
+body.cyber-glass .content
+{
+background: transparent;
+}
+
+/* ПЛАШКИ — ТОЖЕ СТЕКЛЯННЫЕ */
+body.cyber-glass .contact-item,
+body.cyber-glass .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.35) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* СВОИ СООБЩЕНИЯ */
+body.cyber-glass .message-self .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(160, 200, 255, 0.5) 0%,
+        rgba(140, 180, 255, 0.35) 20%,
+        rgba(120, 160, 255, 0.15) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+}
+
+/* === CHAIN THREAD (ЦЕПОЧКА СООБЩЕНИЙ) ДЛЯ CYBER-GLASS === */
+body.cyber-glass .chain-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 1px;
+}
+
+body.cyber-glass .chain-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    padding: 6px 8px;
+    transition: all 0.2s ease;
+}
+
+/* === ТЕКУЩЕЕ СООБЩЕНИЕ (CURRENT) — БЕЛЫЙ ТЕКСТ + ГОЛУБОЕ СВЕЧЕНИЕ === */
+body.cyber-glass .chain-current {
+    font-weight: 500;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #0088aa, 0 0 15px #0066aa !important;
+    border-bottom: 1px solid rgba(0, 204, 255, 0.5);
+    padding: 4px 8px;
+}
+
+/* === ПРИВЯЗАННЫЕ СООБЩЕНИЯ (CHAIN) — ГОЛУБЫЕ, ПОЛУПРОЗРАЧНЫЕ === */
+body.cyber-glass .chain-dimmed {
+    opacity: 0.7;
+    color: rgba(0, 204, 255, 0.8) !important;
+    text-shadow: 0 0 3px rgba(0, 204, 255, 0.5) !important;
+}
+
+/* === БУЛЛЕТ (ТОЧКА) — ГОЛУБАЯ === */
+body.cyber-glass .chain-bullet {
+    font-size: 10px;
+    flex-shrink: 0;
+    color: #00ccff !important;
+    text-shadow: 0 0 3px #00ccff;
+}
+
+/* === ХОВЕР ДЛЯ ЭЛЕМЕНТОВ === */
+body.cyber-glass .chain-item:hover {
+    background: rgba(0, 204, 255, 0.08);
+    outline: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+}
+
+/* === ID ЦЕПОЧКИ === */
+body.cyber-glass .chain-id {
+    font-size: 10px;
+    color: #88aaff !important;
+    text-shadow: 0 0 3px #0088aa;
+    margin-top: 6px;
+    text-align: right;
+}
+
+
+/* ========== ТЕКСТ — СВЕТЯЩИЙСЯ ГОЛУБОЙ НЕОН ========== */
+/* body.cyber-glass, */
+body.cyber-glass .contact-name,
+body.cyber-glass .bubble,
+body.cyber-glass .message-self .bubble,
+/* body.cyber-glass .message-self .msg-name, */
+body.cyber-glass .tab-btn,
+body.cyber-glass .setting-item label {
+color: #ffffff !important;
+text-shadow: 
+    0 0 5px #00ccff,
+    0 0 10px #0088aa,
+    0 0 15px #0066aa;
+}
+
+/* ТЕКСТ В СВОИХ СООБЩЕНИЯХ — ТОЖЕ СВЕТИТСЯ */
+/* body.cyber-glass .message-self .bubble, */
+
+body.cyber-glass .message-self .msg-name
+{
+background-color: #00b6e3;
+text-shadow: 
+    0 0 6px #00b6e3;
+}
+body.cyber-glass .message-other .msg-name
+
+{
+background-color: white;
+text-shadow: 
+    0 0 8px white;
+}
+
+/* КНОПКИ СТЕКЛЯННЫЕ + СВЕЧЕНИЕ ПРИ НАВЕДЕНИИ */
+body.cyber-glass .send-btn,
+body.cyber-glass #saveProfileBtn,
+body.cyber-glass #logoutBtn,
+body.cyber-glass .close-contacts-btn {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.9) 0%,
+    rgba(255,255,255,0.7) 20%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+);
+border: 1px inset rgba(255, 255, 255, 0.5);
+box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+color: white;
+text-shadow: 0 0 4px #00ccff;
+}
+
+body.cyber-glass .send-btn:hover,
+body.cyber-glass .contact-item:hover {
+box-shadow: 
+    0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 5px 2px rgba(0, 243, 255, 0.75),
+    0 0 10px 2px rgba(0, 243, 255, 0.5) inset !important;
+}
+
+/* ПОЛЕ ВВОДА — СТЕКЛО */
+body.cyber-glass .message-input-wrapper {
+background: rgba(255, 255, 255, 0.15);
+border: 1px inset rgba(255, 255, 255, 0.3);
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+body.cyber-glass .message-input-wrapper input {
+color: white;
+text-shadow: 0 0 3px #00ccff;
+}
+
+/* Анимация растягивания плашки */
+@keyframes bubbleStretch {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(0, 243, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(0, 243, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Анимация текста */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Плашка */
+body.cyber-glass .bubble {
+    animation: bubbleStretch 1s ease-out forwards;
+
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
+    height: auto;
+}
+
+/* Текст внутри */
+body.cyber-glass .bubble p,
+body.cyber-glass .bubble a,
+body.cyber-glass .bubble span,
+body.cyber-glass .bubble code,
+body.cyber-glass .bubble pre,
+body.cyber-glass .bubble h1,
+body.cyber-glass .bubble h2,
+body.cyber-glass .bubble h3,
+body.cyber-glass .bubble h4,
+body.cyber-glass .bubble ul,
+body.cyber-glass .bubble ol,
+body.cyber-glass .bubble li,
+body.cyber-glass .bubble blockquote {
+    animation: textReveal 0.9s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+/* Для своих */
+body.cyber-glass .message-self .bubble {
+    
+    height: auto;
+}
+
+body.cyber-glass .message-self .bubble p,
+body.cyber-glass .message-self .bubble a,
+body.cyber-glass .message-self .bubble span,
+body.cyber-glass .message-self .bubble code,
+body.cyber-glass .message-self .bubble pre,
+body.cyber-glass .message-self .bubble h1,
+body.cyber-glass .message-self .bubble h2,
+body.cyber-glass .message-self .bubble h3,
+body.cyber-glass .message-self .bubble h4,
+body.cyber-glass .message-self .bubble ul,
+body.cyber-glass .message-self .bubble ol,
+body.cyber-glass .message-self .bubble li,
+body.cyber-glass .message-self .bubble blockquote {
+    animation: textReveal 0.4s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+@keyframes bubbleStretchAlien {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* @keyframes bubbleStretchSelf {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+} */
+/* Контейнер табов — прозрачный фон */
+body.cyber-glass .tabs {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    gap: 4px;
+}
+
+/* Все кнопки табов — стеклянные как bubble */
+body.cyber-glass .tab-btn,
+body.cyber-glass .chat-tab {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+}
+
+/* Активный таб — чуть ярче */
+body.cyber-glass .tab-btn.active,
+body.cyber-glass .chat-tab.active {
+background: black;
+background-color: black;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 0 10px 2px rgba(0, 243, 255, 0.5),
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Ховер на табах */
+body.cyber-glass .tab-btn:hover,
+body.cyber-glass .chat-tab:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 5px 2px rgba(0, 243, 255, 0.75),
+        0 0 10px 2px rgba(0, 243, 255, 0.5) inset !important;
+}
+
+/* Имя в табе */
+body.cyber-glass .chat-tab-name {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa;
+    cursor: pointer;
+}
+
+/* Кнопка закрытия таба */
+body.cyber-glass .close-chat-tab {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+    margin-left: 8px;
+    opacity: 0.8;
+}
+
+body.cyber-glass .close-chat-tab:hover {
+    opacity: 1;
+    text-shadow: 
+        0 0 8px #00ccff,
+        0 0 12px #ff4444;
+}
+/* === ИНПУТ === */
+body.cyber-glass .chat-input-area {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+body.cyber-glass .message-input-wrapper {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 3px !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(0, 243, 255, 0.1) !important;
+    padding: 8px 12px !important;
+}
+
+body.cyber-glass #messageInput,
+body.cyber-glass .message-input-wrapper input,
+body.cyber-glass .message-input-wrapper textarea {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+}
+
+body.cyber-glass #messageInput::placeholder,
+body.cyber-glass .message-input-wrapper input::placeholder,
+body.cyber-glass .message-input-wrapper textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+body.cyber-glass .message-input-wrapper:focus-within {
+    border-color: rgba(0, 243, 255, 0.5) !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(0, 243, 255, 0.3),
+        0 0 0 1px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* === КНОПКИ — ТОЛЬКО ИКОНКИ, ФОН ПРОЗРАЧНЫЙ === */
+body.cyber-glass .emoji-btn,
+body.cyber-glass .attach-btn,
+body.cyber-glass .send-btn {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #00ccff,
+        0 0 12px #0088aa !important;
+    filter: grayscale(100%) brightness(1.5);
+    transition: all 0.2s ease;
+    border-radius: 3px !important;
+    padding: 0;
+}
+
+body.cyber-glass .send-btn {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+/* Ховер — свечение усиливается, цвет возвращается */
+body.cyber-glass .emoji-btn:hover,
+body.cyber-glass .attach-btn:hover,
+body.cyber-glass .send-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #00ccff,
+        0 0 20px #00aaff,
+        0 0 30px #0088cc !important;
+    transform: scale(1.1);
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* === ЭМОДЗИ ПИКЕР === */
+body.cyber-glass .emoji-picker {
+    background: rgba(20, 20, 40, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(0, 243, 255, 0.2) !important;
+    padding: 8px;
+}
+
+body.cyber-glass .emoji-item {
+    filter: grayscale(100%) brightness(1.5) contrast(1.2);
+    font-size: 20px;
+    padding: 6px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+body.cyber-glass .emoji-item:hover {
+    filter: grayscale(0%) brightness(1);
+    background: rgba(0, 243, 255, 0.15);
+    transform: scale(1.2);
+    text-shadow: 0 0 10px #00ccff;
+}
+
+/* === ПРЕВЬЮ ОТВЕТА === */
+body.cyber-glass .reply-preview {
+    background: rgba(20, 20, 40, 0.6) !important;
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    border-left: 3px solid #00ccff;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+body.cyber-glass .reply-preview-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+}
+
+body.cyber-glass .reply-preview-close {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+body.cyber-glass .reply-preview-close:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px #ff4444;
+}
+
+/* === КНОПКИ ПРЕВЬЮ ИЗОБРАЖЕНИЯ === */
+body.cyber-glass .send-image-btn,
+body.cyber-glass .cancel-image-btn {
+    background: transparent !important;
+    border: 1px solid rgba(0, 243, 255, 0.3) !important;
+    border-radius: 3px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none !important;
+}
+
+body.cyber-glass .send-image-btn:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.4) !important;
+    background: rgba(0, 243, 255, 0.1) !important;
+}
+
+body.cyber-glass .cancel-image-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 12px rgba(255, 68, 68, 0.4) !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+}
+
+/* === РЕАКЦИИ ПОД СООБЩЕНИЯМИ === */
+body.cyber-glass .react-btn {
+    filter: grayscale(100%) brightness(1.5);
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff;
+    font-size: 16px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+body.cyber-glass .react-btn:hover,
+body.cyber-glass .react-btn.active {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 0 0 10px #00ccff;
+    transform: scale(1.1);
+}
+body.cyber-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #00ccff,
+        0 0 12px #0088aa !important;
+}
+
+/* === ПРОФИЛЬ САЙДБАР === */
+body.cyber-glass .profile-sidebar {
+    background: transparent !important;
+}
+
+/* Заголовок */
+body.cyber-glass .profile-sidebar h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #0088aa !important;
+}
+
+/* Кнопка закрытия — прозрачная с белой обводкой */
+body.cyber-glass #closeProfileBtn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass #closeProfileBtn:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.5) !important;
+    text-shadow: 0 0 12px #00ccff !important;
+}
+
+/* Аватар */
+body.cyber-glass #avatarPreview {
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Инпуты — прозрачные с белой обводкой */
+body.cyber-glass #editName,
+body.cyber-glass #editFlat,
+body.cyber-glass #avatarInput {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 10px !important;
+    outline: none !important;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass #editName::placeholder,
+body.cyber-glass #editFlat::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+body.cyber-glass #editName:focus,
+body.cyber-glass #editFlat:focus {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Кнопки Сохранить и Выйти — стеклянные плашки */
+body.cyber-glass #saveProfileBtn,
+body.cyber-glass #logoutBtn {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 6px !important;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+    padding: 12px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass #saveProfileBtn:hover,
+body.cyber-glass #logoutBtn:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 8px 3px rgba(0, 243, 255, 0.7),
+        0 0 15px 5px rgba(0, 243, 255, 0.4) inset !important;
+}
+
+/* Настройки — заголовок */
+body.cyber-glass .settings-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff !important;
+}
+
+body.cyber-glass .close-settings-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
+}
+
+/* Лейблы настроек */
+body.cyber-glass .setting-item label {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+}
+
+/* Селекты — прозрачные с белой обводкой */
+body.cyber-glass #incomingSound,
+body.cyber-glass #outgoingSound,
+body.cyber-glass #replySound,
+body.cyber-glass #themeSelect {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+    cursor: pointer;
+    flex: 1;
+}
+
+body.cyber-glass #incomingSound option,
+body.cyber-glass #outgoingSound option,
+body.cyber-glass #replySound option,
+body.cyber-glass #themeSelect option {
+    background: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+/* Кнопки теста звука — прозрачные с обводкой */
+body.cyber-glass .test-sound-mini {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .test-sound-mini:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.4) !important;
+}
+
+/* Строки с селектами */
+body.cyber-glass .sound-select-row,
+body.cyber-glass .theme-select-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* === КОНТАКТЫ САЙДБАР === */
+body.cyber-glass .contacts-sidebar {
+    background: transparent !important;
+}
+
+/* Заголовок */
+body.cyber-glass .contacts-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #0088aa !important;
+}
+
+body.cyber-glass .close-contacts-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
+    width: 36px;
+    height: 36px;
+}
+
+/* Поиск */
+body.cyber-glass #contactsSearch {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 10px !important;
+}
+
+body.cyber-glass #contactsSearch::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Заголовок списка */
+body.cyber-glass .contacts-list-header {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+}
+
+/* Элементы контактов */
+body.cyber-glass .contact-item {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+body.cyber-glass .contact-name {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff, 0 0 8px #0088aa !important;
+}
+
+body.cyber-glass .contact-flat {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+/* Кнопка удаления */
+body.cyber-glass .remove-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    width: 28px;
+    height: 28px;
+}
+
+body.cyber-glass .remove-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.4) !important;
+}
+
+/* === ФУТЕР С КНОПКАМИ (РАДИО) === */
+body.cyber-glass .contacts-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: center;
+}
+
+body.cyber-glass .footer-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: grayscale(100%) brightness(1.3);
+}
+
+body.cyber-glass .footer-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 12px rgba(0, 243, 255, 0.5),
+        inset 0 0 8px rgba(0, 243, 255, 0.2) !important;
+    transform: scale(1.05);
+}
+
+/* Активная кнопка (если нужен активный стейт) */
+body.cyber-glass .footer-btn.active {
+    filter: grayscale(0%) brightness(1);
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 15px rgba(0, 243, 255, 0.6),
+        inset 0 0 8px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Панель управления */
+body.cyber-glass .control-panel {
+    background: rgba(20, 20, 40, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+/* Контролы внизу */
+body.cyber-glass .contacts-controls {
+    background: transparent !important;
+}
+/* === ФУТЕР С КНОПКАМИ === */
+body.cyber-glass .contacts-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: center;
+    background: transparent !important;
+}
+
+body.cyber-glass .footer-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #0088aa !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: grayscale(100%) brightness(1.5);
+    padding: 0;
+}
+
+body.cyber-glass .footer-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #00ccff,
+        0 0 20px #00aaff,
+        0 0 30px #0088cc !important;
+    transform: scale(1.1);
+}
+
+/* Кнопка Сохранить в панели статуса */
+body.cyber-glass .control-panel button {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .control-panel button:hover {
+    border-color: #00ccff !important;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.4) !important;
+    text-shadow: 0 0 10px #00ccff !important;
+}
+
+/* Селекты в панели */
+body.cyber-glass .control-panel select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+}
+
+body.cyber-glass .control-panel select option {
+    background: #1a1a2e !important;
+}
+/* === БАННЕР ЗАГРУЗКИ СООБЩЕНИЙ === */
+body.cyber-glass .load-more-banner {
+    background: transparent !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    border: none !important;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .load-more-banner:hover {
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 16px #00aaff !important;
+}
+
+body.cyber-glass .load-more-arrow {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    margin-left: 8px;
+}
+
+
+body.cyber-glass .msg-name {
+font-weight: 600;
+letter-spacing: 0.3px;
+}
+/* === ЦИТАТА ОТВЕТА === */
+body.cyber-glass .reply-quote {
+    background: transparent !important;
+    border: 1px dashed #00b6e3 !important;
+    border-left: 3px solid #00b6e3 !important;
+    border-radius: 5px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 8px !important;
+    color: #00b6e3 !important;
+    text-shadow: 0 0 6px #00b6e3 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+body.cyber-glass .reply-quote:hover {
+    border-color: #00d4ff !important;
+    border-left-color: #00d4ff !important;
+    box-shadow: 
+        0 0 10px rgba(0, 182, 227, 0.4),
+        inset 0 0 5px rgba(0, 182, 227, 0.2) !important;
+    text-shadow: 0 0 10px #00b6e3 !important;
+}
+
+/* === ПАНЕЛЬ РЕДАКТИРОВАНИЯ === */
+body.cyber-glass #editPanel {
+    background: transparent !important;
+    border-top: 2px solid rgba(0, 182, 227, 0.3) !important;
+    padding: 12px !important;
+}
+
+/* Заголовок */
+body.cyber-glass #editPanel > div:first-child {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+}
+
+/* Обёртка инпута */
+body.cyber-glass #editPanel > div > div:first-child {
+    background: transparent !important;
+    border: 2px solid rgba(0, 182, 227, 0.5) !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Поле ввода */
+body.cyber-glass #editMessageInput {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+    font-size: 15px !important;
+    width: 100% !important;
+}
+
+body.cyber-glass #editMessageInput::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #00ccff !important;
+}
+
+/* Кнопки — только иконки */
+body.cyber-glass #saveEditBtn,
+body.cyber-glass #deleteMsgBtn,
+body.cyber-glass #cancelEditBtn {
+    background: transparent !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    filter: grayscale(100%) brightness(1.5) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #00ccff !important;
+}
+
+/* Цвета при наведении */
+body.cyber-glass #saveEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 15px #00ff88 !important;
+    transform: scale(1.1) !important;
+}
+
+body.cyber-glass #deleteMsgBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ff4444,
+        0 0 15px #ff6666 !important;
+    transform: scale(1.1) !important;
+}
+
+body.cyber-glass #cancelEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ffffff,
+        0 0 15px #cccccc !important;
+    transform: scale(1.1) !important;
+}
+body.cyber-glass .chat-tab.active::before {
+    content: '';
+    position: absolute;
+
+    background: none;
+
+}
+
+/* Дополнительный эффект "стекла" для активной вкладки */
+body.cyber-glass .chat-tab.active::after {
+    content: '';
+    position: absolute;
+    background: none;
+}
+body.cyber-glass .chat-tab.active
+{
+    border: 2px solid white; 
+}
+
+/* === HEADER ЭЛЕМЕНТЫ === */
+
+/* Стрелка контактов */
+body.cyber-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .contacts-arrow:hover {
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 15px #00aaff !important;
+}
+
+/* Кнопка Назад */
+body.cyber-glass .back-btn {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 6px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .back-btn:hover {
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 10px rgba(0, 243, 255, 0.4),
+        inset 0 0 5px rgba(0, 243, 255, 0.2) !important;
+    text-shadow: 0 0 12px #00ccff !important;
+}
+
+/* Заголовок чата */
+body.cyber-glass .logo,
+body.cyber-glass #chatTitle {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    font-weight: 500;
+}
+
+/* Аватар в хедере */
+body.cyber-glass .chat-avatar {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 
+        0 0 8px rgba(0, 243, 255, 0.3),
+        inset 0 0 5px rgba(0, 243, 255, 0.1) !important;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+body.cyber-glass .chat-avatar:hover {
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 12px rgba(0, 243, 255, 0.5),
+        inset 0 0 8px rgba(0, 243, 255, 0.2) !important;
+}
+
+/* Global Pending */
+body.cyber-glass .global-pending {
+    background: transparent !important;
+}
+
+body.cyber-glass #globalPendingAvatar {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.3) !important;
+}
+
+/* Заголовок чата секция */
+body.cyber-glass .chat-title-section {
+    color: #ffffff !important;
+}
+/* === ИКОНКА ПРОФИЛЯ === */
+body.cyber-glass .profile-icon {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50% !important;
+    box-shadow: 
+        0 0 8px rgba(0, 243, 255, 0.3),
+        inset 0 0 5px rgba(0, 243, 255, 0.1) !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+body.cyber-glass .profile-icon:hover {
+    border-color: #00ccff !important;
+    box-shadow: 
+        0 0 12px rgba(0, 243, 255, 0.5),
+        inset 0 0 8px rgba(0, 243, 255, 0.2) !important;
+}
+
+body.cyber-glass .profile-icon img {
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+/* === ИКОНКИ В ХЕДЕРЕ СООБЩЕНИЯ (ЗАКРЕПИТЬ/ОТВЕТИТЬ) === */
+body.cyber-glass .pin-icon-msg,
+body.cyber-glass .reply-icon {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    filter: grayscale(100%) brightness(1.5);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+    opacity: 0.7;
+}
+
+body.cyber-glass .pin-icon-msg:hover,
+body.cyber-glass .reply-icon:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 10px #00ccff,
+        0 0 15px #00aaff !important;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* === ЗАГРУЗЧИК ЧАТА === */
+body.cyber-glass .chat-loader {
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 12px;
+}
+
+body.cyber-glass .chat-loader span {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #00ccff,
+        0 0 8px #0088aa !important;
+    font-size: 14px;
+}
+
+body.cyber-glass .loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 2px solid #00ccff;
+    border-right: 2px solid #00ccff;
+    border-radius: 50%;
+    animation: cyberSpin 1s linear infinite;
+    box-shadow: 
+        0 0 10px rgba(0, 243, 255, 0.3),
+        inset 0 0 5px rgba(0, 243, 255, 0.1);
+}
+
+@keyframes cyberSpin {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 
+            0 0 10px rgba(0, 243, 255, 0.3),
+            inset 0 0 5px rgba(0, 243, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(0, 243, 255, 0.6),
+            inset 0 0 8px rgba(0, 243, 255, 0.2);
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 
+            0 0 10px rgba(0, 243, 255, 0.3),
+            inset 0 0 5px rgba(0, 243, 255, 0.1);
+    }
+}
+
+/* === ЭФФЕКТ ПИКСЕЛЬНОЙ МАТРИЦЫ ПРИ НАВЕДЕНИИ === */
+body.cyber-glass .bubble {
+    position: relative;
+    overflow: hidden;
+    
+}
+
+body.cyber-glass .bubble::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    background-image: 
+        /* Ряд 1 */
+        radial-gradient(circle at 2px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 2px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 2px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 2 */
+        radial-gradient(circle at 2px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 5px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 5px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 3 */
+        radial-gradient(circle at 2px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 8px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 8px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 4 */
+        radial-gradient(circle at 2px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 11px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 11px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 5 */
+        radial-gradient(circle at 2px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 14px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 14px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 6 */
+        radial-gradient(circle at 2px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 17px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 17px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 7 */
+        radial-gradient(circle at 2px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 20px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 20px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 8 */
+        radial-gradient(circle at 2px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 23px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 23px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 9 */
+        radial-gradient(circle at 2px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 26px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 26px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 10 */
+        radial-gradient(circle at 2px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 29px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 29px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 11 */
+        radial-gradient(circle at 2px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 32px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 32px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 12 */
+        radial-gradient(circle at 2px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 35px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 35px, #00f3ff 0.8px, transparent 1px),
+        /* Ряд 13 */
+        radial-gradient(circle at 2px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 38px, #00f3ff 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 38px, #00f3ff 0.8px, transparent 1px);
+        
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0;
+}
+
+body.cyber-glass .bubble:hover::after {
+    opacity: 1;
+    animation: matrixRun 1.5s steps(4, end) infinite;
+}
+
+@keyframes matrixRun {
+    0% {
+        background-position: 
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0;
+    }
+    /* 12.5% {
+        background-position: 
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0,
+            -10px 0, -10px 0, -10px 0, -10px 0, -10px 0;
+    } */
+    25% {
+        background-position: 
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0;
+    }
+    /* 37.5% {
+        background-position: 
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0,
+            30px 0, 30px 0, 30px 0, 30px 0, 30px 0;
+    } */
+    50% {
+        background-position: 
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0;
+    }
+    /* 62.5% {
+        background-position: 
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0,
+            70px 0, 70px 0, 70px 0, 70px 0, 70px 0;
+    } */
+    75% {
+        background-position: 
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0;
+    }
+    /* 87.5% {
+        background-position: 
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0,
+            110px 0, 110px 0, 110px 0, 110px 0, 110px 0;
+    } */
+    100% {
+        background-position: 
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0;
+    }
+}
+
+/* ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ RUNLINE В ТЕМЕ CYBER-GLASS */
+/* ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ RUNLINE В ТЕМЕ CYBER-GLASS - С СОХРАНЕНИЕМ СТЕКЛА */
+body.cyber-glass .message.msg-runline .bubble {
+    /* Отключаем только анимацию растягивания, но оставляем стекло */
+    animation: none !important;
+    max-width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    line-height: 1.6;
+    
+    /* СОХРАНЯЕМ СТЕКЛЯННЫЙ ЭФФЕКТ */
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.35) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border-radius: 5px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Для СВОИХ сообщений с runline */
+body.cyber-glass .message-self.msg-runline .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(160, 200, 255, 0.5) 0%,
+        rgba(140, 180, 255, 0.35) 20%,
+        rgba(120, 160, 255, 0.15) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+}
+
+/* Отключаем матричный эффект при ховере для runline */
+body.cyber-glass .message.msg-runline .bubble::after {
+    display: none !important;
+}
+
+/* Текст внутри runline - сохраняем анимацию движения */
+body.cyber-glass .message.msg-runline .bubble p {
+    /* Отключаем анимацию появления текста из темы */
+    animation: runline-scroll 8s linear infinite !important;
+    display: inline-block !important;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px rgb(253, 208, 150);
+    font-family: monospace;
+    margin: 0;
+    padding-right: 20px;
+    /* Убираем эффекты появления из темы */
+    opacity: 1 !important;
+    filter: blur(0) !important;
+}
+
+/* Для СВОИХ сообщений - текст тоже светится */
+body.cyber-glass .message-self.msg-runline .bubble p {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px rgb(253, 208, 150);
+}
+
+/* Сама анимация бегущей строки (если ещё не добавлена) */
+@keyframes runline-scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===== ИНДИКАТОР EXTEND - ПУЛЬСИРУЮЩИЕ ТОЧКИ ===== */
+/* 1. Отключаем матричный эффект для extend-сообщений */
+body.cyber-glass .message.msg-extend .bubble:hover::after {
+    /* Полный сброс матрицы */
+    display: block !important;
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-image: 
+        radial-gradient(circle at 0px 0px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 4px 0px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 8px 0px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 0px 4px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 4px 4px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 8px 4px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 0px 8px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 4px 8px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #0af 1px, transparent 1px) !important;
+    background-size: 10px 10px !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    background-position: 0 0 !important;
+    opacity: 1 !important;
+    animation: pulseExtend 1.5s ease-in-out infinite !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 2. Обычное состояние — тоже анимация */
+body.cyber-glass .message.msg-extend .bubble::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-image: 
+        radial-gradient(circle at 0px 0px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 4px 0px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 8px 0px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 0px 4px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 4px 4px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 8px 4px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 0px 8px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 4px 8px, #0af 1px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #0af 1px, transparent 1px) !important;
+    background-size: 10px 10px !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    background-position: 0 0 !important;
+    /* opacity: 1 !important; */
+    animation: pulseExtend 1.5s ease-in-out infinite !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 3. Ключевые кадры пульсации */
+@keyframes pulseExtend {
+    0% { opacity: 0.1; filter: drop-shadow(0 0 1px #0af); }
+    50% { opacity: 1; filter: drop-shadow(0 0 4px #0af); }
+    100% { opacity: 0.1; filter: drop-shadow(0 0 1px #0af); }
+}
+
+
+    /* === ALIEN-GLASS === */
+/* СТЕКЛЯННЫЕ ГРАДИЕНТЫ + ИННОПЛАНЕТНОЕ ЖЁЛТО-ЗЕЛЁНОЕ СВЕЧЕНИЕ === */
+
+body.alien-glass {
+--teal-top: rgba(255, 255, 255, 0.8);
+--teal-mid: rgba(255, 255, 255, 0.6);
+--gray-mid: rgba(255, 255, 255, 0.4);
+--gray-bottom: rgba(255, 255, 255, 0.2);
+--glass-bg: rgba(255, 255, 255, 0.1);
+--shadow-color: rgba(0, 0, 0, 0.3);
+
+background-color: #211f1f;
+/* background-color: #212121; */
+background-image: radial-gradient(#2e5c00 1px, transparent 1px);
+background-size: 25px 25px;
+}
+
+body.alien-glass ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body.alien-glass ::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body.alien-glass ::-webkit-scrollbar-thumb {
+    background: rgba(152, 252, 3, 0.3);
+    border-radius: 5px;
+    border: 1px solid rgba(152, 252, 3, 0.8);
+}
+
+body.alien-glass ::-webkit-scrollbar-thumb:hover {
+    background: rgba(152, 252, 3, 0.5);
+    border: 1px solid #98fc03;
+}
+
+/* ВСЕ СТЕКЛЯННЫЕ ГРАДИЕНТЫ ОСТАЮТСЯ */
+body.alien-glass .header,
+body.alien-glass .contacts-header,
+body.alien-glass .contacts-sidebar,
+body.alien-glass .profile-sidebar,
+body.alien-glass .tabs,
+body.alien-glass .contacts-controls {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+) !important;
+backdrop-filter: blur(1px);
+/* outline: 1px solid greenyellow; */
+
+}
+
+body.alien-glass .contacts-sidebar
+{
+    border-right: 2px solid rgba(150, 250, 0, 0.7);
+}
+
+body.alien-glass .header
+{
+    border-radius: 100px;
+    margin-bottom: 0px;
+    outline: 2px solid rgba(170, 255, 79, 0.5);
+    background-color: rgba(170, 255, 79, 0.3);
+}
+
+body.alien-glass .app
+{
+    background: transparent;
+/* background: red; */
+padding: 3px;
+
+border-radius: 0 !important;
+width: 600px;
+}
+body.alien-glass .content
+{
+background: transparent;
+}
+body.alien-glass .chat
+{
+background: transparent;
+outline: none;
+border: none;
+}
+
+/* КОНТЕЙНЕР ВСЕХ СООБЩЕНИЙ */
+body.alien-glass #chatMessages {
+    background: linear-gradient(
+        170deg,
+        rgba(152, 252, 0, 0.11) 0%,
+        rgba(152, 252, 0, 0.05) 20%,
+        rgba(152, 252, 0, 0.01) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 70%,
+        rgba(232, 114, 151, 0.1) 100%
+    ) !important;
+    border-top: 2px solid rgba(170, 255, 79, 0.5); 
+    border-radius: 20px 20px 0 0;
+    outline: none;
+    /* outline: 1px solid yellow; */
+    /* box-shadow: inset 0 0 10px rgba(255, 255, 0, 0.2), 0 0 5px yellow !important; */
+}
+/* ЗАКРЕПЛЁННОЕ СООБЩЕНИЕ */
+body.alien-glass #pinnedMessage {
+    background: transparent;
+    backdrop-filter: blur(2px);
+    background-color: transparent;
+    /* background: rgba(152, 252, 3, 0.15) !important; */
+    outline: 1px solid greenyellow;
+    /* border-radius: 2px; */
+    border: none;
+    padding: 8px 12px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* Иконка булавки */
+body.alien-glass #pinnedMessage .pin-icon {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    font-size: 16px;
+}
+/* Текст закреплённого сообщения */
+body.alien-glass #pinnedMessage #pinnedText {
+    color: #91ff00 !important;
+    text-shadow: 0 0 8px #6aaf00 !important;
+    flex: 1;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Кнопка открепления */
+body.alien-glass #pinnedMessage .unpin-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    cursor: pointer;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #pinnedMessage .unpin-btn:hover {
+    color: #ff4444 !important;
+    text-shadow: 0 0 8px #ff4444 !important;
+    transform: scale(1.1);
+}
+
+        /* rgba(157, 252, 3, 0.4) 0%,
+        rgba(157, 252, 3, 0.2) 20%,
+        rgba(157, 252, 3, 0.1) 50%, 
+        rgba(252, 3, 128, 0.0) 50%,
+        rgba(252, 3, 128, 0.1) 80%,
+        rgba(252, 3, 128, 0.15) 100%
+        */
+
+        /* СВОИ СООБЩЕНИЯ */
+
+body.alien-glass .message-self .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.2) 49%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(122, 252, 3, 0.03) 50%,
+        rgba(122, 252, 3, 0.1) 70%,
+        rgba(122, 252, 3, 0.2) 100%
+    ) !important;
+    text-shadow: 
+    0 0 6px rgba(253, 255, 255, 0.5);
+    outline: 2px solid rgba(170, 255, 79, 0.6);
+    border-radius: 20px;
+    box-shadow: 6px 6px 5px rgba(150, 255, 0, 0.15) !important;
+    /* box-shadow: 0 0 5px rgba(152, 252, 3, 0.3) !important; */
+}
+body.alien-glass .message-self .bubble:hover {
+    outline: 2px solid #aaff4f;
+    transition: 0.5s;
+}
+/* ЧУЖИЕ СООБЩЕНИЯ */
+body.alien-glass .message-other .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    outline-offset: none;
+    border: none; border-radius: 20px;
+    color: #98ff4f !important;
+    outline: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ========== ТЕКСТ — СВЕТЯЩИЙСЯ ЖЁЛТО-ЗЕЛЁНЫЙ НЕОН ========== */
+body.alien-glass .contact-name,
+body.alien-glass .bubble,
+body.alien-glass .tab-btn,
+body.alien-glass .setting-item label {
+color: #ffffff !important;
+text-shadow: 
+    0 0 4px rgba(153, 255, 0, 0.5),
+    0 0 8px rgba(153, 255, 0, 0.3);
+
+
+}
+
+/* ИМЯ В СООБЩЕНИЯХ — ТОЖЕ АЛЬIEN-СВЕЧЕНИЕ */
+body.alien-glass .message-self .msg-name
+{
+    background-color: #98ff4f !important;
+/* background-color: #bbff00; */
+text-shadow: 
+0 0 6px rgba(174, 255, 0, 0.5);
+    /* 0 0 6px #66ff00; */
+}
+body.alien-glass .message-other .msg-name
+{
+background-color: white;
+text-shadow: 
+    0 0 8px rgba(102, 255, 0, 0.1);
+}
+
+/* КНОПКИ СТЕКЛЯННЫЕ + СВЕЧЕНИЕ ПРИ НАВЕДЕНИИ */
+body.alien-glass .send-btn,
+body.alien-glass #saveProfileBtn,
+body.alien-glass #logoutBtn,
+body.alien-glass .close-contacts-btn {
+background: linear-gradient(
+    170deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(0,0,0,0.0) 50%,
+    rgba(0,0,0,0.0) 100%
+);
+border: none;
+outline: 2px solid rgba(170, 255, 79, 0.6);
+color: white;
+border-radius: 20px !important;
+text-shadow: 0 0 4px #66ff00;
+}
+
+body.alien-glass .send-btn
+{
+    outline: none;
+    
+}
+
+body.alien-glass .contact-item:hover {
+box-shadow: 
+    0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 5px 2px rgba(152, 252, 3, 0.75),
+    0 0 10px 2px rgba(152, 252, 3, 0.5) inset !important;
+}
+
+/* ПОЛЕ ВВОДА — СТЕКЛО */
+body.alien-glass .message-input-wrapper {
+background: rgba(255, 255, 255, 0.15);
+border: none;
+box-shadow: none;
+
+}
+
+body.alien-glass .message-input-wrapper input {
+color: white;
+text-shadow: 0 0 3px #66ff00;
+}
+
+/* Анимация растягивания плашки */
+/* @keyframes bubbleStretch {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+} */
+
+/* Анимация текста */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Плашка */
+body.alien-glass .bubble {
+    animation: bubbleStretchAlien 1s ease-out forwards;
+    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
+    height: auto;
+
+}
+
+/* === CHAIN THREAD (ЦЕПОЧКА СООБЩЕНИЙ) === */
+body.alien-glass .chain-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 1px;
+    transition-delay: 1.5s;
+    /* background: rgba(152, 252, 3, 0.05); */
+    /* border-radius: 12px; */
+    /* margin: 4px 0; */
+}
+
+body.alien-glass .chain-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    padding: 6px 8px;
+    /* border-radius: 8px; */
+    transition: all 0.2s ease;
+}
+
+/* === ТЕКУЩЕЕ СООБЩЕНИЕ (CURRENT) === */
+body.alien-glass .chain-current {
+    font-weight: 500;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    border-bottom: 1px solid rgba(152, 252, 3, 0.5);
+    /* border-radius: 8px; */
+    /* background: rgba(152, 252, 3, 0.05); */
+    padding: 4px 8px;
+}
+
+/* === ПРИВЯЗАННЫЕ СООБЩЕНИЯ (CHAIN) === */
+body.alien-glass .chain-dimmed {
+    opacity: 0.7;
+    color: rgba(152, 252, 3, 0.7) !important;
+    text-shadow: 0 0 3px rgba(152, 252, 3, 0.5);
+    display: none !important;
+   
+
+}
+body.alien-glass .bubble .chain-thread:hover .chain-dimmed {
+    display: block !important;
+    transition-delay: 0.5s;
+}
+
+/* === БУЛЛЕТ (ТОЧКА) === */
+body.alien-glass .chain-bullet {
+    font-size: 10px;
+    flex-shrink: 0;
+    color: #98fc03 !important;
+    text-shadow: 0 0 3px #98fc03;
+}
+
+/* === ХОВЕР ДЛЯ ЭЛЕМЕНТОВ === */
+body.alien-glass .chain-item:hover {
+    background: rgba(152, 252, 3, 0.08);
+    outline: 1px solid rgba(152, 252, 3, 0.3);
+    border-radius: 8px;
+}
+
+body.alien-glass .chain-id {
+    font-size: 10px;
+    color: #aab;
+    margin-top: 6px;
+    text-align: right;
+}
+
+/* Текст внутри */
+body.alien-glass .bubble p,
+body.alien-glass .bubble a,
+body.alien-glass .bubble span,
+body.alien-glass .bubble code,
+body.alien-glass .bubble pre,
+body.alien-glass .bubble h1,
+body.alien-glass .bubble h2,
+body.alien-glass .bubble h3,
+body.alien-glass .bubble h4,
+body.alien-glass .bubble ul,
+body.alien-glass .bubble ol,
+body.alien-glass .bubble li,
+body.alien-glass .bubble blockquote {
+    animation: textReveal 0.9s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+/* Для своих */
+body.alien-glass .message-self .bubble {
+    
+    height: auto;
+}
+
+body.alien-glass .message-self .bubble p,
+body.alien-glass .message-self .bubble a,
+body.alien-glass .message-self .bubble span,
+body.alien-glass .message-self .bubble code,
+body.alien-glass .message-self .bubble pre,
+body.alien-glass .message-self .bubble h1,
+body.alien-glass .message-self .bubble h2,
+body.alien-glass .message-self .bubble h3,
+body.alien-glass .message-self .bubble h4,
+body.alien-glass .message-self .bubble ul,
+body.alien-glass .message-self .bubble ol,
+body.alien-glass .message-self .bubble li,
+body.alien-glass .message-self .bubble blockquote {
+    animation: textReveal 0.4s ease-out 0.5s forwards;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+@keyframes bubbleStretchSelf {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(100, 200, 255, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+}
+/* @keyframes bubbleStretchSelf {
+    0% {
+        max-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 40px;
+        box-shadow: 
+            0 0 0 2px rgba(255, 255, 255, 0.8),
+            0 0 20px 5px rgba(152, 252, 3, 0.9),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: auto;
+        box-shadow: 
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+} */
+
+/* Контейнер табов — прозрачный фон */
+body.alien-glass .tabs {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    gap: 4px;
+    padding-bottom: 8px;
+    outline: none;
+}
+
+/* Все кнопки табов — стеклянные как bubble */
+body.alien-glass .tab-btn,
+body.alien-glass .chat-tab {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.2) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    outline: 1px solid rgba(170, 255, 79, 0.6);
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    border: none;
+}
+
+/* Активный таб — чуть ярче */
+body.alien-glass .tab-btn.active,
+body.alien-glass .chat-tab.active {
+background: black;
+background-color: black;
+    border: none !important;
+    outline: 2px solid #aaff4f;
+
+}
+
+/* Ховер на табах */
+body.alien-glass .tab-btn:hover,
+body.alien-glass .chat-tab:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 5px 2px rgba(152, 252, 3, 0.75),
+        0 0 10px 2px rgba(152, 252, 3, 0.5) inset !important;
+    background-color: rgba(100, 255, 0, 0.5);
+}
+
+/* Имя в табе */
+body.alien-glass .chat-tab-name {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #66ff00,
+        0 0 8px #66ff00;
+    cursor: pointer;
+}
+
+/* Кнопка закрытия таба */
+body.alien-glass .close-chat-tab {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #66ff00;
+    margin-left: 8px;
+    opacity: 0.8;
+}
+
+body.alien-glass .close-chat-tab:hover {
+    opacity: 1;
+    text-shadow: 
+        0 0 8px #66ff00,
+        0 0 12px #66ff00;
+}
+/* === ИНПУТ === */
+body.alien-glass .chat-input-area {
+    background: rgba(152, 252, 3, 0.1) !important;
+    border: 1px solid rgba(152, 252, 3, 0.6) !important;
+    box-shadow: 0 0 5px rgba(152, 252, 3, 0.2) !important;
+    border-radius: 25px !important;
+}
+
+body.alien-glass .message-input-wrapper {
+    background-color: transparent;
+    background: transparent;
+    backdrop-filter: blur(1px);
+    border: 1px solid greenyellow !important;
+    border-radius: 25px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 0 5px rgba(152, 252, 3, 0.2) !important;
+}
+
+body.alien-glass #messageInput,
+body.alien-glass .message-input-wrapper input,
+body.alien-glass .message-input-wrapper textarea {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #66ff00 !important;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+    
+}
+
+body.alien-glass #messageInput::placeholder,
+body.alien-glass .message-input-wrapper input::placeholder,
+body.alien-glass .message-input-wrapper textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+body.alien-glass .message-input-wrapper:focus-within {
+    border-color: rgba(152, 252, 3, 0.5) !important;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(152, 252, 3, 0.3),
+        0 0 0 1px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* === КНОПКИ — ТОЛЬКО ИКОНКИ, ФОН ПРОЗРАЧНЫЙ === */
+body.alien-glass .emoji-btn,
+body.alien-glass .attach-btn,
+body.alien-glass .send-btn {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #66ff00,
+        0 0 12px #3d9900 !important;
+    filter: grayscale(100%) brightness(1.5);
+    transition: all 0.2s ease;
+    border-radius: 2px !important;
+    padding: 0;
+}
+
+body.alien-glass .send-btn {
+    font-size: 28px;
+    font-weight: 300;
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #66ff00,
+        0 0 20px #66ff00,
+        0 0 30px #66ff00 !important;
+}
+
+/* Ховер — свечение усиливается, цвет возвращается */
+body.alien-glass .emoji-btn:hover,
+body.alien-glass .attach-btn:hover,
+body.alien-glass .send-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 12px #66ff00,
+        0 0 20px #66ff00,
+        0 0 30px #66ff00 !important;
+    transform: scale(1.1);
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* === ЭМОДЗИ ПИКЕР === */
+body.alien-glass .emoji-picker {
+    background: rgba(20, 20, 40, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+    border: 1px solid rgba(152, 252, 3, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(152, 252, 3, 0.2) !important;
+    padding: 8px;
+}
+
+body.alien-glass .emoji-item {
+    filter: grayscale(100%) brightness(1.5) contrast(1.2);
+    font-size: 20px;
+    padding: 6px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 2px;
+    color: #ffffff;
+}
+
+body.alien-glass .emoji-item:hover {
+    filter: grayscale(0%) brightness(1);
+    background: rgba(152, 252, 3, 0.15);
+    transform: scale(1.2);
+    text-shadow: 0 0 10px #66ff00;
+}
+
+/* === ПРЕВЬЮ ОТВЕТА === */
+body.alien-glass .reply-preview {
+    background: rgba(20, 20, 40, 0.6) !important;
+    backdrop-filter: blur(8px);
+    border-radius: 2px;
+    border-left: 3px solid #66ff00;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+body.alien-glass .reply-preview-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #66ff00;
+}
+
+body.alien-glass .reply-preview-close {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #66ff00;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+body.alien-glass .reply-preview-close:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px #ff4444;
+}
+
+/* === КНОПКИ ПРЕВЬЮ ИЗОБРАЖЕНИЯ === */
+body.alien-glass .send-image-btn,
+body.alien-glass .cancel-image-btn {
+    background: transparent !important;
+    border: 1px solid rgba(152, 252, 3, 0.3) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 6px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none !important;
+}
+
+body.alien-glass .send-image-btn:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 12px rgba(152, 252, 3, 0.4) !important;
+    background: rgba(152, 252, 3, 0.1) !important;
+}
+
+body.alien-glass .cancel-image-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 12px rgba(255, 68, 68, 0.4) !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+}
+
+/* === РЕАКЦИИ ПОД СООБЩЕНИЯМИ === */
+body.alien-glass .react-btn {
+    filter: grayscale(100%) brightness(1.5);
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03;
+    font-size: 16px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+body.alien-glass .react-btn:hover,
+body.alien-glass .react-btn.active {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 0 0 10px #98fc03;
+    transform: scale(1.1);
+}
+body.alien-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 8px #98fc03,
+        0 0 12px #6aaf00 !important;
+}
+
+/* === ПРОФИЛЬ САЙДБАР === */
+body.alien-glass .profile-sidebar {
+    background: transparent !important;
+    border-left: 2px solid rgba(150, 255, 0, 0.8) ;
+}
+
+/* Заголовок */
+body.alien-glass .profile-sidebar h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #98fc03, 0 0 12px #6aaf00 !important;
+}
+
+/* Кнопка закрытия — прозрачная с белой обводкой */
+body.alien-glass #closeProfileBtn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: none;
+    border-radius: 25px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #closeProfileBtn:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 12px rgba(152, 252, 3, 0.5) !important;
+    text-shadow: 0 0 12px #98fc03 !important;
+}
+
+/* Аватар */
+body.alien-glass #avatarPreview {
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 15px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Инпуты — прозрачные с белой обводкой */
+body.alien-glass #editName,
+body.alien-glass #editFlat,
+body.alien-glass #avatarInput {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 10px !important;
+    outline: none !important;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #editName::placeholder,
+body.alien-glass #editFlat::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+body.alien-glass #editName:focus,
+body.alien-glass #editFlat:focus {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 10px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Кнопки Сохранить и Выйти — стеклянные плашки */
+body.alien-glass #saveProfileBtn,
+body.alien-glass #logoutBtn {
+    backdrop-filter: blur(1px);
+    border-radius: 25px !important;
+    outline: 2px solid rgba(150, 250, 0, 0.6);
+    border: none;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    padding: 12px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass #saveProfileBtn:hover,
+body.alien-glass #logoutBtn:hover {
+    box-shadow: 
+        0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 8px 3px rgba(152, 252, 3, 0.7),
+        0 0 15px 5px rgba(152, 252, 3, 0.4) inset !important;
+}
+
+/* Настройки — заголовок */
+body.alien-glass .settings-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #98fc03 !important;
+}
+
+body.alien-glass .close-settings-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 2px !important;
+}
+
+/* Лейблы настроек */
+body.alien-glass .setting-item label {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+}
+
+/* Селекты — прозрачные с белой обводкой */
+body.alien-glass #incomingSound,
+body.alien-glass #outgoingSound,
+body.alien-glass #replySound,
+body.alien-glass #themeSelect {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+    cursor: pointer;
+    flex: 1;
+}
+
+body.alien-glass #incomingSound option,
+body.alien-glass #outgoingSound option,
+body.alien-glass #replySound option,
+body.alien-glass #themeSelect option {
+    background: #0a0a1a !important;
+    color: #ffffff !important;
+}
+
+/* Кнопки теста звука — прозрачные с обводкой */
+body.alien-glass .test-sound-mini {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .test-sound-mini:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 10px rgba(152, 252, 3, 0.4) !important;
+}
+
+/* Строки с селектами */
+body.alien-glass .sound-select-row,
+body.alien-glass .theme-select-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* === КОНТАКТЫ САЙДБАР === */
+body.alien-glass .contacts-sidebar {
+    background: transparent !important;
+}
+
+/* Заголовок */
+body.alien-glass .contacts-header h3 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px #98fc03, 0 0 12px #6aaf00 !important;
+}
+
+body.alien-glass .close-contacts-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: none !important; outline: none;
+    border-radius: 2px !important;
+    width: 36px;
+    height: 36px;
+}
+
+/* Поиск */
+body.alien-glass #contactsSearch {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(100, 255, 0, 0.6) !important;
+    border-radius: 25px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 10px !important;
+}
+
+body.alien-glass .contacts-search
+{
+    border: none;
+}
+
+body.alien-glass .search-results 
+{
+    border-bottom: none;
+}
+
+body.alien-glass #contactsSearch::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Заголовок списка */
+body.alien-glass .contacts-list-header {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+    border: none;
+}
+
+/* Элементы контактов */
+body.alien-glass .contact-item {
+    background: linear-gradient(
+        170deg,
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.2) 20%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.0) 50%,
+        rgba(0,0,0,0.0) 100%
+    ) !important;
+    backdrop-filter: blur(1px);
+    border-radius: 35px; margin: 5px;
+    border: none;
+    outline: 2px solid rgba(150, 250, 0, 0.6);
+}
+
+body.alien-glass .contact-item img {
+
+    outline: 2px solid rgba(150, 250, 0, 0.9);
+}
+
+body.alien-glass .contact-name {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03, 0 0 8px #6aaf00 !important;
+}
+
+body.alien-glass .contact-flat {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+/* Кнопка удаления */
+body.alien-glass .remove-btn {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    background: transparent !important;
+    border: none;
+    border-radius: 100% !important;
+    width: 28px;
+    height: 28px;
+}
+
+body.alien-glass .remove-btn:hover {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.9) !important;
+}
+
+/* Активная кнопка (если нужен активный стейт) */
+body.alien-glass .footer-btn.active {
+    filter: grayscale(0%) brightness(1);
+    border-color: #98fc03 !important;
+    box-shadow: 
+        0 0 15px rgba(152, 252, 3, 0.6),
+        inset 0 0 8px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Панель управления */
+body.alien-glass .control-panel {
+
+    border-radius: 2px;
+    border: 1px solid rgba(152, 252, 3, 0.3);
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+/* Контролы внизу */
+body.alien-glass .contacts-controls {
+    background: transparent !important;
+}
+/* === ФУТЕР С КНОПКАМИ === */
+body.alien-glass .contacts-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: center;
+    background: transparent !important;
+    border: none; outline: 2px solid rgba(150, 250, 0, 0.7);
+    border-radius: 100px;
+    margin: 10px;
+}
+
+body.alien-glass .footer-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: grayscale(100%) brightness(1.5);
+    padding: 0;
+}
+
+body.alien-glass .footer-btn:hover {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.1);
+    text-shadow: none;
+}
+body.alien-glass .control-panel 
+{
+    color: white !important;
+    background: transparent;
+    background-color: transparent;
+}
+body.alien-glass .status-option
+{
+    cursor: pointer; padding: 10px; width: auto; border-radius: 25px; 
+}
+body.alien-glass .status-option:hover 
+{
+    outline: 2px solid rgba(150, 255, 0, 0.8);
+    background-color: rgba(150, 255, 0, 0.1);
+}
+
+body.alien-glass .privacy-item 
+{
+    border-bottom: 1px solid rgba(150, 255, 0, 0.5);
+    margin-bottom: 5px;
+}
+body.alien-glass .control-panel label 
+{
+    padding: 5px;
+}
+
+/* Кнопка Сохранить в панели статуса */
+body.alien-glass .control-panel button {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .control-panel button:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 0 0 12px rgba(152, 252, 3, 0.4) !important;
+    text-shadow: 0 0 10px #98fc03 !important;
+}
+
+/* Селекты в панели */
+body.alien-glass .control-panel select {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 2px !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+}
+
+body.alien-glass .control-panel select option {
+    background: #0a0a1a !important;
+}
+body.alien-glass .radio-group input[type="radio"] {
+    accent-color: #98fc03;
+}
+
+/* Альтернативный вариант через filter (если accent-color не работает) */
+body.alien-glass .radio-group input[type="radio"] {
+    color: greenyellow;
+    /* filter: hue-rotate(180deg) brightness(1.2); */
+}
+body.alien-glass .control-panel .save-privacy-btn 
+{
+    border-radius: 25px !important; outline: 2px solid greenyellow;
+}
+
+/* === БАННЕР ЗАГРУЗКИ СООБЩЕНИЙ === */
+body.alien-glass .load-more-banner {
+    background: transparent !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    border: none !important;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .load-more-banner:hover {
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 16px #b3ff33 !important;
+}
+
+body.alien-glass .load-more-arrow {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    margin-left: 8px;
+}
+
+
+body.alien-glass .msg-name {
+font-weight: 600;
+letter-spacing: 0.3px;
+}
+/* === ЦИТАТА ОТВЕТА === */
+body.alien-glass .reply-quote {
+    background: transparent !important;
+    border: 1px dashed #98fc03 !important;
+    border-left: 3px solid #98fc03 !important;
+    border-radius: 2px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 8px !important;
+    color: #98fc03 !important;
+    text-shadow: 0 0 6px #98fc03 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+body.alien-glass .reply-quote:hover {
+    border-color: #b3ff33 !important;
+    border-left-color: #b3ff33 !important;
+    box-shadow: 
+        0 0 10px rgba(152, 252, 3, 0.4),
+        inset 0 0 5px rgba(152, 252, 3, 0.2) !important;
+    text-shadow: 0 0 10px #98fc03 !important;
+}
+
+/* === ПАНЕЛЬ РЕДАКТИРОВАНИЯ === */
+body.alien-glass #editPanel {
+    background: transparent !important;
+    border-top: 2px solid rgba(152, 252, 3, 0.3) !important;
+    padding: 12px !important;
+}
+
+/* Заголовок */
+body.alien-glass #editPanel > div:first-child {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+}
+
+/* Обёртка инпута */
+body.alien-glass #editPanel > div > div:first-child {
+    background: transparent !important;
+    border: 2px solid rgba(152, 252, 3, 0.5) !important;
+    border-radius: 2px !important;
+    padding: 8px 16px !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Поле ввода */
+body.alien-glass #editMessageInput {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+    font-size: 15px !important;
+    width: 100% !important;
+}
+
+body.alien-glass #editMessageInput::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 0 3px #98fc03 !important;
+}
+
+/* Кнопки — только иконки */
+body.alien-glass #saveEditBtn,
+body.alien-glass #deleteMsgBtn,
+body.alien-glass #cancelEditBtn {
+    background: transparent !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 2px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    filter: grayscale(100%) brightness(1.5) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px #98fc03 !important;
+}
+
+/* Цвета при наведении */
+body.alien-glass #saveEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 15px #b3ff33 !important;
+    transform: scale(1.1) !important;
+}
+
+body.alien-glass #deleteMsgBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ff4444,
+        0 0 15px #ff6666 !important;
+    transform: scale(1.1) !important;
+}
+
+body.alien-glass #cancelEditBtn:hover {
+    filter: grayscale(0%) brightness(1) !important;
+    text-shadow: 
+        0 0 10px #ffffff,
+        0 0 15px #cccccc !important;
+    transform: scale(1.1) !important;
+}
+body.alien-glass .chat-tab.active::before {
+    content: '';
+    position: absolute;
+
+    background: none;
+
+}
+
+/* Дополнительный эффект "стекла" для активной вкладки */
+body.alien-glass .chat-tab.active::after {
+    content: '';
+    position: absolute;
+    background: none;
+}
+body.alien-glass .chat-tab.active
+{
+    border: 2px solid white; 
+}
+
+/* === HEADER ЭЛЕМЕНТЫ === */
+
+/* Стрелка контактов */
+body.alien-glass .contacts-arrow {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .contacts-arrow:hover {
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 15px #b3ff33 !important;
+}
+
+/* Кнопка Назад */
+body.alien-glass .back-btn {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 2px !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .back-btn:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 
+        0 0 10px rgba(152, 252, 3, 0.4),
+        inset 0 0 5px rgba(152, 252, 3, 0.2) !important;
+    text-shadow: 0 0 12px #98fc03 !important;
+}
+
+/* Заголовок чата */
+body.alien-glass .logo,
+body.alien-glass #chatTitle {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    font-weight: 500;
+}
+
+/* Аватар в хедере */
+body.alien-glass .chat-avatar {
+    outline: 2px solid rgba(155, 255, 0, 0.7) !important;
+    border: none;
+    box-shadow: 0 0 10px rgba(155, 255, 0, 0.7) !important;
+    border-radius: 50% !important;
+    transition: all 0.2s ease;
+}
+
+body.alien-glass .chat-avatar:hover {
+    border-color: #98fc03 !important;
+    box-shadow: 
+        0 0 12px rgba(152, 252, 3, 0.5),
+        inset 0 0 8px rgba(152, 252, 3, 0.2) !important;
+}
+
+/* Global Pending */
+body.alien-glass .global-pending {
+    background: transparent !important;
+}
+
+body.alien-glass #globalPendingAvatar {
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 8px rgba(152, 252, 3, 0.3) !important;
+}
+
+/* Заголовок чата секция */
+body.alien-glass .chat-title-section {
+    color: #ffffff !important;
+}
+/* === ИКОНКА ПРОФИЛЯ === */
+body.alien-glass .profile-icon {
+    border: 2px solid rgba(150, 255, 0, 0.8) !important;
+    border-radius: 50% !important;
+    box-shadow: 
+        0 0 8px rgba(152, 252, 3, 0.3),
+        inset 0 0 5px rgba(152, 252, 3, 0.1) !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+body.alien-glass .profile-icon:hover {
+    box-shadow: 
+        0 0 12px rgba(152, 252, 3, 0.5),
+        inset 0 0 8px rgba(152, 252, 3, 0.2) !important;
+}
+
+body.alien-glass .profile-icon img {
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+/* === ИКОНКИ В ХЕДЕРЕ СООБЩЕНИЯ (ЗАКРЕПИТЬ/ОТВЕТИТЬ) === */
+body.alien-glass .pin-icon-msg,
+body.alien-glass .reply-icon {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    filter: grayscale(100%) brightness(1.5);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+    opacity: 0.7;
+}
+
+body.alien-glass .pin-icon-msg:hover,
+body.alien-glass .reply-icon:hover {
+    filter: grayscale(0%) brightness(1);
+    text-shadow: 
+        0 0 10px #98fc03,
+        0 0 15px #b3ff33 !important;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+body.alien-glass #imagePreview 
+{
+    background: transparent;
+    background-color: transparent;
+    backdrop-filter: blur(1px);
+}
+
+/* === ЗАГРУЗЧИК ЧАТА === */
+body.alien-glass .chat-loader {
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 12px;
+}
+
+body.alien-glass .chat-loader span {
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 5px #98fc03,
+        0 0 8px #6aaf00 !important;
+    font-size: 14px;
+}
+
+body.alien-glass .loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top: 2px solid #98fc03;
+    border-right: 2px solid #98fc03;
+    border-radius: 50%;
+    animation: cyberSpin 1s linear infinite;
+    box-shadow: 
+        0 0 10px rgba(152, 252, 3, 0.3),
+        inset 0 0 5px rgba(152, 252, 3, 0.1);
+}
+
+@keyframes cyberSpin {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 
+            0 0 10px rgba(152, 252, 3, 0.3),
+            inset 0 0 5px rgba(152, 252, 3, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(152, 252, 3, 0.6),
+            inset 0 0 8px rgba(152, 252, 3, 0.2);
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 
+            0 0 10px rgba(152, 252, 3, 0.3),
+            inset 0 0 5px rgba(152, 252, 3, 0.1);
+    }
+}
+
+/* === ЭФФЕКТ ПИКСЕЛЬНОЙ МАТРИЦЫ ПРИ НАВЕДЕНИИ === */
+body.alien-glass .bubble {
+    position: relative;
+    overflow: hidden;
+    
+}
+
+body.alien-glass .bubble::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+    background-image: 
+        /* Ряд 1 */
+        radial-gradient(circle at 2px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 2px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 2px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 2 */
+        radial-gradient(circle at 2px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 5px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 5px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 3 */
+        radial-gradient(circle at 2px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 8px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 8px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 4 */
+        radial-gradient(circle at 2px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 11px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 11px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 5 */
+        radial-gradient(circle at 2px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 14px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 14px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 6 */
+        radial-gradient(circle at 2px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 17px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 17px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 7 */
+        radial-gradient(circle at 2px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 20px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 20px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 8 */
+        radial-gradient(circle at 2px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 23px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 23px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 9 */
+        radial-gradient(circle at 2px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 26px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 26px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 10 */
+        radial-gradient(circle at 2px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 29px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 29px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 11 */
+        radial-gradient(circle at 2px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 32px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 32px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 12 */
+        radial-gradient(circle at 2px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 35px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 35px, #98fc03 0.8px, transparent 1px),
+        /* Ряд 13 */
+        radial-gradient(circle at 2px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 5px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 8px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 11px 38px, #98fc03 0.8px, transparent 1px),
+        radial-gradient(circle at 14px 38px, #98fc03 0.8px, transparent 1px);
+        
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0,
+        0px 0, 0px 0, 0px 0, 0px 0, 0px 0;
+}
+
+body.alien-glass .bubble:hover::after {
+    opacity: 1;
+    animation: matrixRun 1.5s steps(4, end) infinite;
+}
+
+@keyframes matrixRun {
+    0% {
+        background-position: 
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0,
+            -30px 0, -30px 0, -30px 0, -30px 0, -30px 0;
+    }
+    25% {
+        background-position: 
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0,
+            10px 0, 10px 0, 10px 0, 10px 0, 10px 0;
+    }
+    50% {
+        background-position: 
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0,
+            50px 0, 50px 0, 50px 0, 50px 0, 50px 0;
+    }
+    75% {
+        background-position: 
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0,
+            90px 0, 90px 0, 90px 0, 90px 0, 90px 0;
+    }
+    100% {
+        background-position: 
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0,
+            130px 0, 130px 0, 130px 0, 130px 0, 130px 0;
+    }
+}
+
+/* ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ RUNLINE В ТЕМЕ ALIEN-GLASS */
+/* ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ RUNLINE В ТЕМЕ ALIEN-GLASS - С СОХРАНЕНИЕМ СТЕКЛА */
+body.alien-glass .message.msg-runline .bubble {
+    /* Отключаем только анимацию растягивания, но оставляем стекло */
+    animation: none !important;
+    max-width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    line-height: 1.6;
+    
+    /* СОХРАНЯЕМ СТЕКЛЯННЫЙ ЭФФЕКТ */
+    background: linear-gradient(
+        170deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.35) 20%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border-radius: 2px;
+    border: 1px inset rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Для СВОИХ сообщений с runline */
+body.alien-glass .message-self.msg-runline .bubble {
+    background: linear-gradient(
+        170deg,
+        rgba(152, 252, 3, 0.15) 0%,
+        rgba(152, 252, 3, 0.1) 20%,
+        rgba(152, 252, 3, 0.05) 50%,
+        rgba(0, 0, 0, 0.0) 50%,
+        rgba(0, 0, 0, 0.0) 100%
+    ) !important;
+    border: 1px inset rgba(255, 255, 255, 0.5);
+}
+
+/* Отключаем матричный эффект при ховере для runline */
+body.alien-glass .message.msg-runline .bubble::after {
+    display: none !important;
+}
+
+/* Текст внутри runline - сохраняем анимацию движения */
+body.alien-glass .message.msg-runline .bubble p {
+    /* Отключаем анимацию появления текста из темы */
+    animation: runline-scroll 8s linear infinite !important;
+    display: inline-block !important;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px #98fc03;
+    font-family: monospace;
+    margin: 0;
+    padding-right: 20px;
+    /* Убираем эффекты появления из темы */
+    opacity: 1 !important;
+    filter: blur(0) !important;
+}
+
+/* Для СВОИХ сообщений - текст тоже светится */
+body.alien-glass .message-self.msg-runline .bubble p {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px #98fc03;
+}
+
+/* Сама анимация бегущей строки (если ещё не добавлена) */
+@keyframes runline-scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===== ИНДИКАТОР EXTEND (ТОЛЬКО ТОЧКИ, БЕЗ ПОТЕРИ СТИЛЕЙ) ===== */
+/* ===== ИНДИКАТОР EXTEND - ПУЛЬСИРУЮЩИЕ ТОЧКИ ===== */
+/* 1. Отключаем матричный эффект для extend-сообщений */
+body.alien-glass .message.msg-extend .bubble:hover::after {
+    /* Полный сброс матрицы */
+    display: block !important;
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-image: 
+        radial-gradient(circle at 0px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #98fc03 1px, transparent 1px) !important;
+    background-size: 10px 10px !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    background-position: 0 0 !important;
+    opacity: 1 !important;
+    animation: pulseExtend 1.5s ease-in-out infinite !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 2. Обычное состояние — тоже анимация */
+body.alien-glass .message.msg-extend .bubble::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    left: auto !important;
+    width: 10px !important;
+    height: 10px !important;
+    background-image: 
+        radial-gradient(circle at 0px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 0px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 4px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 0px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 4px 8px, #98fc03 1px, transparent 1px),
+        radial-gradient(circle at 8px 8px, #98fc03 1px, transparent 1px) !important;
+    background-size: 10px 10px !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    background-position: 0 0 !important;
+    /* opacity: 1 !important; */
+    animation: pulseExtend 1.5s ease-in-out infinite !important;
+    z-index: 20 !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 3. Ключевые кадры пульсации */
+@keyframes pulseExtend {
+    0% { opacity: 0.1; filter: drop-shadow(0 0 1px #98fc03); }
+    50% { opacity: 1; filter: drop-shadow(0 0 4px #98fc03); }
+    100% { opacity: 0.1; filter: drop-shadow(0 0 1px #98fc03); }
+}
+
+
+    
+    
+    
+    /* ========== ПОЛНОСТЬЮ ТЕМНАЯ ТЕМА (WhatsApp Dark Style) ========== */
+    body.dark {
+        background: #111b21;
+    }
+
+    body.dark .app {
+        background: #111b21;
+        box-shadow: none;
+    }
+
+    /* Шапка */
+    body.dark .header {
+        background: #1f2c33;
+    }
+
+    body.dark .logo,
+    body.dark .header-right .contacts-icon,
+    body.dark .header-right .profile-icon,
+    body.dark .header-right .settings-icon {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Вкладки */
+    body.dark .tabs {
+        background: #1f2c33;
+        border-bottom-color: #2a3942;
+    }
+
+    body.dark .tab-btn {
+        color: #8696a0;
+    }
+
+    body.dark .tab-btn.active {
+        color: #00a884;
+        border-bottom-color: #00a884;
+        background: #111b21;
+    }
+
+    /* Контент и чат */
+    body.dark .content {
+        background: #111b21;
+    }
+
+    body.dark .chat-messages {
+        background: #111b21;
+    }
+
+    /* Облачка сообщений */
+    body.dark .message-self .bubble {
+        background: #005c4b;
+        color: #e9edef;
+    }
+
+    body.dark .message-other .bubble {
+        background: #202c33;
+        color: #e9edef;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Имена в сообщениях */
+    body.dark .message-self .msg-name,
+    body.dark .message-other .msg-name {
+        background: #aebac1;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Время сообщений */
+    body.dark .msg-time {
+        color: #8696a0;
+    }
+
+    /* Иконки в сообщениях */
+    body.dark .pin-icon-msg,
+    body.dark .reply-icon,
+    body.dark .burn-icon {
+        color: #8696a0;
+        opacity: 0.7;
+    }
+
+    body.dark .pin-icon-msg:hover,
+    body.dark .reply-icon:hover,
+    body.dark .burn-icon:hover {
+        opacity: 1;
+        color: #e9edef;
+    }
+
+    /* Обрезание длинных сообщений */
+    body.dark .bubble.collapsed::after {
+        background: linear-gradient(to bottom, transparent, #111b21);
+    }
+
+    body.dark .message-self .bubble.collapsed::after {
+        background: linear-gradient(to bottom, transparent, #005c4b);
+    }
+
+    body.dark .expand-btn {
+        color: #00a884;
+    }
+
+    /* Поле ввода */
+    body.dark .chat-input-area {
+        background: #1f2c33;
+        border-top-color: #2a3942;
+    }
+
+    body.dark .attach-btn,
+    body.dark .emoji-btn {
+        background: #2a3942;
+        color: #aebac1;
+    }
+
+    body.dark .message-input-wrapper {
+        background: #2a3942;
+    }
+
+    body.dark #messageInput {
+        color: #e9edef;
+    }
+
+    body.dark #messageInput::placeholder {
+        color: #8696a0;
+    }
+
+    body.dark .send-btn {
+        background: #00a884;
+        color: #111b21;
+    }
+
+    /* Сайдбар контактов */
+    body.dark .contacts-sidebar {
+        background: #111b21;
+    }
+
+    body.dark .contacts-header {
+        background: #1f2c33;
+        color: #e9edef;
+    }
+
+    body.dark .contacts-search input {
+        background: #2a3942;
+        color: #e9edef;
+    }
+
+    body.dark .contacts-search input::placeholder {
+        color: #8696a0;
+    }
+
+    body.dark .contact-item {
+        border-bottom-color: #2a3942;
+    }
+
+    body.dark .contact-item:hover {
+        background: #2a3942;
+    }
+
+    body.dark .contact-name {
+        color: #e9edef;
+    }
+
+    body.dark .contact-flat {
+        color: #8696a0;
+    }
+
+    body.dark .contacts-list-header {
+        color: #8696a0;
+    }
+
+    /* Сайдбар профиля */
+    body.dark .profile-sidebar {
+        background: #111b21;
+    }
+
+    body.dark .profile-sidebar .contacts-header {
+        background: #1f2c33;
+    }
+
+    /* Сайдбар настроек */
+    body.dark .settings-sidebar {
+        background: #111b21;
+    }
+
+    body.dark .settings-header {
+        background: #1f2c33;
+    }
+
+    body.dark .settings-header h3 {
+        color: #e9edef;
+    }
+
+    body.dark .setting-item label {
+        color: #8696a0;
+    }
+
+    body.dark .setting-item select,
+    body.dark .sound-select-row select {
+        background: #2a3942;
+        border-color: #3b4a54;
+        color: #e9edef;
+    }
+
+    body.dark .test-sound-btn,
+    body.dark .test-sound-mini {
+        background: #00a884;
+        color: #111b21;
+    }
+
+    /* Модалка изображения */
+    body.dark .image-modal {
+        background: rgba(0, 0, 0, 0.95);
+    }
+
+    /* Эмодзи-пикер */
+    body.dark .emoji-picker {
+        background: #2a3942;
+    }
+
+    body.dark .emoji-item:hover {
+        background: #3b4a54;
+    }
+
+    /* Реакции */
+    body.dark .react-btn:hover {
+        background: #2a3942;
+    }
+
+    body.dark .react-btn.active {
+        background: #005c4b;
+    }
+
+    /* Закрепленное сообщение */
+    body.dark .pinned-message {
+        background: #1e2a2e;
+        border-bottom-color: #2a3942;
+        color: #e9edef;
+    }
+
+    /* Ответ на сообщение */
+    body.dark .reply-preview {
+        background: #2a3942;
+        border-left-color: #00a884;
+    }
+
+    body.dark .reply-preview-text {
+        color: #8696a0;
+    }
+
+    body.dark .reply-quote {
+        background: #2a3942;
+        border-left-color: #00a884;
+        color: #8696a0;
+    }
+
+    body.dark .reply-quote:hover {
+        background: #3b4a54;
+    }
+
+    /* Прелоадер */
+    body.dark .chat-loader {
+        background: #2a3942;
+        color: #e9edef;
+    }
+
+    body.dark .loader-spinner {
+        border-color: #3b4a54;
+        border-top-color: #00a884;
+    }
+
+    /* Кнопка загрузки еще */
+    body.dark .load-more-banner {
+        background: #1e2a2e;
+        color: #00a884;
+        border-bottom-color: #2a3942;
+    }
+
+    body.dark .load-more-banner:hover {
+        background: #2a3942;
+    }
+
+    /* Превью изображения */
+    body.dark .image-preview {
+        background: #2a3942;
+    }
+
+    /* Скроллбар */
+    body.dark ::-webkit-scrollbar-track {
+        background: #111b21;
+    }
+
+    body.dark ::-webkit-scrollbar-thumb {
+        background: #3b4a54;
+    }
+
+    body.dark ::-webkit-scrollbar-thumb:hover {
+        background: #4a5b66;
+    }
+
+    /* Оверлей */
+    body.dark .overlay {
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Badge непрочитанных */
+    body.dark .unread-badge {
+        background: #00a884;
+    }
+
+    body.dark .contact-badge {
+        background: #00a884;
+    }
+
+    /* Алтарь и ритуал (темные темы для них) */
+    body.dark .altar-container,
+    body.dark .ritual-container {
+        background: #0a0a0a;
+        border-color: #2a3942;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .rune-slot {
+        background: #111b21;
+        border-color: #2a3942;
+    }
+
+    body.dark .altar-input,
+    body.dark .ritual-input {
+        background: #111b21;
+        border-color: #2a3942;
+        color: #00a884;
+    }
+
+    body.dark .altar-btn,
+    body.dark .ritual-register-btn {
+        background: #2a3942;
+        color: #e9edef;
+    }
+
+    body.dark .altar-btn:hover,
+    body.dark .ritual-register-btn:hover {
+        background: #3b4a54;
+    }
+
+    body.dark .ritual-generate-btn {
+        background: #1f2c33;
+        color: #8696a0;
+    }
+
+    /* ========== СВЕТЛАЯ ЛЕСНАЯ ТЕМА (forest) — ПОЛНАЯ ВЕРСИЯ ========== */
+body.forest {
+    background: #d4e0d4;
+}
+
+body.forest .app {
+    background: #eef3ee;
+    box-shadow: none;
+}
+
+/* ===== ШАПКА ===== */
+body.forest .header {
+    background: #e2ece2;
+    border-bottom: 1px solid #cbdccb;
+}
+
+body.forest .logo {
+    color: #3d6b3d;
+}
+
+body.forest .header-right .contacts-icon,
+body.forest .header-right .profile-icon,
+body.forest .header-right .settings-icon {
+    background: #d4e4d4;
+    color: #4a7a4a;
+}
+
+body.forest .header-right .contacts-icon:hover,
+body.forest .header-right .profile-icon:hover,
+body.forest .header-right .settings-icon:hover {
+    background: #c8dcc8;
+}
+
+/* ===== ВКЛАДКИ ===== */
+body.forest .tabs {
+    background: #e8f0e8;
+    border-bottom-color: #cbdccb;
+}
+
+body.forest .tab-btn {
+    color: #6b8f6b;
+}
+
+body.forest .tab-btn.active {
+    color: #2d6a2d;
+    border-bottom-color: #4a8c4a;
+    background: #eef3ee;
+}
+
+/* ===== ОБЛАСТЬ ЧАТА ===== */
+body.forest .content {
+    background: #eef3ee;
+}
+
+body.forest .chat-messages {
+    background: #eef3ee;
+}
+
+/* ===== СООБЩЕНИЯ ===== */
+body.forest .message-self .bubble {
+    background: #deecde;
+    color: #2a3a2a;
+    border-radius: 18px;
+    border-bottom-right-radius: 4px;
+}
+
+body.forest .message-other .bubble {
+    background: #ffffff;
+    color: #2a3a2a;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Имена */
+body.forest .message-self .msg-name,
+body.forest .message-other .msg-name {
+    background: #6b9b6b;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Время */
+body.forest .msg-time {
+    color: #8aae8a;
+}
+
+/* Иконки в сообщениях */
+body.forest .pin-icon-msg,
+body.forest .reply-icon,
+body.forest .burn-icon {
+    color: #8aae8a;
+}
+
+body.forest .pin-icon-msg:hover,
+body.forest .reply-icon:hover,
+body.forest .burn-icon:hover {
+    color: #4a7a4a;
+}
+
+/* Обрезанные сообщения */
+body.forest .bubble.collapsed::after {
+    background: linear-gradient(to bottom, transparent, #eef3ee);
+}
+
+body.forest .message-self .bubble.collapsed::after {
+    background: linear-gradient(to bottom, transparent, #deecde);
+}
+
+body.forest .expand-btn {
+    color: #4a8c4a;
+}
+
+/* ===== ПРИКРЕПЛЁННОЕ СООБЩЕНИЕ ===== */
+body.forest .pinned-message {
+    background: #e8f0e8;
+    border-bottom-color: #cbdccb;
+    color: #2a3a2a;
+}
+
+body.forest .pinned-message .pin-icon {
+    color: #6b9b6b;
+}
+
+/* ===== ОТВЕТЫ ===== */
+body.forest .reply-preview {
+    background: #e2ece2;
+    border-left-color: #4a8c4a;
+}
+
+body.forest .reply-preview-text {
+    color: #6b8f6b;
+}
+
+body.forest .reply-preview-close {
+    color: #8aae8a;
+}
+
+body.forest .reply-quote {
+    background: #e2ece2;
+    border-left-color: #4a8c4a;
+    color: #6b8f6b;
+}
+
+body.forest .reply-quote:hover {
+    background: #d4e4d4;
+}
+
+/* ===== ПОЛЕ ВВОДА ===== */
+body.forest .chat-input-area {
+    background: #ffffff;
+    border-top-color: #cbdccb;
+}
+
+body.forest .attach-btn,
+body.forest .emoji-btn {
+    background: #e8f0e8;
+    color: #6b9b6b;
+}
+
+body.forest .attach-btn:hover,
+body.forest .emoji-btn:hover {
+    background: #deecde;
+    color: #4a7a4a;
+}
+
+body.forest .message-input-wrapper {
+    background: #e8f0e8;
+}
+
+body.forest #messageInput {
+    color: #2a3a2a;
+}
+
+body.forest #messageInput::placeholder {
+    color: #8aae8a;
+}
+
+body.forest .send-btn {
+    background: #4a8c4a;
+    color: white;
+}
+
+body.forest .send-btn:hover {
+    background: #3d6b3d;
+}
+
+/* ===== САЙДБАР КОНТАКТОВ ===== */
+body.forest .contacts-sidebar {
+    background: #eef3ee;
+}
+
+body.forest .contacts-header {
+    background: #e2ece2;
+    color: #3d6b3d;
+    border-bottom: 1px solid #cbdccb;
+}
+
+body.forest .close-contacts-btn {
+    color: #6b8f6b;
+}
+
+body.forest .contacts-search input {
+    background: #ffffff;
+    color: #2a3a2a;
+    border: 1px solid #cbdccb;
+}
+
+body.forest .contacts-search input::placeholder {
+    color: #8aae8a;
+}
+
+body.forest .contact-item {
+    border-bottom-color: #e2ece2;
+}
+
+body.forest .contact-item:hover {
+    background: #e8f0e8;
+}
+
+body.forest .contact-name {
+    color: #2a3a2a;
+}
+
+body.forest .contact-flat {
+    color: #8aae8a;
+}
+
+body.forest .contacts-list-header {
+    color: #8aae8a;
+}
+
+/* Кнопки в контактах */
+body.forest .add-btn {
+    background: #4a8c4a;
+    color: white;
+}
+
+body.forest .add-btn:hover {
+    background: #3d6b3d;
+}
+
+body.forest .remove-btn {
+    background: transparent;
+    color: #8a6a6a;
+    border: 1px solid #c8b8b8;
+}
+
+body.forest .remove-btn:hover {
+    background: #f0e0e0;
+    color: #b55a5a;
+}
+
+/* Аватар по умолчанию */
+body.forest .contact-avatar {
+    background: #8aae8a;
+}
+
+body.forest .contact-avatar.unread-avatar {
+    box-shadow: 0 0 0 3px #4a8c4a;
+}
+
+/* Бейдж непрочитанных */
+body.forest .unread-badge {
+    background: #4a8c4a;
+    color: white;
+}
+
+body.forest .contact-badge {
+    background: #4a8c4a;
+    color: white;
+}
+
+/* ===== САЙДБАР ПРОФИЛЯ ===== */
+body.forest .profile-sidebar {
+    background: #ffffff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.05);
+}
+
+body.forest .profile-sidebar h3 {
+    color: #2a3a2a;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+body.forest .profile-sidebar #avatarPreview {
+    border: 3px solid #cbdccb;
+    background: #8aae8a;
+}
+
+body.forest .profile-sidebar input[type="text"] {
+    background: #eef3ee;
+    border: 1px solid #cbdccb;
+    border-radius: 10px;
+    color: #2a3a2a;
+}
+
+body.forest .profile-sidebar input[type="text"]:focus {
+    border-color: #4a8c4a;
+    outline: none;
+}
+
+body.forest .profile-sidebar input[type="file"] {
+    background: #eef3ee;
+    border: 1px solid #cbdccb;
+    border-radius: 10px;
+    color: #6b8f6b;
+}
+
+body.forest .profile-sidebar #saveProfileBtn {
+    background: #4a8c4a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+body.forest .profile-sidebar #saveProfileBtn:hover {
+    background: #3d6b3d;
+}
+
+body.forest .profile-sidebar hr {
+    border-color: #cbdccb;
+}
+
+body.forest .profile-sidebar #logoutBtn {
+    background: transparent;
+    color: #8a6a6a;
+    border: 1px solid #c8b8b8;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+body.forest .profile-sidebar #logoutBtn:hover {
+    background: #f0e0e0;
+    color: #b55a5a;
+}
+
+body.forest .profile-sidebar #closeProfileBtn {
+    color: #8aae8a;
+    background: #e8f0e8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.forest .profile-sidebar #closeProfileBtn:hover {
+    background: #deecde;
+    color: #4a7a4a;
+}
+
+/* ===== САЙДБАР НАСТРОЕК ===== */
+body.forest .settings-sidebar {
+    background: #ffffff;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.05);
+}
+
+body.forest .settings-header {
+    background: #e2ece2;
+    color: #3d6b3d;
+    border-bottom: 1px solid #cbdccb;
+}
+
+body.forest .settings-header h3 {
+    color: #3d6b3d;
+}
+
+body.forest .close-settings-btn {
+    color: #6b8f6b;
+}
+
+body.forest .setting-item label {
+    color: #6b8f6b;
+}
+
+body.forest .setting-item select,
+body.forest .sound-select-row select {
+    background: #eef3ee;
+    border-color: #cbdccb;
+    color: #2a3a2a;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+body.forest .test-sound-btn,
+body.forest .test-sound-mini {
+    background: #4a8c4a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+body.forest .test-sound-btn:hover,
+body.forest .test-sound-mini:hover {
+    background: #3d6b3d;
+}
+
+/* ===== МОДАЛКИ ===== */
+body.forest .image-modal {
+    background: rgba(0,0,0,0.9);
+}
+
+body.forest .close-modal-btn,
+body.forest .download-modal-btn {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+body.forest .close-modal-btn:hover,
+body.forest .download-modal-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ===== ЭМОДЗИ-ПИКЕР ===== */
+body.forest .emoji-picker {
+    background: #ffffff;
+    border: 1px solid #cbdccb;
+    border-radius: 16px;
+}
+
+body.forest .emoji-item:hover {
+    background: #e8f0e8;
+    border-radius: 8px;
+}
+
+/* ===== РЕАКЦИИ ===== */
+body.forest .react-btn {
+    color: #6b8f6b;
+}
+
+body.forest .react-btn:hover {
+    background: #e8f0e8;
+}
+
+body.forest .react-btn.active {
+    background: #deecde;
+    color: #2d6a2d;
+}
+
+/* ===== ПРЕВЬЮ ИЗОБРАЖЕНИЯ ===== */
+body.forest .image-preview {
+    background: #e8f0e8;
+    border-radius: 12px;
+}
+
+body.forest .send-image-btn {
+    background: #4a8c4a;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+body.forest .cancel-image-btn {
+    background: #c8b8b8;
+    color: #2a3a2a;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* ===== ПРЕЛОАДЕР ===== */
+body.forest .chat-loader {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+body.forest .loader-spinner {
+    border-color: #cbdccb;
+    border-top-color: #4a8c4a;
+}
+
+/* ===== КНОПКА ЗАГРУЗКИ ЕЩЁ ===== */
+body.forest .load-more-banner {
+    background: #e8f0e8;
+    color: #4a8c4a;
+    border-bottom-color: #cbdccb;
+}
+
+body.forest .load-more-banner:hover {
+    background: #deecde;
+}
+
+/* ===== СКРОЛЛБАР ===== */
+body.forest ::-webkit-scrollbar-track {
+    background: #eef3ee;
+}
+
+body.forest ::-webkit-scrollbar-thumb {
+    background: #c0d4c0;
+    border-radius: 5px;
+}
+
+body.forest ::-webkit-scrollbar-thumb:hover {
+    background: #8aae8a;
+}
+
+/* ===== ОВЕРЛЕЙ ===== */
+body.forest .overlay {
+    background: rgba(0,0,0,0.4);
+}
+
+/* ===== ФАКТУРА ФОНА (едва заметные точки) ===== */
+body.forest .content,
+body.forest .chat-messages {
+    background-image: radial-gradient(#c8dcc8 0.5px, transparent 0.5px);
+    background-size: 32px 32px;
+}
+
+body.forest .contacts-sidebar {
+    background-image: radial-gradient(#c8dcc8 0.4px, transparent 0.4px);
+    background-size: 32px 32px;
+}
+
+    /* === ТЕМА: ROYAL GLASS === */
+body.royal-glass {
+--teal-top: #008B8B;
+--teal-mid: #20B2AA;
+--gray-mid: #ababab;
+--gray-bottom: #E8ECEF;
+--glass-bg: rgba(255, 255, 255, 0.85);
+--shadow-color: rgba(0, 139, 139, 0.2);
+
+background: linear-gradient(180deg, #D8E8E8 0%, #E8ECEF 100%);
+}
+
+body.royal-glass .remove-btn {
+        background: #008B8B;
+        color: white;
+    }
+
+/* Шапка с эффектом стекла и вертикальным градиентом */
+body.royal-glass .header {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.1) 40%,
+        rgba(0,0,0,0.05) 100%
+    ),
+    linear-gradient(180deg, 
+        var(--teal-top) 0%, 
+        var(--teal-mid) 50%,
+        var(--gray-bottom) 100%
+    );
+background-blend-mode: overlay, normal;
+box-shadow: 
+    0 4px 20px var(--shadow-color),
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+position: relative;
+border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Верхний блик на шапке */
+body.royal-glass .header::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 50%;
+background: linear-gradient(180deg, 
+    rgba(255,255,255,0.4) 0%, 
+    rgba(255,255,255,0.1) 100%
+);
+border-radius: inherit;
+pointer-events: none;
+}
+
+/* Сайдбар с плавным переходом */
+
+body.royal-glass .settings-sidebar {
+    position: relative;
+z-index: 1003;
+height: 250px;
+border-bottom: 2px solid white;
+/* display: none; */
+}
+
+/* Шапка сайдбара контактов с блеском */
+/* Шапка контактов — точная копия шапки чата */
+body.royal-glass .contacts-header {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.1) 40%,
+        rgba(0,0,0,0.05) 100%
+    ),
+    linear-gradient(180deg, 
+        var(--teal-top) 0%, 
+        var(--teal-mid) 50%,
+        var(--gray-bottom) 100%
+    );
+background-blend-mode: overlay, normal;
+box-shadow: 
+    0 4px 20px var(--shadow-color),
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+position: relative;
+border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Верхний блик на шапке контактов */
+body.royal-glass .contacts-header::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 50%;
+background: linear-gradient(180deg, 
+    rgba(255,255,255,0.4) 0%, 
+    rgba(255,255,255,0.1) 100%
+);
+border-radius: inherit;
+pointer-events: none;
+}
+
+/* Кнопка закрытия в шапке контактов — в стиле шапки чата */
+body.royal-glass .close-contacts-btn {
+background: rgba(255, 255, 255, 0.15);
+border: 1px solid rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(3px);
+transition: all 0.3s ease;
+}
+
+body.royal-glass .close-contacts-btn:hover {
+background: rgba(255, 255, 255, 0.3);
+box-shadow: 0 0 10px rgba(255,255,255,0.4);
+transform: rotate(90deg);
+}
+
+/* Поле с контактами - серебристый оттенок */
+/* body.royal-glass .contacts-list {
+background: 
+    linear-gradient(180deg, 
+    rgba(235,238,242,0.95) 0%,
+    rgba(230,234,238,0.95) 50%,
+        rgb(255, 255, 255) 100%, 
+
+    );
+
+} */
+
+/* Альтернативно - если contacts-list нет, а есть contacts-sidebar content */
+body.royal-glass .contacts-sidebar {
+background: 
+    linear-gradient(180deg, 
+        rgba(0, 139, 139, 0.03) 0%, 
+        rgba(240,242,245,0.9) 15%,
+        rgba(255, 255, 255, 0.95) 100%
+    );
+}
+body.royal-glass .contacts-controls {
+position: relative;
+bottom: 0;
+width: 100%;
+height: 63px;
+/* Тот же мягкий белый градиент, что у chat-input-area */
+background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%);
+backdrop-filter: blur(10px);
+/* Та же тонкая светлая граница сверху */
+border-top: 1px solid rgba(255,255,255,0.6);
+/* Та же мягкая верхняя тень + внутренний блик кромки */
+box-shadow: 
+    0 -4px 20px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+/* Задний фон чата (под сообщениями) */
+body.royal-glass .content {
+/* Очень светлый, почти белый градиент */
+background: #e3e5e8;
+/* Если хочешь едва заметный паттерн (точечки), раскомментируй: */
+
+background-image: radial-gradient(#cfd1d4 1px, transparent 1px);
+background-size: 18px 18px; 
+
+}
+
+/* Плашки контактов с скругленными уголками */
+body.royal-glass .contact-item {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(248,250,252,0.9) 100%
+    );
+border-radius: 5px;
+margin: 6px 12px;
+padding: 10px 14px;
+width: calc(100% - 24px);
+border: 1px solid rgba(0, 139, 139, 0.08);
+box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.105),
+    inset 0 2px 0 rgba(255, 255, 255, 0.923);
+transition: all 0.3s ease;
+}
+
+body.royal-glass .contact-item:hover {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,1) 0%, 
+        rgba(245,248,250,1) 100%
+    );
+border-left: 4px solid var(--teal-mid);
+padding-left: 10px;
+/* box-shadow: 
+    0 4px 10px rgba(0, 139, 139, 0.12),
+    inset 0 1px 0 rgba(255,255,255,1); */
+transform: translateY(-1px);
+}
+
+/* Аватарка контакта с легким блеском */
+body.royal-glass .contact-avatar {
+border: 2px solid rgba(255,255,255,0.8);
+box-shadow: 
+    0 2px 6px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+body.royal-glass .contacts-list-header
+{
+display: none;
+}
+/* Поиск - серебристый */
+body.royal-glass .contacts-search input {
+/* max-height: 20px; */
+background: 
+    linear-gradient(180deg, 
+    rgb(194, 197, 202) 0%,
+        rgb(220, 226, 225) 100%, 
+        
+    );
+border: 1px solid rgba(0, 139, 139, 0.15);
+box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.04),
+    0 2px 0 rgba(255,255,255,0.9);
+}
+
+body.royal-glass .contacts-search input:focus {
+background: 
+    linear-gradient(180deg, 
+        rgb(227, 232, 231) 0%, 
+        rgb(226, 231, 230)  100%
+    );
+border-color: var(--teal-mid);
+box-shadow: 
+    0 0 0 3px rgba(0, 139, 139, 0.1),
+    inset 0 2px 4px rgba(0,0,0,0.04);
+}
+
+/* Пузыри сообщений — стиль аккуратных плашек */
+body.royal-glass .bubble {
+background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+border-radius: 14px;
+box-shadow: 
+    0 2px 6px rgba(0,0,0,0.05), 
+    inset 0 1px 0 rgba(255,255,255,0.95);
+border: 1px solid rgba(0, 139, 139, 0.06);
+color: #2c3e50;
+}
+
+/* Свои сообщения — teal-плашка */
+body.royal-glass .message-self .bubble {
+background: linear-gradient(180deg, #20B2AA 0%, #008B8B 100%);
+border-radius: 14px;
+box-shadow: 
+    0 4px 10px rgba(0, 139, 139, 0.2), 
+    inset 0 1px 0 rgba(255,255,255,0.3);
+border: 1px solid rgba(255,255,255,0.12);
+color: #ffffff;
+}
+
+/* Поле ввода с эффектом стекла */
+body.royal-glass .chat-input-area {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.95) 100%
+    );
+backdrop-filter: blur(10px);
+border-top: 1px solid rgba(255,255,255,0.6);
+box-shadow: 
+    0 -4px 20px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+body.royal-glass .message-input-wrapper {
+background: 
+    linear-gradient(180deg, 
+        rgba(232, 236, 239, 0.8) 0%, 
+        rgba(255,255,255,0.9) 100%
+    );
+box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.05),
+    inset 0 -1px 0 rgba(255,255,255,0.8);
+border: 1px solid rgba(0, 139, 139, 0.15);
+}
+
+body.royal-glass .message-input-wrapper:focus-within {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.95) 0%, 
+        rgba(255,255,255,1) 100%
+    );
+border-color: var(--teal-mid);
+box-shadow: 
+    0 0 0 3px rgba(0, 139, 139, 0.1),
+    inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Кнопка отправки с 3D эффектом */
+body.royal-glass .send-btn {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.1) 50%,
+        rgba(0,0,0,0.1) 100%
+    ),
+    linear-gradient(180deg, 
+        #40E0D0 0%, 
+        var(--teal-top) 50%,
+        var(--teal-mid) 100%
+    );
+background-blend-mode: overlay, normal;
+box-shadow: 
+    0 4px 12px rgba(0, 139, 139, 0.4),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -1px 0 rgba(0,0,0,0.2);
+border: 1px solid rgba(255,255,255,0.3);
+position: relative;
+overflow: hidden;
+}
+
+/* Блик на кнопке */
+body.royal-glass .send-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 50%;
+background: linear-gradient(180deg, 
+    rgba(255,255,255,0.4) 0%, 
+    rgba(255,255,255,0.1) 100%
+);
+border-radius: 50% 50% 0 0;
+}
+
+body.royal-glass .send-btn:hover {
+transform: translateY(-2px);
+box-shadow: 
+    0 6px 16px rgba(0, 139, 139, 0.5),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* Вкладки */
+body.royal-glass .tabs {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(240,242,245,0.9) 100%
+    );
+backdrop-filter: blur(5px);
+box-shadow: 
+    0 2px 8px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+body.royal-glass .tab-btn.active {
+background: 
+    linear-gradient(180deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+color: var(--teal-top);
+border-bottom: 3px solid var(--teal-mid);
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Элементы контактов */
+body.royal-glass .contact-item {
+background: transparent;
+border-bottom: 2px solid rgba(0, 139, 139, 0.05);
+transition: all 0.3s;
+}
+
+body.royal-glass .contact-item:hover {
+background: 
+    linear-gradient(90deg, 
+        rgba(0, 139, 139, 0.08) 0%, 
+        rgba(0, 139, 139, 0.02) 100%
+    );
+border-left: 4px solid var(--teal-mid);
+padding-left: 12px;
+}
+
+/* Бейджи */
+body.royal-glass .contact-badge,
+body.royal-glass .unread-badge {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.1) 100%
+    ),
+    linear-gradient(180deg, 
+        #40E0D0 0%, 
+        var(--teal-top) 100%
+    );
+background-blend-mode: overlay, normal;
+box-shadow: 
+    0 2px 6px rgba(0, 139, 139, 0.3),
+    inset 0 2px 0 rgba(255,255,255,0.4);
+border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* Скроллбар */
+body.royal-glass ::-webkit-scrollbar-thumb {
+background: 
+    linear-gradient(90deg, 
+        rgba(255,255,255,0.3) 0%, 
+        var(--teal-mid) 50%,
+        var(--teal-top) 100%
+    );
+border: 2px solid rgba(255,255,255,0.8);
+border-radius: 10px;
+}
+
+/* Имена с градиентом */
+body.royal-glass .msg-name {
+background: linear-gradient(180deg, 
+    var(--teal-top) 0%, 
+    var(--teal-mid) 100%
+);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+body.royal-glass .message-self .msg-name {
+background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(0, 0, 0, 0.7) 100%
+);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* === PROFILE SIDEBAR FULL GLASS STYLE === */
+
+body.royal-glass .profile-sidebar {
+/* Фон как в шапке: Teal сверху -> Серый снизу + Стеклянный оверлей */
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.1) 40%,
+        rgba(0,0,0,0.05) 100%
+    ),
+    linear-gradient(180deg, 
+        var(--teal-top) 0%, 
+        var(--teal-mid) 10%,
+        var(--gray-mid) 40%,
+        var(--glass-bg) 100%
+    );
+background-blend-mode: overlay, normal;
+
+/* Тени и границы как в шапке */
+box-shadow: 
+    -5px 0 20px var(--shadow-color),
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+border-left: 1px solid rgba(255,255,255,0.4);
+
+padding: 20px 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+/* position: fixed; */
+top: 0;
+/* right: 0; */
+height: 100%;
+width: 300px;
+z-index: 1002;
+}
+
+/* Верхний глобальный блик на всем сайдбаре (как ::before у хедера) */
+body.royal-glass .profile-sidebar::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 50%;
+background: linear-gradient(180deg, 
+    rgba(255,255,255,0.4) 0%, 
+    rgba(255,255,255,0.1) 100%
+);
+pointer-events: none;
+z-index: 0;
+}
+
+
+/* --- КНОПКА ЗАКРЫТЬ (Простой круг, без теней) --- */
+body.royal-glass #closeProfileBtn {
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: #009688; /* Чистый Teal */
+color: white;
+border: none;
+font-size: 18px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: none !important; /* БЕЗ ТЕНЕЙ */
+outline: none;
+z-index: 2;
+}
+
+body.royal-glass #closeProfileBtn:hover {
+background: #00796b;
+}
+
+/* Заголовок */
+body.royal-glass .profile-sidebar h3 {
+color: white;
+text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+margin-top: 0px;
+margin-bottom: 0px;
+font-weight: 700;
+font-size: 22px;
+}
+
+/* Аватар */
+body.royal-glass #avatarPreview {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid rgba(255,255,255,0.8);
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+margin-bottom: 5px;
+}
+
+/* Поля ввода (Стеклянные плашки) */
+body.royal-glass .profile-sidebar input[type="text"] {
+width: 100%;
+padding: 12px 16px;
+margin-bottom: 12px;
+border-radius: 12px;
+border: 1px solid rgba(255,255,255,0.4);
+background: rgba(255,255,255,0.2); /* Полупрозрачный белый */
+backdrop-filter: blur(5px);
+color: white;
+font-size: 14px;
+outline: none;
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+body.royal-glass .profile-sidebar input[type="text"]::placeholder {
+color: rgba(255,255,255,0.7);
+}
+
+body.royal-glass .profile-sidebar input[type="text"]:focus {
+background: rgba(255,255,255,0.3);
+border-color: rgba(255,255,255,0.8);
+box-shadow: 0 0 0 3px rgba(255,255,255,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Загрузка файла */
+body.royal-glass #avatarInput {
+width: 100%;
+margin-bottom: 20px;
+color: white;
+font-size: 12px;
+}
+body.royal-glass #avatarInput::file-selector-button {
+background: rgba(255,255,255,0.2);
+border: 1px solid rgba(255,255,255,0.4);
+color: white;
+padding: 5px 10px;
+border-radius: 6px;
+margin-right: 10px;
+cursor: pointer;
+}
+
+/* Разделитель */
+body.royal-glass .profile-sidebar hr {
+width: 80%;
+border: none;
+border-top: 1px solid rgba(255,255,255,0.3);
+margin: 20px 0;
+}
+
+/* --- ГЛЯНЦЕВЫЕ КНОПКИ (Как пузыри сообщений, но во всю ширину) --- */
+
+/* Общий стиль для кнопок */
+body.royal-glass #saveProfileBtn,
+body.royal-glass #logoutBtn {
+position: relative;
+width: 100%;
+padding: 14px 0;
+border-radius: 24px;
+font-size: 15px;
+font-weight: 700;
+cursor: pointer;
+text-transform: uppercase;
+letter-spacing: 1px;
+border: 1px solid rgba(255,255,255,0.4);
+transition: transform 0.1s;
+margin-top: 10px;
+overflow: hidden;
+}
+
+/* Эффект нажатия */
+body.royal-glass #saveProfileBtn:active,
+body.royal-glass #logoutBtn:active {
+transform: scale(0.98);
+}
+
+/* Блик сверху на кнопке (как у пузыря) */
+body.royal-glass #saveProfileBtn::before,
+body.royal-glass #logoutBtn::before {
+content: '';
+position: absolute;
+top: 0;
+left: 10%;
+right: 10%;
+height: 45%;
+background: linear-gradient(180deg, 
+    rgba(255,255,255,0.4) 0%, 
+    rgba(255,255,255,0.1) 100%
+);
+border-radius: 24px 24px 50% 50%;
+pointer-events: none;
+}
+
+/* Кнопка СОХРАНИТЬ (Teal Gradient) */
+body.royal-glass #saveProfileBtn {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(0, 139, 139, 0.8) 30%,
+        rgba(0, 139, 139, 0.9) 100%
+    ),
+    linear-gradient(180deg, 
+        var(--teal-mid) 0%, 
+        var(--teal-top) 100%
+    );
+background-blend-mode: overlay, normal;
+box-shadow: 
+    0 4px 12px rgba(0, 139, 139, 0.3),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+color: white;
+text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Кнопка ВЫЙТИ (Серая/Серебристая Gradient) */
+body.royal-glass #logoutBtn {
+background: 
+    linear-gradient(180deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(100, 110, 120, 0.8) 30%,
+        rgba(100, 110, 120, 0.9) 100%
+    ),
+    linear-gradient(180deg, 
+        #b0bec5 0%, 
+        #78909c 100%
+    );
+background-blend-mode: overlay, normal;
+box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.1);
+color: white;
+text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
